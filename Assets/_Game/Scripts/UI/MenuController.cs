@@ -98,4 +98,9 @@ public class MenuController : MonoBehaviour
             PopPage();
         }
     }
+
+    public void OpenURL(string url)
+    {
+        Application.OpenURL(url);
+    }
 }
