@@ -22,8 +22,7 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
         }
 
         public void StateEnter() {
-            // Enable gameplay/character controls
-            print("Gameplay/character conrols enabled");
+            // TODO: Enable gameplay/character controls
         }
 
         public void StateUpdate() {
@@ -36,14 +35,14 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
                 return;
             }
 
+            // Monitor game pause request
             if(_pauseState.Data.ShouldBePaused) _stateMachine.ChangeState(_pauseState);
         }
 
         public void StateFixedUpdate() {}
 
         public void StateExit() {
-            // Disable gameplay/character controls
-            print("Gameplay/character conrols disabled");
+            // TODO: Disable gameplay/character controls
         }
     }
 }

@@ -1,5 +1,6 @@
 using AdrianKovatana.Essentials.FiniteStateMachine;
-using UnityEditor;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace DragonLens.BrackeysGameJam2022_2.GameStates
@@ -9,18 +10,21 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
         private PuzzleStateMachine _stateMachine;
         [SerializeField] private PlayingState _playingState;
         public PauseStateData Data;
+        private List<IPauseable> _listeners;
 
         private void Awake() {
             _stateMachine = GetComponentInParent<PuzzleStateMachine>();
             if(_stateMachine == null)
                 Debug.LogError($"{typeof(PauseState)} must have a state machine to work properly.");
 
-            // Find all pauasable objects to register as listeners to on enter state
+            RegisterListeners();
         }
 
         public void StateEnter() {
-            // Disable all pauseable scripts
-            print("Paused");
+            // Notify listeners
+            foreach(IPauseable listener in _listeners) {
+                listener.OnGamePaused();
+            }
         }
 
         public void StateUpdate() {
@@ -30,8 +34,18 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
         public void StateFixedUpdate() {}
 
         public void StateExit() {
-            // Enable all pauseable scripts
-            print("Unpaused");
+            // Notify listeners
+            foreach(IPauseable listener in _listeners) {
+                listener.OnGameUnpaused();
+            }
+        }
+
+        public void RegisterListeners() {
+            _listeners = new();
+            var listeners = Resources.FindObjectsOfTypeAll<MonoBehaviour>().OfType<IPauseable>();
+            foreach(var listener in listeners) {
+                _listeners.Add(listener);
+            }
         }
     }
 }

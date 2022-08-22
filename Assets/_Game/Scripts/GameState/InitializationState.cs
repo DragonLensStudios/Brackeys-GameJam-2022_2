@@ -21,8 +21,6 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
         public void StateEnter() {
             // Setup data for new puzzle scene
             _currentAnimationDuration = _animationDuration;
-
-            print("Puzzle data initialized");
         }
 
         public void StateUpdate() {
