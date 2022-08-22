@@ -23,11 +23,12 @@ public class LightFlicker : MonoBehaviour
         {
             lights.Add(GameObjectToLight2D(gameObject));
         }
-   }
+    }
 
     // Update is called once per frame
     void Update()
     {
+
         currentFrameCount++;
         if (currentFrameCount >= nextUpdate)
         {
@@ -37,16 +38,19 @@ public class LightFlicker : MonoBehaviour
             currentFrameCount = 0;
         }
     }
+
     void UpdateLights()
     {
+        float target = Mathf.InverseLerp(flickerLowerFrequency, flickerUpperFrequency, nextUpdate);
+        float intensity = Mathf.SmoothStep(0.25f, 0.5f, target);
         for (int i = 0; i < lights.Count; i++)
         {
             Light2D light = lights[i];
-
+            
             //Turn inside light off
             if (innerLightOn && !outerLightOn && isInnersTurn && light.name == "Candle Light 2D Flicker Inner")
             {
-                light.enabled = !light.enabled;
+                light.intensity = intensity;
                 innerLightOn = false;
                 isOutersTurn = false;
                 isInnersTurn = true;
@@ -56,7 +60,7 @@ public class LightFlicker : MonoBehaviour
             //Turn inside light on 
             if (!innerLightOn && !outerLightOn && light.name == "Candle Light 2D Flicker Inner")
             {
-                light.enabled = !light.enabled;
+                light.intensity = intensity;
                 innerLightOn = true;
                 isInnersTurn = false;
                 isOutersTurn = true;
@@ -66,7 +70,7 @@ public class LightFlicker : MonoBehaviour
             //Turn outside light off
             if (outerLightOn && innerLightOn && light.name == "Candle Light 2D Flicker Outer")
             {
-                light.enabled = !light.enabled;
+                light.intensity = intensity;
                 outerLightOn = false;
                 isInnersTurn = true;
                 isOutersTurn = false;
@@ -76,7 +80,7 @@ public class LightFlicker : MonoBehaviour
             //Turn outside light on 
             if (innerLightOn && !outerLightOn && isOutersTurn && light.name == "Candle Light 2D Flicker Outer")
             {
-                light.enabled = !light.enabled;
+                light.intensity = intensity;
                 outerLightOn = true;
                 isOutersTurn = true;
                 isInnersTurn = false;
