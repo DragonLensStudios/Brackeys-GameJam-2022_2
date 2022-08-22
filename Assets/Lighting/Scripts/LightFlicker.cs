@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
 using UnityEngine;
@@ -6,16 +5,16 @@ using UnityEngine;
 public class LightFlicker : MonoBehaviour
 {
     // Start is called before the first frame update
-    List<Light2D> lights = new List<Light2D>();
+    private List<Light2D> lights = new List<Light2D>();
     private int nextUpdate = 1;
     private int currentFrameCount = 0;
-    public float flickerLowerFrequency;
-    public float flickerUpperFrequency;
-
     private bool innerLightOn = true;
     private bool outerLightOn = true;
     private bool isInnersTurn = false;
     private bool isOutersTurn = true;
+
+    public float flickerLowerFrequency;
+    public float flickerUpperFrequency;
 
     void Start()
     {
@@ -32,14 +31,13 @@ public class LightFlicker : MonoBehaviour
         currentFrameCount++;
         if (currentFrameCount >= nextUpdate)
         {
-           
+            //Randomise when the next update will come, this can be done via the object this script is attached to. 
             nextUpdate =((int)Random.Range(flickerLowerFrequency, flickerUpperFrequency));
-            // Call your fonction
-            UpdateEverySecond();
+            UpdateLights();
             currentFrameCount = 0;
         }
     }
-    void UpdateEverySecond()
+    void UpdateLights()
     {
         for (int i = 0; i < lights.Count; i++)
         {
