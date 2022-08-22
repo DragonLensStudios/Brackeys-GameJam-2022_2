@@ -9,14 +9,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float baseMoveSpeed, runSpeed, currentSpeed;
 
-    private bool isRunning;
+    [SerializeField]
+    private CandleColor currentCandleColor;
+
+    private bool isRunning, isActivatePressed;
     private PlayerInput playerInput;
     private Vector2 movePosition;
     private Animator anim;
-    private Vector2 directionFacing;
     private Vector2 lastMove = new Vector2(0, -1);
-    private Vector2 lastInput = Vector2.zero;
 
+    public bool IsActivatePressed { get => isActivatePressed; set => isActivatePressed = value; }
+    public CandleColor CurrentCandleColor { get => currentCandleColor; set => currentCandleColor = value; }
 
     private void OnEnable()
     {
@@ -26,10 +29,10 @@ public class PlayerController : MonoBehaviour
             playerInput.actions["Move"].canceled += OnMove;
             playerInput.actions["Run"].performed += OnRun;
             playerInput.actions["Run"].canceled += OnRun;
+            playerInput.actions["Activate"].performed += OnActivate;
+            playerInput.actions["Activate"].canceled += OnActivate;
         }
     }
-
-
 
     private void OnDisable()
     {
@@ -39,6 +42,8 @@ public class PlayerController : MonoBehaviour
             playerInput.actions["Move"].canceled -= OnMove;
             playerInput.actions["Run"].performed -= OnRun;
             playerInput.actions["Run"].canceled -= OnRun;
+            playerInput.actions["Activate"].performed -= OnActivate;
+            playerInput.actions["Activate"].canceled -= OnActivate;
         }
     }
     private void Awake()
@@ -56,11 +61,6 @@ public class PlayerController : MonoBehaviour
     private void OnMove(InputAction.CallbackContext input)
     {
         movePosition = input.ReadValue<Vector2>();
-        if (lastInput != movePosition &&  movePosition != Vector2.zero)
-        {
-            lastInput = movePosition;
-            directionFacing = movePosition;
-        }
         anim.SetFloat("MoveX", movePosition.x);
         anim.SetFloat("MoveY", movePosition.y);
 
@@ -81,5 +81,17 @@ public class PlayerController : MonoBehaviour
     private void OnRun(InputAction.CallbackContext input)
     {
         isRunning = input.ReadValueAsButton();
+    }
+
+    private void OnActivate(InputAction.CallbackContext input)
+    {
+        isActivatePressed = input.ReadValueAsButton();
+    }
+
+    public IEnumerator ChangeCandleColor(CandleColor color, float timeToLast)
+    {
+        currentCandleColor = color;
+        yield return new WaitForSeconds(timeToLast);
+        currentCandleColor = CandleColor.Yellow;
     }
 }
