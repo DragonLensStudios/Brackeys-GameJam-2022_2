@@ -15,7 +15,7 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
         private void Awake() {
             _stateMachine = GetComponentInParent<PuzzleStateMachine>();
             if(_stateMachine == null)
-                Debug.LogError($"{typeof(PlayingState)} must have a state machine to work properly.");
+                Debug.LogError($"{typeof(InitializationState)} must have a state machine to work properly.");
         }
 
         public void StateEnter() {

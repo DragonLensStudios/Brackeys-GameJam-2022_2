@@ -9,8 +9,8 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
             // Raise game over event to notify listeners
             print("Game over");
         }
-        public void StateUpdate() { }
-        public void StateFixedUpdate() { }
-        public void StateExit() { }
+        public void StateUpdate() {}
+        public void StateFixedUpdate() {}
+        public void StateExit() {}
     }
 }

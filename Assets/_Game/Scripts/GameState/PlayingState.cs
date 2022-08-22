@@ -7,6 +7,7 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
     {
         private PuzzleStateMachine _stateMachine;
         [SerializeField] private GameOverState _gameOverState;
+        [SerializeField] private PauseState _pauseState;
 
         // Temp candle data
         [SerializeField] private float _candleDuration = 5f;
@@ -16,11 +17,11 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
             _stateMachine = GetComponentInParent<PuzzleStateMachine>();
             if(_stateMachine == null)
                 Debug.LogError($"{typeof(PlayingState)} must have a state machine to work properly.");
+
+            _currentCandleDuration = _candleDuration;
         }
 
         public void StateEnter() {
-            _currentCandleDuration = _candleDuration;
-
             // Enable gameplay/character controls
             print("Gameplay/character conrols enabled");
         }
@@ -30,10 +31,15 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
             _currentCandleDuration -= Time.deltaTime;
 
             // If not, then monitor the candle's state and change state accordingly
-            if(_currentCandleDuration <= 0f) _stateMachine.ChangeState(_gameOverState);
+            if(_currentCandleDuration <= 0f) {
+                _stateMachine.ChangeState(_gameOverState);
+                return;
+            }
+
+            if(_pauseState.Data.ShouldBePaused) _stateMachine.ChangeState(_pauseState);
         }
 
-        public void StateFixedUpdate() { }
+        public void StateFixedUpdate() {}
 
         public void StateExit() {
             // Disable gameplay/character controls
