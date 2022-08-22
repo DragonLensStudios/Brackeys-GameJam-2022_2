@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8eeb8788f4e4d24a9c85927de7fb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  candle_length: 0
+  candle_length: 30
   animator: {fileID: 293250039}
 --- !u!95 &293250039 stripped
 Animator:
@@ -188,7 +188,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3cc3d469d5ebd4c19905daa1b3b7a704, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,7 +196,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &910554781
@@ -283,6 +283,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1624603553
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4923353270435499759, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dc7900b1fb63c41f4b43874753422ca4, type: 2}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.3704693
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.96685183
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.015365966
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120921951228817261, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8061960061621126924, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
+      propertyPath: m_Name
+      value: Red Candle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d87ee611f31be4884b9ac08c0ee0dccb, type: 3}
 --- !u!1001 &2115480809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -300,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3946553469223113125, guid: 9bc3e11608efc48bfa96a82d21cff1b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.3704693
+      value: -2.281
       objectReference: {fileID: 0}
     - target: {fileID: 3946553469223113125, guid: 9bc3e11608efc48bfa96a82d21cff1b3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -340,7 +401,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4900947768811848005, guid: 9bc3e11608efc48bfa96a82d21cff1b3, type: 3}
       propertyPath: m_Name
-      value: Candle
+      value: White Candle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc3e11608efc48bfa96a82d21cff1b3, type: 3}
+--- !u!1001 &4916065282143187915
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.439
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.965
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.032190684
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224542270024689035, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698045682961255158, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
+      propertyPath: m_Name
+      value: Blue Candle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a74a673ff4144f628dc98a83cfbb634, type: 3}
