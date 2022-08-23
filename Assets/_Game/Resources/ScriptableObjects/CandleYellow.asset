@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c676ae733d60a3a499d566a65f3751e5, type: 3}
-  m_Name: CandlePurple
+  m_Name: CandleYellow
   m_EditorClassIdentifier: 
-  _length: 60
+  _length: 15
   _numberOfCandleStates: 13
-  _color: 2
-  _animationController: {fileID: 9100000, guid: 1aa2e771da55e4fd7a012a40f6a1689d, type: 2}
+  _color: 0
+  _anim: {fileID: 9100000, guid: b72bb5c6e39f540ada409bac9a03d024, type: 2}
