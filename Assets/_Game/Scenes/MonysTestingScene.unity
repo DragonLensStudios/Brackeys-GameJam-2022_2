@@ -169,7 +169,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7785016, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -524,10 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8eeb8788f4e4d24a9c85927de7fb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  candleLength: 60
-  candleDivisibleFactor: 5
-  currentCandleColor: 0
-  anim: {fileID: 0}
+  CandleData: {fileID: 11400000, guid: aab062270da61124ba43733295b6d2df, type: 2}
 --- !u!95 &255377141
 Animator:
   serializedVersion: 4

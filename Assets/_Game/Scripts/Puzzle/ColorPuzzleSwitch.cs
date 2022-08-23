@@ -80,8 +80,8 @@ public class ColorPuzzleSwitch : MonoBehaviour
             {
                 if (pc.IsActivatePressed)
                 {
-                    Activate(pc.CandleController.CurrentCandleColor);
-                    EventManager.ColorSwitchActivate(switchName, pc.CandleController.CurrentCandleColor);
+                    Activate(pc.CandleController.CandleData.CurrentColor);
+                    EventManager.ColorSwitchActivate(switchName, pc.CandleController.CandleData.CurrentColor);
                 }
             }
         }
