@@ -25,12 +25,12 @@ public class ColorPuzzleController : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.onColorSwitchActivate += EventManager_onColorSwitchActivate;
+        EventManager.onCandleColorSwitchActivate += EventManager_onColorSwitchActivate;
     }
 
     private void OnDisable()
     {
-        EventManager.onColorSwitchActivate -= EventManager_onColorSwitchActivate;
+        EventManager.onCandleColorSwitchActivate -= EventManager_onColorSwitchActivate;
     }
 
     private void Awake()

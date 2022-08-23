@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public static event Action<string, CandleColor> onColorSwitchActivate;
+    public static event Action<string, CandleColor> onCandleColorSwitchActivate;
+    public static event Action<CandleColor> onCandleColorChanged;
 
     /// <summary>
-    /// This method invokes the event <see cref="onColorSwitchActivate"/>
+    /// This method invokes the event <see cref="onCandleColorSwitchActivate"/>
     /// </summary>
     /// <param name="enabled"></param>
-    public static void ColorSwitchActivate(string name, CandleColor color) { onColorSwitchActivate?.Invoke(name, color); }
+    public static void ColorSwitchActivate(string name, CandleColor color) { onCandleColorSwitchActivate?.Invoke(name, color); }
+
+    /// <summary>
+    /// This method invokes the event <see cref="onCandleColorChanged"/>
+    /// </summary>
+    /// <param name="color"></param>
+    public static void CandleColorChanged(CandleColor color) { onCandleColorChanged?.Invoke(color); }
 }
