@@ -1,45 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using DragonLens.BrackeysGameJam2022_2.Candles;
 /// <summary>
 /// Script by Redstonetech125 & Mony Dragon
 /// </summary>
 public class CandleController : MonoBehaviour
 {
+    public CandleData CandleData;
 
-    [SerializeField, Header("Length in seconds the candle will last")]
-    private float candleLength = 60;
-    [SerializeField,Header("Candle Length / this = Candle State| 12 being full"), Tooltip("the animation for the candle is 12 frames so 60 / 5 = 12 you want to match the candle length with a respective number here.")]
-    private float candleDivisibleFactor = 5f;
-    [SerializeField]
-    private CandleColor currentCandleColor = CandleColor.Yellow;
-    [SerializeField]
     private Animator anim;
 
     private Queue<CandleColor> candleChanges = new Queue<CandleColor>();
-
-    /// <summary>
-    /// Current state of candle, 12 is new, 0 is out
-    /// </summary>
-    private int candleState;
+    
     /// <summary>
     /// Seconds counting down
     /// </summary>
     private float timeSeconds;
-
-    /// <summary>
-    /// Length of the candle in seconds.
-    /// </summary>
-    public float CandleLength { get => candleLength; set => candleLength = value; }
-    /// <summary>
-    /// The factorial the candle length is divided by for the <see cref="candleState"/>
-    /// </summary>
-    public float CandleDivisibleFactor { get => candleDivisibleFactor; set => candleDivisibleFactor = value; }
-    /// <summary>
-    /// The current candle color
-    /// </summary>
-    public CandleColor CurrentCandleColor { get => currentCandleColor; set => currentCandleColor = value; }
 
 
     private void Awake()
@@ -49,43 +26,38 @@ public class CandleController : MonoBehaviour
 
     private void Start()
     {
-        candleState = (int)(candleLength / candleDivisibleFactor);
-        Debug.Log(candleState);
-        anim.SetInteger("Candlestate", candleState);
-        timeSeconds = 0;
+        Reset();
     }
 
     private void Update()
     {
         //Countdown Time
-        if (timeSeconds < candleDivisibleFactor && candleState > 0)
+        if (timeSeconds < CandleData.DivisibleFactor && CandleData.CurrentState > 0)
         {
             timeSeconds += Time.deltaTime;
         }
-        else if (timeSeconds >= candleDivisibleFactor && candleState > 0)
+        else if (timeSeconds >= CandleData.DivisibleFactor && CandleData.CurrentState > 0)
         {
             timeSeconds = 0;
-            candleState -= 1;
-            Debug.Log(candleState);
-            anim.SetInteger("Candlestate", candleState);
-
-
+            CandleData.CurrentState -= 1;
+            Debug.Log(CandleData.CurrentState);
+            anim.SetInteger("Candlestate", CandleData.CurrentState);
         }
-        else if (candleState <= 0)
+        else if (CandleData.CurrentState <= 0)
         {
             Debug.Log("Melted");
         }
     }
 
     /// <summary>
-    /// This method changes the <see cref="currentCandleColor"/> and adds the color to the queue sets the <see cref="anim"/> bools to the respective color.
+    /// This method changes the current candle color and adds the color to the queue sets the <see cref="anim"/> bools to the respective color.
     /// </summary>
     /// <param name="color"></param>
     public IEnumerator ChangeCandleColor(CandleColor color, float timeToLast)
     {
         candleChanges.Enqueue(color);
-        currentCandleColor = color;
-        switch (currentCandleColor)
+        CandleData.CurrentColor = color;
+        switch (CandleData.CurrentColor)
         {
             case CandleColor.Yellow:
                 anim.SetBool("Yellow", true);
@@ -116,16 +88,17 @@ public class CandleController : MonoBehaviour
         candleChanges.TryDequeue(out var queueColor);
         if (candleChanges.Count <= 0)
         {
-            currentCandleColor = CandleColor.Yellow;
+            CandleData.CurrentColor = CandleData.Color;
         }
     }
 
     public void Reset()
     {
-        candleLength = 60;
-        candleDivisibleFactor = 5;
-        candleState = (int)(candleLength / candleDivisibleFactor);
-        anim.SetInteger("Candlestate", candleState);
+        StopAllCoroutines();
+        candleChanges.Clear();
+
+        CandleData.Initialize();
+        anim.SetInteger("Candlestate", CandleData.CurrentState);
         timeSeconds = 0;
     }
 }
