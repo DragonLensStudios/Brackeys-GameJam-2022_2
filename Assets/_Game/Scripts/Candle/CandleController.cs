@@ -7,7 +7,8 @@ using DragonLens.BrackeysGameJam2022_2.Candles;
 /// </summary>
 public class CandleController : MonoBehaviour
 {
-    public CandleData CandleData;
+    [SerializeField]
+    private CandleData _candleData;
 
     private Animator anim;
 
@@ -18,6 +19,15 @@ public class CandleController : MonoBehaviour
     /// </summary>
     private float timeSeconds;
 
+    /// <summary>
+    /// The current candle color.
+    /// </summary>
+    public CandleColor CurrentColor { get; private set; }
+
+    /// <summary>
+    /// The current state of candle. 12 = new, 0 = out.
+    /// </summary>
+    public int CurrentState { get; private set; }
 
     private void Awake()
     {
@@ -32,18 +42,18 @@ public class CandleController : MonoBehaviour
     private void Update()
     {
         //Countdown Time
-        if (timeSeconds < CandleData.DivisibleFactor && CandleData.CurrentState > 0)
+        if (timeSeconds < _candleData.DivisibleFactor && CurrentState > 0)
         {
             timeSeconds += Time.deltaTime;
         }
-        else if (timeSeconds >= CandleData.DivisibleFactor && CandleData.CurrentState > 0)
+        else if (timeSeconds >= _candleData.DivisibleFactor && CurrentState > 0)
         {
             timeSeconds = 0;
-            CandleData.CurrentState -= 1;
-            Debug.Log(CandleData.CurrentState);
-            anim.SetInteger("Candlestate", CandleData.CurrentState);
+            CurrentState -= 1;
+            Debug.Log(CurrentState);
+            anim.SetInteger("Candlestate", CurrentState);
         }
-        else if (CandleData.CurrentState <= 0)
+        else if (CurrentState <= 0)
         {
             Debug.Log("Melted");
         }
@@ -56,8 +66,8 @@ public class CandleController : MonoBehaviour
     public IEnumerator ChangeCandleColor(CandleColor color, float timeToLast)
     {
         candleChanges.Enqueue(color);
-        CandleData.CurrentColor = color;
-        switch (CandleData.CurrentColor)
+        CurrentColor = color;
+        switch (CurrentColor)
         {
             case CandleColor.Yellow:
                 anim.SetBool("Yellow", true);
@@ -88,7 +98,7 @@ public class CandleController : MonoBehaviour
         candleChanges.TryDequeue(out var queueColor);
         if (candleChanges.Count <= 0)
         {
-            CandleData.CurrentColor = CandleData.Color;
+            CurrentColor = _candleData.Color;
         }
     }
 
@@ -97,8 +107,9 @@ public class CandleController : MonoBehaviour
         StopAllCoroutines();
         candleChanges.Clear();
 
-        CandleData.Initialize();
-        anim.SetInteger("Candlestate", CandleData.CurrentState);
+        CurrentState = _candleData.MaxStateIndex;
+        CurrentColor = _candleData.Color;
+        anim.SetInteger("Candlestate", CurrentState);
         timeSeconds = 0;
     }
 }

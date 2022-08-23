@@ -22,38 +22,18 @@ namespace DragonLens.BrackeysGameJam2022_2.Candles
         public float Length { get => _length; }
 
         /// <summary>
+        /// The last possible index of the candle's state.
+        /// </summary>
+        public int MaxStateIndex { get => _numberOfCandleStates - 1; }
+
+        /// <summary>
         /// The factorial the candle length is divided by for the candleState"/>
         /// </summary>
-        public float DivisibleFactor { get; private set; }
+        public float DivisibleFactor { get => Length / MaxStateIndex; }
 
         /// <summary>
         /// The initial candle color.
         /// </summary>
         public CandleColor Color { get => _color; }
-
-        /// <summary>
-        /// The current candle color.
-        /// </summary>
-        public CandleColor CurrentColor { get; set; }
-
-        /// <summary>
-        /// The current state of candle. 12 = new, 0 = out.
-        /// </summary>
-        public int CurrentState { get; set; }
-
-        public void Initialize() {
-            int startingStateIndex = _numberOfCandleStates - 1;
-            DivisibleFactor = Length / startingStateIndex;
-            CurrentState = startingStateIndex;
-            CurrentColor = _color;
-        }
-
-        private void Reset() => Initialize();
-
-#if UNITY_EDITOR
-        private void OnValidate() {
-            Initialize();
-        }
-#endif
     }
 }
