@@ -15,3 +15,4 @@ MonoBehaviour:
   _length: 60
   _numberOfCandleStates: 13
   _color: 3
+  _animationController: {fileID: 9100000, guid: 516558efbbadf492aa5ab33381305189, type: 2}

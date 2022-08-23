@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace DragonLens.BrackeysGameJam2022_2.Candles
@@ -15,6 +16,9 @@ namespace DragonLens.BrackeysGameJam2022_2.Candles
         [Header("Color")]
         [SerializeField, Tooltip("The starting color of the candle.")]
         private CandleColor _color = CandleColor.Yellow;
+
+        [SerializeField, Tooltip("The animator controller asset that controls this candle's animations.")]
+        private AnimatorController _animationController;
 
         /// <summary>
         /// The intial length of the candle.
@@ -35,5 +39,7 @@ namespace DragonLens.BrackeysGameJam2022_2.Candles
         /// The initial candle color.
         /// </summary>
         public CandleColor Color { get => _color; }
+
+        public AnimatorController AnimationController { get => _animationController; }
     }
 }

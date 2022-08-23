@@ -32,6 +32,7 @@ public class CandleController : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        if(anim != null) anim.runtimeAnimatorController = _candleData.AnimationController;
     }
 
     private void Start()
