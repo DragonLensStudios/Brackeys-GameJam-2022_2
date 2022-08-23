@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movePosition;
     private Animator anim;
     private Vector2 lastMove = new Vector2(0, -1);
+    private Queue<CandleColor> candleChanges = new Queue<CandleColor>();
 
     public bool IsActivatePressed { get => isActivatePressed; set => isActivatePressed = value; }
     public CandleColor CurrentCandleColor { get => currentCandleColor; set => currentCandleColor = value; }
@@ -90,8 +91,14 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator ChangeCandleColor(CandleColor color, float timeToLast)
     {
+        candleChanges.Enqueue(color);
         currentCandleColor = color;
         yield return new WaitForSeconds(timeToLast);
-        currentCandleColor = CandleColor.Yellow;
+        candleChanges.TryDequeue(out var queueColor);
+        if(candleChanges.Count <= 0)
+        {
+            currentCandleColor = CandleColor.Yellow;
+        }
+
     }
 }
