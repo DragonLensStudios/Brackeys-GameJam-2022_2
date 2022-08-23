@@ -31,6 +31,8 @@ public class CandleController : MonoBehaviour
 
     private void Awake()
     {
+        if(_candleData == null) Debug.LogError("Candle blueprint not assigned.");
+
         anim = GetComponent<Animator>();
         if(anim != null) anim.runtimeAnimatorController = _candleData.AnimationController;
     }
