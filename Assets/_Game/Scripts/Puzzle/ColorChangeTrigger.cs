@@ -55,7 +55,7 @@ public class ColorChangeTrigger : MonoBehaviour
         isAbleToActivate = false;
         if(pc != null)
         {
-            StartCoroutine(pc.ChangeCandleColor(color, timeToLast));
+            StartCoroutine(pc.CandleController.ChangeCandleColor(color, timeToLast));
             StartCoroutine(Deactivate(timeToLast));
         }
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Flicker
   - MainLight
+  - Candle
   layers:
   - Default
   - TransparentFX
