@@ -17,8 +17,8 @@ namespace DragonLens.BrackeysGameJam2022_2.Candles
         [SerializeField, Tooltip("The starting color of the candle.")]
         private CandleColor _color = CandleColor.Yellow;
 
-        [SerializeField, Tooltip("The animator controller asset that controls this candle's animations.")]
-        private AnimatorController _animationController;
+        [SerializeField, Tooltip("The animator asset that controls this candle's animations.")]
+        private RuntimeAnimatorController _anim;
 
         /// <summary>
         /// The intial length of the candle.
@@ -40,6 +40,6 @@ namespace DragonLens.BrackeysGameJam2022_2.Candles
         /// </summary>
         public CandleColor Color { get => _color; }
 
-        public AnimatorController AnimationController { get => _animationController; }
+        public RuntimeAnimatorController Anim { get => _anim; }
     }
 }

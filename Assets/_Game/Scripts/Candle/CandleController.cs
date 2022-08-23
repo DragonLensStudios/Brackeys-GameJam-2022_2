@@ -29,12 +29,23 @@ public class CandleController : MonoBehaviour
     /// </summary>
     public int CurrentState { get; private set; }
 
+    private void OnEnable()
+    {
+        EventManager.onCandleColorChanged += EventManager_onCandleColorChanged;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.onCandleColorChanged -= EventManager_onCandleColorChanged;
+
+    }
+
     private void Awake()
     {
         if(_candleData == null) Debug.LogError("Candle blueprint not assigned.");
 
         anim = GetComponent<Animator>();
-        if(anim != null) anim.runtimeAnimatorController = _candleData.AnimationController;
+        if(anim != null) anim.runtimeAnimatorController = _candleData.Anim;
     }
 
     private void Start()
@@ -70,6 +81,7 @@ public class CandleController : MonoBehaviour
     {
         candleChanges.Enqueue(color);
         CurrentColor = color;
+        EventManager.CandleColorChanged(color);
         switch (CurrentColor)
         {
             case CandleColor.Yellow:
@@ -101,7 +113,8 @@ public class CandleController : MonoBehaviour
         candleChanges.TryDequeue(out var queueColor);
         if (candleChanges.Count <= 0)
         {
-            CurrentColor = _candleData.Color;
+            CurrentColor = CandleColor.Yellow;
+            EventManager.CandleColorChanged(CandleColor.Yellow);
         }
     }
 
@@ -114,5 +127,31 @@ public class CandleController : MonoBehaviour
         CurrentColor = _candleData.Color;
         anim.SetInteger("Candlestate", CurrentState);
         timeSeconds = 0;
+    }
+
+    private void EventManager_onCandleColorChanged(CandleColor color)
+    {
+        switch (color)
+        {
+            case CandleColor.Yellow:
+                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandleYellow");
+                break;
+            case CandleColor.Red:
+                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandleRed");
+                break;
+            case CandleColor.Purple:
+                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandlePurple");
+                break;
+            case CandleColor.Blue:
+                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandleBlue");
+                break;
+        }
+        if (anim != null)
+        {
+            anim.runtimeAnimatorController = _candleData.Anim;
+            anim.SetInteger("Candlestate", CurrentState);
+
+        }
+
     }
 }

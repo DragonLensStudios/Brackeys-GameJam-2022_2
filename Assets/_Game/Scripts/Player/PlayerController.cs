@@ -9,9 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float baseMoveSpeed, runSpeed, currentSpeed;
 
-    [SerializeField]
-    private CandleColor currentCandleColor;
-
     private bool isRunning, isActivatePressed;
     private PlayerInput playerInput;
     private Vector2 movePosition;
