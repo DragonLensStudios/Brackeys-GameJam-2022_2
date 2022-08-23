@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CandleData
   m_EditorClassIdentifier: 
   _length: 60
-  _divisibleFactor: 5
+  _numberOfCandleStates: 13
   _color: 0

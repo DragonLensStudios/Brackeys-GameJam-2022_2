@@ -9,9 +9,8 @@ namespace DragonLens.BrackeysGameJam2022_2.Candles
         [SerializeField, Tooltip("Length in seconds the candle will last.")]
         private float _length = 60f;
 
-        [SerializeField, Tooltip("Candle Length / this = Candle State| 12 being full. " +
-            "The animation for the candle is 12 frames so 60 / 5 = 12 you want to match the candle length with a respective number here.")]
-        private float _divisibleFactor = 5f;
+        [SerializeField, Tooltip("How many candle states are there?")]
+        private int _numberOfCandleStates = 13;
 
         [Header("Color")]
         [SerializeField, Tooltip("The starting color of the candle.")]
@@ -25,7 +24,7 @@ namespace DragonLens.BrackeysGameJam2022_2.Candles
         /// <summary>
         /// The factorial the candle length is divided by for the candleState"/>
         /// </summary>
-        public float DivisibleFactor { get => _divisibleFactor; }
+        public float DivisibleFactor { get; private set; }
 
         /// <summary>
         /// The initial candle color.
@@ -43,10 +42,18 @@ namespace DragonLens.BrackeysGameJam2022_2.Candles
         public int CurrentState { get; set; }
 
         public void Initialize() {
-            CurrentState = (int)(Length / DivisibleFactor);
+            int startingStateIndex = _numberOfCandleStates - 1;
+            DivisibleFactor = Length / startingStateIndex;
+            CurrentState = startingStateIndex;
             CurrentColor = _color;
         }
 
         private void Reset() => Initialize();
+
+#if UNITY_EDITOR
+        private void OnValidate() {
+            Initialize();
+        }
+#endif
     }
 }
