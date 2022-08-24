@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class LightFlicker : MonoBehaviour
 {
-    // Start is called before the first frame update
     private Light2D flickerLight;
     private bool isExpanding = false;
     private int frameCount = 0;
@@ -13,13 +12,17 @@ public class LightFlicker : MonoBehaviour
     public float radiusIncrementPerUpdate;
     public float intensityIncrementPerUpdate;
     public int framesPerLightUpdate;
+    public Color LightColor
+    {
+        get => flickerLight.color;
+        set => flickerLight.color = value;
+    }
 
     void Awake()
     {
         flickerLight = GetComponentInChildren<Light2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         frameCount++;
