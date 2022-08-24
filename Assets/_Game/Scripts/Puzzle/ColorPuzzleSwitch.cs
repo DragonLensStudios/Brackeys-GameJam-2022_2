@@ -14,6 +14,7 @@ public class ColorPuzzleSwitch : MonoBehaviour
 
     private SpriteRenderer sr;
     private PlayerController pc;
+    private Animator anim;
 
     public string SwitchName { get => switchName; set => switchName = value; }
     public string SfxActivateSound { get => sfxActivateSound; set => sfxActivateSound = value; }
@@ -27,6 +28,7 @@ public class ColorPuzzleSwitch : MonoBehaviour
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         sr.sprite = offSprite;
     }
 
@@ -36,6 +38,7 @@ public class ColorPuzzleSwitch : MonoBehaviour
         {
             isActivated = true;
             sr.sprite = onSprite;
+            anim.SetBool("isLit", true);
             if (!string.IsNullOrWhiteSpace(sfxActivateSound))
             {
                 AudioManager.instance.PlaySound(sfxActivateSound);
@@ -49,6 +52,7 @@ public class ColorPuzzleSwitch : MonoBehaviour
         {
             IsActivated = false;
             sr.sprite = offSprite;
+            anim.SetBool("isLit", false);
             if (!string.IsNullOrWhiteSpace(sfxDeactivateSound))
             {
                 AudioManager.instance.PlaySound(sfxDeactivateSound);
