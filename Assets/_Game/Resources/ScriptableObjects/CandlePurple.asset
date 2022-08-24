@@ -15,4 +15,4 @@ MonoBehaviour:
   _length: 60
   _numberOfCandleStates: 13
   _color: 2
-  _anim: {fileID: 22100000, guid: aaa5c5ea4ac8ea1498d499a6bd4bdad9, type: 2}
+  _anim: {fileID: 9100000, guid: b72bb5c6e39f540ada409bac9a03d024, type: 2}
