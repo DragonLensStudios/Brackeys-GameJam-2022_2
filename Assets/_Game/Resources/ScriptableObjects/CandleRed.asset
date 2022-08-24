@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c676ae733d60a3a499d566a65f3751e5, type: 3}
   m_Name: CandleRed
   m_EditorClassIdentifier: 
-  _length: 15
+  _length: 60
   _numberOfCandleStates: 13
   _color: 1
   _anim: {fileID: 9100000, guid: dc7900b1fb63c41f4b43874753422ca4, type: 2}
