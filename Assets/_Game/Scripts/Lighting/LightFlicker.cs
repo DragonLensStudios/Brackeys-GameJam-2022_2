@@ -13,10 +13,11 @@ public class LightFlicker : MonoBehaviour
     public float radiusIncrementPerUpdate;
     public float intensityIncrementPerUpdate;
     public int framesPerLightUpdate;
+    public string lightName;
 
     void Start()
     {
-        flickerLight = GameObject.Find("Candle Light 2D Flicker").GetComponent<Light2D>();
+        flickerLight = GameObject.Find(lightName).GetComponent<Light2D>();
     }
 
     // Update is called once per frame
