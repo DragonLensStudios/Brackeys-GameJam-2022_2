@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 789343122}
   - component: {fileID: 789343121}
-  - component: {fileID: 789343123}
   - component: {fileID: 789343126}
+  - component: {fileID: 789343127}
   - component: {fileID: 789343125}
   - component: {fileID: 789343124}
   m_Layer: 0
@@ -212,18 +212,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &789343123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789343120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63db7db80401a4044b436c9f6dcbf5eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &789343124
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -284,10 +272,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flickerLightMaxRadius: 8.5
-  flickerLightMinRadius: 2
+  flickerLightMinRadius: 3
   radiusIncrementPerUpdate: 0.05
   intensityIncrementPerUpdate: 0.005
-  framesPerLightUpdate: 8
+  framesPerLightUpdate: 4
+--- !u!114 &789343127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789343120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ffc20a6b0f7e5469a19e86561c2d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMoveSpeed: 0
+  runSpeed: 1
+  currentSpeed: 0
 --- !u!1 &956257255
 GameObject:
   m_ObjectHideFlags: 0
