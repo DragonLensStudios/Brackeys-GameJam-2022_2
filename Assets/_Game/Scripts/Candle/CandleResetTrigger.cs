@@ -5,6 +5,7 @@ using UnityEngine;
 public class CandleResetTrigger : MonoBehaviour
 {
     private CandleController candleController;
+    [SerializeField] private GameDataSO _gameData;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class CandleResetTrigger : MonoBehaviour
         if(candleController != null)
         {
             candleController.Reset();
+            _gameData.SavePuzzleData();
         }
     }
 
