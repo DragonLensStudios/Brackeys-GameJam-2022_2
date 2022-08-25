@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 [CreateAssetMenu(menuName = "Game Jam/Game Data")]
 public class GameDataSO : ScriptableObject
@@ -32,6 +31,17 @@ public class GameDataSO : ScriptableObject
         return true;
     }
 
+    public bool LoadPlayerPosition() {
+        PlayerController player = FindObjectOfType<PlayerController>();
+        if(player == null) {
+            Debug.LogWarning("Load player position failed! No player controllers could be found in this scene.");
+            return false;
+        }
+
+        player.transform.position = _gameData.PlayerPosition;
+        return true;
+    }
+
     public void TempSavePuzzleData(ColorPuzzleController colorPuzzleController) {
         PuzzleData puzzleData = _gameData.Puzzles.Find(x => x.PuzzleId == colorPuzzleController.Id);
         if(puzzleData == null) {
@@ -45,5 +55,7 @@ public class GameDataSO : ScriptableObject
             //Overwrite entry
             puzzleData.IsPuzzleComplete = colorPuzzleController.IsPuzzleComplete;
         }
+
+        _gameData.PlayerPosition = colorPuzzleController.transform.position;
     }
 }

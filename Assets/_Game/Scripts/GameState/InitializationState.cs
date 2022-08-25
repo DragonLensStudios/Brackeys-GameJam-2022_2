@@ -27,7 +27,10 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
             // Setup data for new puzzle scene
             _currentAnimationDuration = _animationDuration;
 
-            if(_gameDataToLoad != null) _gameDataToLoad.LoadPuzzleData();
+            if(_gameDataToLoad != null) {
+                _gameDataToLoad.LoadPlayerPosition();
+                _gameDataToLoad.LoadPuzzleData();
+            }
         }
 
         public void StateUpdate() {
