@@ -2043,18 +2043,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
       propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
       propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
+      propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
       propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1260901940}
     - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
+      propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 318191fdd5a2503449256b09d284aea6, type: 2}
+    - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
       propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
+      propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
@@ -2062,16 +2074,36 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
+      propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TempSavePuzzleData
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
       propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
+      propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameDataSO, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
       propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
+      propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
+      propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2024993047}
+    - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
       propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
+      propertyPath: activatedSwitchesCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: ColorPuzzleController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1683386473237810438, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
       propertyPath: m_RootOrder
@@ -2238,3 +2270,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b63709cf33ebc7149a7d24bd3212c3b4, type: 3}
+--- !u!114 &2024993047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1683386473237810433, guid: 616119b7af4163d4e955ed810f07cd71, type: 3}
+  m_PrefabInstance: {fileID: 1804786858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c388b87d19ea5fe459d846f4c34df433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

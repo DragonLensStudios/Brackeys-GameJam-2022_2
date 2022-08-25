@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 [CreateAssetMenu(menuName = "Game Jam/Game Data")]
 public class GameDataSO : ScriptableObject
@@ -29,5 +30,20 @@ public class GameDataSO : ScriptableObject
         }
 
         return true;
+    }
+
+    public void TempSavePuzzleData(ColorPuzzleController colorPuzzleController) {
+        PuzzleData puzzleData = _gameData.Puzzles.Find(x => x.PuzzleId == colorPuzzleController.Id);
+        if(puzzleData == null) {
+            //Add new entry
+            _gameData.Puzzles.Add(new PuzzleData(
+                colorPuzzleController.Id,
+                colorPuzzleController.IsPuzzleComplete
+                ));
+        }
+        else {
+            //Overwrite entry
+            puzzleData.IsPuzzleComplete = colorPuzzleController.IsPuzzleComplete;
+        }
     }
 }
