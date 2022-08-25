@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: GameSaveDataTest
   m_EditorClassIdentifier: 
   _gameData:
-    _playerPosition: {x: 1.7, y: -0.09, z: 0}
+    _playerPosition: {x: 0, y: 0, z: 0}
     _puzzles:
     - _puzzleId: ColorPuzzle1
       _isPuzzleComplete: 1
+      _switches:
+      - S1
+      - S2
+      - S3
+      - S4

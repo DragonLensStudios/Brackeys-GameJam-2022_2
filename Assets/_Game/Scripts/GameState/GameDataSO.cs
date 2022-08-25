@@ -25,7 +25,14 @@ public class GameDataSO : ScriptableObject
                 Debug.LogWarning($"PuzzleController[{controller.Id}] save data not found! Skipping...", controller);
                 continue;
             }
-            controller.IsPuzzleComplete = puzzleData.IsPuzzleComplete;
+            if(puzzleData.IsPuzzleComplete) {
+                for(var i = 0; i < puzzleData.Switches.Count; i++) {
+                    ColorPuzzleSwitch puzzleSwitch = controller.Switches.Find(x => x.SwitchName == puzzleData.Switches[i]);
+                    if(puzzleSwitch == null) continue;
+                    controller.ActivatedSwitches.Add(puzzleSwitch);
+                }
+                controller.Activate();
+            }
         }
 
         return true;
@@ -42,20 +49,31 @@ public class GameDataSO : ScriptableObject
         return true;
     }
 
-    public void TempSavePuzzleData(ColorPuzzleController colorPuzzleController) {
-        PuzzleData puzzleData = _gameData.Puzzles.Find(x => x.PuzzleId == colorPuzzleController.Id);
-        if(puzzleData == null) {
-            //Add new entry
-            _gameData.Puzzles.Add(new PuzzleData(
-                colorPuzzleController.Id,
-                colorPuzzleController.IsPuzzleComplete
-                ));
-        }
-        else {
-            //Overwrite entry
-            puzzleData.IsPuzzleComplete = colorPuzzleController.IsPuzzleComplete;
-        }
+    public void SavePuzzleData() {
+        ColorPuzzleController[] colorPuzzleControllers = FindObjectsOfType<ColorPuzzleController>(true);
 
-        _gameData.PlayerPosition = colorPuzzleController.transform.position;
+        for(int j = 0; j < colorPuzzleControllers.Length; j++) {
+            ColorPuzzleController colorPuzzleController = colorPuzzleControllers[j];
+            PuzzleData puzzleData = _gameData.Puzzles.Find(x => x.PuzzleId == colorPuzzleController.Id);
+            if(puzzleData == null) {
+                //Add new entry
+                _gameData.Puzzles.Add(new PuzzleData(
+                    colorPuzzleController.Id,
+                    colorPuzzleController.IsPuzzleComplete
+                    ));
+                for(var i = 0; i < colorPuzzleController.ActivatedSwitches.Count; i++) {
+                    puzzleData.Switches.Add(colorPuzzleController.ActivatedSwitches[i].SwitchName);
+                }
+            } else {
+                //Overwrite entry
+                puzzleData.Switches.Clear();
+                puzzleData.IsPuzzleComplete = colorPuzzleController.IsPuzzleComplete;
+                for(var i = 0; i < colorPuzzleController.ActivatedSwitches.Count; i++) {
+                    puzzleData.Switches.Add(colorPuzzleController.ActivatedSwitches[i].SwitchName);
+                }
+            }
+
+            _gameData.PlayerPosition = colorPuzzleController.transform.position;
+        }
     }
 }

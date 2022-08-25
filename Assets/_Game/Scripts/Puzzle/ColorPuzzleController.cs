@@ -25,6 +25,8 @@ public class ColorPuzzleController : MonoBehaviour
     public string Id { get => id; }
     public bool IsPuzzleStarted { get => isPuzzleStarted; set => isPuzzleStarted = value; }
     public bool IsPuzzleComplete { get => isPuzzleComplete; set => isPuzzleComplete = value; }
+    public List<ColorPuzzleSwitch> ActivatedSwitches { get => activatedSwitches; set => activatedSwitches = value; }
+    public List<ColorPuzzleSwitch> Switches { get => switches; set => switches = value; }
 
     private void OnEnable()
     {
@@ -59,6 +61,9 @@ public class ColorPuzzleController : MonoBehaviour
     public void Activate()
     {
         isPuzzleComplete = true;
+        activatedSwitches.ForEach(x => x.Sr.enabled = true);
+        activatedSwitches.ForEach(x => x.Activate(x.CandleColor));
+        activatedSwitches.ForEach(x => x.GetComponent<VisibleGameObject>().enabled = false);
         activatedSwitchesCallback.Invoke();
     }
 
@@ -103,11 +108,8 @@ public class ColorPuzzleController : MonoBehaviour
         {
             if(activatedSwitches.All(x=> x.IsActivated))
             {
-                activatedSwitches.ForEach(x => x.Sr.enabled = true);
-                activatedSwitches.ForEach(x => x.GetComponent<VisibleGameObject>().enabled = false);
                 Activate();
             }
         }
     }
-
 }
