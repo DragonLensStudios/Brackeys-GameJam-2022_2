@@ -22,6 +22,7 @@ public class ColorPuzzleController : MonoBehaviour
     private float currentTimer;
     private List<ColorPuzzleSwitch> activatedSwitches = new List<ColorPuzzleSwitch>();
 
+    public string Id { get => id; }
     public bool IsPuzzleStarted { get => isPuzzleStarted; set => isPuzzleStarted = value; }
     public bool IsPuzzleComplete { get => isPuzzleComplete; set => isPuzzleComplete = value; }
 
