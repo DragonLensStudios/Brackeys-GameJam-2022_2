@@ -9,28 +9,29 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
         [SerializeField] private GameOverState _gameOverState;
         [SerializeField] private PauseState _pauseState;
 
-        // Temp candle data
-        [SerializeField] private float _candleDuration = 5f;
-        private float _currentCandleDuration;
+        private PlayerController _player;
+        private CandleController _candle;
 
         private void Awake() {
             _stateMachine = GetComponentInParent<PuzzleStateMachine>();
             if(_stateMachine == null)
-                Debug.LogError($"{typeof(PlayingState)} must have a state machine to work properly.");
+                Debug.LogError($"{typeof(PlayingState)} must have a state machine to work properly.", this);
 
-            _currentCandleDuration = _candleDuration;
+            _player = FindObjectOfType<PlayerController>();
+            if(_player == null)
+                Debug.LogError($"{typeof(PlayingState)} must have a player controller to work properly.", this);
+
+            _candle = FindObjectOfType<CandleController>();
+            if(_candle == null)
+                Debug.LogError($"{typeof(PlayingState)} must have a candle controller to work properly.", this);
         }
 
         public void StateEnter() {
-            // TODO: Enable gameplay/character controls
+            _player.enabled = true;
         }
 
         public void StateUpdate() {
-            // Reduce candle timer here?
-            _currentCandleDuration -= Time.deltaTime;
-
-            // If not, then monitor the candle's state and change state accordingly
-            if(_currentCandleDuration <= 0f) {
+            if(_candle.CurrentState <= 0) {
                 _stateMachine.ChangeState(_gameOverState);
                 return;
             }
@@ -42,7 +43,7 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
         public void StateFixedUpdate() {}
 
         public void StateExit() {
-            // TODO: Disable gameplay/character controls
+            _player.enabled = false;
         }
     }
 }
