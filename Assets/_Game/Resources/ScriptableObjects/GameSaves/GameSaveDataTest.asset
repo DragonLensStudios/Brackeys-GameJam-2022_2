@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d680136cfa05e574d8b058327867b666, type: 3}
-  m_Name: GameSaveData
+  m_Name: GameSaveDataTest
   m_EditorClassIdentifier: 
   _gameData:
+    _playerPosition: {x: 1.7, y: -0.09, z: 0}
     _puzzles:
     - _puzzleId: ColorPuzzle1
-      _isPuzzleComplete: 0
+      _isPuzzleComplete: 1
