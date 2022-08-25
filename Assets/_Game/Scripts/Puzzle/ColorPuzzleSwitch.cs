@@ -24,6 +24,7 @@ public class ColorPuzzleSwitch : MonoBehaviour
     public Sprite OnSprite { get => onSprite; set => onSprite = value; }
     public bool IsEnabled { get => isEnabled; set => isEnabled = value; }
     public bool IsActivated { get => isActivated; set => isActivated = value; }
+    public SpriteRenderer Sr { get => sr; set => sr = value; }
 
     private void Awake()
     {
@@ -37,8 +38,14 @@ public class ColorPuzzleSwitch : MonoBehaviour
         if (candleColor == color)
         {
             isActivated = true;
-            sr.sprite = onSprite;
-            anim.SetBool("isLit", true);
+            if (sr != null)
+            {
+                sr.sprite = onSprite;
+            }
+            if (anim != null)
+            {
+                anim.SetBool("isLit", true);
+            }
             if (!string.IsNullOrWhiteSpace(sfxActivateSound))
             {
                 AudioManager.instance.PlaySound(sfxActivateSound);
@@ -51,8 +58,14 @@ public class ColorPuzzleSwitch : MonoBehaviour
         if(candleColor == color)
         {
             IsActivated = false;
-            sr.sprite = offSprite;
-            anim.SetBool("isLit", false);
+            if (sr != null)
+            {
+                sr.sprite = offSprite;
+            }
+            if (anim != null)
+            {
+                anim.SetBool("isLit", false);
+            }
             if (!string.IsNullOrWhiteSpace(sfxDeactivateSound))
             {
                 AudioManager.instance.PlaySound(sfxDeactivateSound);

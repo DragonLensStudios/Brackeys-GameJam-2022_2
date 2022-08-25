@@ -163,7 +163,7 @@ MonoBehaviour:
   switchName: S3
   sfxActivateSound: 
   sfxDeactivateSound: 
-  candleColor: 1
+  candleColor: 2
   offSprite: {fileID: -13298003, guid: 7c74a24a9b661794e8946bf4b462e80a, type: 3}
   onSprite: {fileID: -438823073, guid: 7c74a24a9b661794e8946bf4b462e80a, type: 3}
   isEnabled: 0

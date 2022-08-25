@@ -13,15 +13,17 @@ public class ColorPuzzleController : MonoBehaviour
     [SerializeField]
     List<ColorPuzzleSwitch> switches = new List<ColorPuzzleSwitch>();
     [SerializeField]
-    private bool isActivated;
+    private bool isPuzzleStarted, isPuzzleComplete, isOrderRequired;
+    [SerializeField]
+    private List<string> switchesOrderRequired = new List<string>();
     [SerializeField]
     private UnityEvent activatedSwitchesCallback;
 
-    private bool isPuzzleStarted, isPuzzleComplete;
     private float currentTimer;
     private List<ColorPuzzleSwitch> activatedSwitches = new List<ColorPuzzleSwitch>();
 
-    public bool IsActivated { get => isActivated; set => isActivated = value; }
+    public bool IsPuzzleStarted { get => isPuzzleStarted; set => isPuzzleStarted = value; }
+    public bool IsPuzzleComplete { get => isPuzzleComplete; set => isPuzzleComplete = value; }
 
     private void OnEnable()
     {
@@ -55,7 +57,6 @@ public class ColorPuzzleController : MonoBehaviour
 
     public void Activate()
     {
-        isActivated = true;
         isPuzzleComplete = true;
         activatedSwitchesCallback.Invoke();
     }
@@ -82,6 +83,18 @@ public class ColorPuzzleController : MonoBehaviour
                 if (!activatedSwitches.Contains(colorSwitch))
                 {
                     activatedSwitches.Add(colorSwitch);
+                    if (isOrderRequired)
+                    {
+                        for (int i = 0; i < activatedSwitches.Count; i++)
+                        {
+                            if(activatedSwitches[i].SwitchName != switchesOrderRequired[i])
+                            {
+                                ResetPuzzle();
+                                return;
+                            } 
+                        }
+                    }
+                    
                 }
             }
         }
@@ -89,6 +102,8 @@ public class ColorPuzzleController : MonoBehaviour
         {
             if(activatedSwitches.All(x=> x.IsActivated))
             {
+                activatedSwitches.ForEach(x => x.Sr.enabled = true);
+                activatedSwitches.ForEach(x => x.GetComponent<VisibleGameObject>().enabled = false);
                 Activate();
             }
         }
