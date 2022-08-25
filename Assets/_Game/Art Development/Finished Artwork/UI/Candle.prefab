@@ -118,5 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8eeb8788f4e4d24a9c85927de7fb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  candle_length: 30
-  animator: {fileID: 3254940022986587773}
+  _candleData: {fileID: 11400000, guid: aab062270da61124ba43733295b6d2df, type: 2}

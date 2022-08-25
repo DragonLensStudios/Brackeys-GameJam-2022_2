@@ -174,9 +174,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4445522011640172415, guid: 9bc3e11608efc48bfa96a82d21cff1b3, type: 3}
+      propertyPath: _candleData
+      value: 
+      objectReference: {fileID: 11400000, guid: a2fe3e9f9d96b2d439d2b45bcd70293f, type: 2}
     - target: {fileID: 4900947768811848005, guid: 9bc3e11608efc48bfa96a82d21cff1b3, type: 3}
       propertyPath: m_Name
       value: Candle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097565056621077485, guid: 9bc3e11608efc48bfa96a82d21cff1b3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc3e11608efc48bfa96a82d21cff1b3, type: 3}
