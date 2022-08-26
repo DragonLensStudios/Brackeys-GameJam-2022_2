@@ -82,7 +82,7 @@ public class CandleAnimationTest : MonoBehaviour
     public void Reset() {
         StopAllCoroutines();
         candleChanges.Clear();
-
+        anim.SetTrigger("Refill");
         CurrentState = _candleData.MaxStateIndex;
         CurrentColor = _candleData.Color;
         anim.SetInteger("Candlestate", CurrentState);
@@ -96,32 +96,36 @@ public class CandleAnimationTest : MonoBehaviour
                 anim.SetBool("Red", false);
                 anim.SetBool("Purple", false);
                 anim.SetBool("Blue", false);
-                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandleYellow");
+                
+                //_candleData = Resources.Load<CandleData>("ScriptableObjects/CandleYellow");
                 break;
             case CandleColor.Red:
                 anim.SetBool("Yellow", false);
                 anim.SetBool("Red", true);
                 anim.SetBool("Purple", false);
                 anim.SetBool("Blue", false);
-                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandleRed");
+                
+                //_candleData = Resources.Load<CandleData>("ScriptableObjects/CandleRed");
                 break;
             case CandleColor.Purple:
                 anim.SetBool("Yellow", false);
                 anim.SetBool("Red", false);
                 anim.SetBool("Purple", true);
                 anim.SetBool("Blue", false);
-                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandlePurple");
+                
+                //_candleData = Resources.Load<CandleData>("ScriptableObjects/CandlePurple");
                 break;
             case CandleColor.Blue:
                 anim.SetBool("Yellow", false);
                 anim.SetBool("Red", false);
                 anim.SetBool("Purple", false);
                 anim.SetBool("Blue", true);
-                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandleBlue");
+               
+                //_candleData = Resources.Load<CandleData>("ScriptableObjects/CandleBlue");
                 break;
         }
         if(anim != null) {
-            anim.runtimeAnimatorController = _candleData.Anim;
+            //anim.runtimeAnimatorController = _candleData.Anim;
             anim.SetInteger("Candlestate", CurrentState);
 
         }
