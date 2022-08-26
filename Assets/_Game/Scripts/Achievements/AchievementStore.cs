@@ -1,6 +1,5 @@
 using System.IO;
 using UnityEngine;
-using System.Threading.Tasks;
 
 public class AchievementStore : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class AchievementStore : MonoBehaviour
     public void SaveAchievementsAsync()
     {
         StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine("Title:Description:IsComplete");
         for (int i = 0; i < achievements.achievementList.Count; i++)
         {
             Achievement achievement = achievements.achievementList[i];
