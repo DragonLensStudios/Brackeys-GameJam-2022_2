@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
+
     public Animator transition;
 
     /**
@@ -15,6 +16,14 @@ public class LevelLoader : MonoBehaviour
     {
         //What happens on the last scene?
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            LoadNextLevel();
+        }
     }
 
     IEnumerator LoadLevel(int levelIndex)
