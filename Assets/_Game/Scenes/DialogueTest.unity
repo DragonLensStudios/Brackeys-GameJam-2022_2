@@ -677,6 +677,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueController
       objectReference: {fileID: 0}
+    - target: {fileID: 114114106183555144, guid: a2cddd34c320a91418f1ce72709fe9e0, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224911982433472724, guid: a2cddd34c320a91418f1ce72709fe9e0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
