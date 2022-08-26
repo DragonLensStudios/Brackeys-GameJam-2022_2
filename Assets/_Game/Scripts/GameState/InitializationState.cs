@@ -21,8 +21,7 @@ namespace DragonLens.BrackeysGameJam2022_2.GameStates
 
         public void StateEnter() {
             if(_gameDataToLoad != null) {
-                _gameDataToLoad.LoadPlayerPosition();
-                _gameDataToLoad.LoadPuzzleData();
+                _gameDataToLoad.LoadGameData();
             }
         }
 
