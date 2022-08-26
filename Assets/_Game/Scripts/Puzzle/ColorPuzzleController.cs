@@ -13,7 +13,7 @@ public class ColorPuzzleController : MonoBehaviour
     [SerializeField]
     List<ColorPuzzleSwitch> switches = new List<ColorPuzzleSwitch>();
     [SerializeField]
-    private bool isPuzzleStarted, isPuzzleComplete, isOrderRequired;
+    private bool hasSolveTime ,isPuzzleStarted, isPuzzleComplete, isOrderRequired;
     [SerializeField]
     private List<string> switchesOrderRequired = new List<string>();
     [SerializeField]
@@ -48,7 +48,7 @@ public class ColorPuzzleController : MonoBehaviour
 
     private void Update()
     {
-        if (isPuzzleStarted && !isPuzzleComplete)
+        if (isPuzzleStarted && !isPuzzleComplete && hasSolveTime)
         {
             currentTimer += Time.deltaTime;
             if(currentTimer >= solveTimeBeforeReset)

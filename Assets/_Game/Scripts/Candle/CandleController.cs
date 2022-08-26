@@ -9,6 +9,8 @@ public class CandleController : MonoBehaviour
 {
     [SerializeField]
     private CandleData _candleData;
+    [SerializeField]
+    private bool candleStateFreeze;
 
     private Animator anim;
 
@@ -28,6 +30,7 @@ public class CandleController : MonoBehaviour
     /// The current state of candle. 12 = new, 0 = out.
     /// </summary>
     public int CurrentState { get; private set; }
+    public bool CandleStateFreeze { get => candleStateFreeze; set => candleStateFreeze = value; }
 
     private void OnEnable()
     {
@@ -55,21 +58,24 @@ public class CandleController : MonoBehaviour
 
     private void Update()
     {
-        //Countdown Time
-        if (timeSeconds < _candleData.DivisibleFactor && CurrentState > 0)
+        if (!candleStateFreeze)
         {
-            timeSeconds += Time.deltaTime;
-        }
-        else if (timeSeconds >= _candleData.DivisibleFactor && CurrentState > 0)
-        {
-            timeSeconds = 0;
-            CurrentState -= 1;
-            Debug.Log(CurrentState);
-            anim.SetInteger("Candlestate", CurrentState);
-        }
-        else if (CurrentState <= 0)
-        {
-            Debug.Log("Melted");
+            //Countdown Time
+            if (timeSeconds < _candleData.DivisibleFactor && CurrentState > 0)
+            {
+                timeSeconds += Time.deltaTime;
+            }
+            else if (timeSeconds >= _candleData.DivisibleFactor && CurrentState > 0)
+            {
+                timeSeconds = 0;
+                CurrentState -= 1;
+                Debug.Log(CurrentState);
+                anim.SetInteger("Candlestate", CurrentState);
+            }
+            else if (CurrentState <= 0)
+            {
+                Debug.Log("Melted");
+            }
         }
     }
 
@@ -81,13 +87,13 @@ public class CandleController : MonoBehaviour
     {
         candleChanges.Enqueue(color);
         CurrentColor = color;
-        EventManager.CandleColorChanged(color);
+        EventManager.CandleColorChanged(color, timeToLast);
         yield return new WaitForSeconds(timeToLast);
         candleChanges.TryDequeue(out var queueColor);
         if (candleChanges.Count <= 0)
         {
             CurrentColor = CandleColor.Yellow;
-            EventManager.CandleColorChanged(CandleColor.Yellow);
+            EventManager.CandleColorChanged(CandleColor.Yellow, 0);
         }
     }
 
@@ -102,7 +108,7 @@ public class CandleController : MonoBehaviour
         timeSeconds = 0;
     }
 
-    private void EventManager_onCandleColorChanged(CandleColor color)
+    private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
     {
         switch (color)
         {
