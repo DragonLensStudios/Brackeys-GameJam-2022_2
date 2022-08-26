@@ -9,6 +9,17 @@ namespace DragonLens.BrackeysGameJam2022_2.Dialogue
         private DialogueMessage[] _messages;
 
         public DialogueMessage[] Messages => _messages;
+
+        public bool RequestDialogueStart() {
+            DialogueController controller = FindObjectOfType<DialogueController>();
+            if (controller == null) {
+                Debug.LogWarning("There is no dialogue controller in the scene. Request failed!", this);
+                return false;
+            }
+
+            controller.StartDialogue(this);
+            return true;
+        }
     }
 
     [System.Serializable]
