@@ -70,12 +70,12 @@ public class CandleAnimationTest : MonoBehaviour
     public IEnumerator ChangeCandleColor(CandleColor color, float timeToLast) {
         candleChanges.Enqueue(color);
         CurrentColor = color;
-        EventManager.CandleColorChanged(color);
+        EventManager.CandleColorChanged(color, timeToLast);
         yield return new WaitForSeconds(timeToLast);
         candleChanges.TryDequeue(out var queueColor);
         if(candleChanges.Count <= 0) {
             CurrentColor = CandleColor.Yellow;
-            EventManager.CandleColorChanged(CandleColor.Yellow);
+            EventManager.CandleColorChanged(CandleColor.Yellow, 0);
         }
     }
 
@@ -89,7 +89,7 @@ public class CandleAnimationTest : MonoBehaviour
         timeSeconds = 0;
     }
 
-    private void EventManager_onCandleColorChanged(CandleColor color) {
+    private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast) {
         switch(color) {
             case CandleColor.Yellow:
                 anim.SetBool("Yellow", true);
@@ -129,7 +129,7 @@ public class CandleAnimationTest : MonoBehaviour
 
     public void RequestColorChange(string colorName) {
         if(System.Enum.TryParse(colorName, out CandleColor parsedColor)) {
-            EventManager_onCandleColorChanged(parsedColor);
+            EventManager_onCandleColorChanged(parsedColor, 0);
         }
     }
 }

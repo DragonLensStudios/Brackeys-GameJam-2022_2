@@ -13,6 +13,8 @@ public class GameData
     [SerializeField, Tooltip("The list of puzzles and their associated data.")]
     private List<PuzzleData> _puzzles;
 
+    [SerializeField, Tooltip("The list of checkpoints and their associated data.")]
+    private List<CheckPointData> _checkpoints;
     /// <summary>
     /// World space position to place the player on load.
     /// </summary>
@@ -26,13 +28,16 @@ public class GameData
     /// </summary>
     public List<PuzzleData> Puzzles { get => _puzzles; }
 
+    public List<CheckPointData> Checkpoints { get => _checkpoints; }
+
     public GameData() {
         _puzzles = new();
         _playerPosition = Vector3.zero;
     }
 
-    public GameData(List<PuzzleData> puzzles, Vector3 position) {
+    public GameData(List<PuzzleData> puzzles, List<CheckPointData> checkpoints, Vector3 position) {
         _puzzles = puzzles;
+        _checkpoints = checkpoints;
         _playerPosition = position;
     }
 }
