@@ -11,7 +11,7 @@ public class AchievementsToText : MonoBehaviour
     public Vector2 descriptionBasePosition;
     public Vector2 isCompleteBasePosition;
 
-    public void Awake()
+    public void Start()
     {
         GenerateUIForAchievements();
     }
