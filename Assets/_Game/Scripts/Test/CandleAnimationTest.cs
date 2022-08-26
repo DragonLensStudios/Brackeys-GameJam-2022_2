@@ -96,7 +96,7 @@ public class CandleAnimationTest : MonoBehaviour
                 anim.SetBool("Red", false);
                 anim.SetBool("Purple", false);
                 anim.SetBool("Blue", false);
-                anim.SetTrigger("YellowChange");
+                
                 //_candleData = Resources.Load<CandleData>("ScriptableObjects/CandleYellow");
                 break;
             case CandleColor.Red:
@@ -104,7 +104,7 @@ public class CandleAnimationTest : MonoBehaviour
                 anim.SetBool("Red", true);
                 anim.SetBool("Purple", false);
                 anim.SetBool("Blue", false);
-                anim.SetTrigger("RedChange");
+                
                 //_candleData = Resources.Load<CandleData>("ScriptableObjects/CandleRed");
                 break;
             case CandleColor.Purple:
@@ -112,7 +112,7 @@ public class CandleAnimationTest : MonoBehaviour
                 anim.SetBool("Red", false);
                 anim.SetBool("Purple", true);
                 anim.SetBool("Blue", false);
-                anim.SetTrigger("PurpleChange");
+                
                 //_candleData = Resources.Load<CandleData>("ScriptableObjects/CandlePurple");
                 break;
             case CandleColor.Blue:
@@ -120,7 +120,7 @@ public class CandleAnimationTest : MonoBehaviour
                 anim.SetBool("Red", false);
                 anim.SetBool("Purple", false);
                 anim.SetBool("Blue", true);
-                anim.SetTrigger("BlueChange");
+               
                 //_candleData = Resources.Load<CandleData>("ScriptableObjects/CandleBlue");
                 break;
         }
