@@ -68,8 +68,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _candleData: {fileID: 11400000, guid: aab062270da61124ba43733295b6d2df, type: 2}
   candleStateFreeze: 0
+<<<<<<< feature/player-animations
   refillSfx: Candle Refill
   candleOutSfx: Flame Out
+=======
+>>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
 --- !u!212 &5752555342323791914
 SpriteRenderer:
   m_ObjectHideFlags: 0

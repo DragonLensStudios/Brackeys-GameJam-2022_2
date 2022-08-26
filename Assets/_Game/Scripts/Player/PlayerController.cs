@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
         isActivatePressed = input.ReadValueAsButton();
     }
 
+<<<<<<< feature/player-animations
     private IEnumerator FootStep(float timeBetwenStep)
     {
         while (movePosition != Vector2.zero)
@@ -114,6 +115,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+=======
+>>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
     private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
     {
         switch (color)
