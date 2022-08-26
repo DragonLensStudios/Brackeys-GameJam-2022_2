@@ -7,7 +7,10 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float baseMoveSpeed, runSpeed, currentSpeed;
+    private float baseMoveSpeed, runSpeed, currentSpeed, timeBetweenFootsteps;
+
+    [SerializeField]
+    private string footstepsSfx;
 
     private bool isRunning, isActivatePressed;
     private PlayerInput playerInput;
@@ -16,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastMove = new Vector2(0, -1);
 
     private CandleController candleController;
+    private Coroutine footStepCoroutine;
 
     public bool IsActivatePressed { get => isActivatePressed; set => isActivatePressed = value; }
     public CandleController CandleController { get => candleController; set => candleController = value; }
@@ -74,6 +78,11 @@ public class PlayerController : MonoBehaviour
             lastMove = movePosition;
             anim.SetFloat("LastMoveX", lastMove.x);
             anim.SetFloat("LastMoveY", lastMove.y);
+            if(footStepCoroutine != null)
+            {
+                StopCoroutine(footStepCoroutine);
+            }
+            footStepCoroutine = StartCoroutine(FootStep(timeBetweenFootsteps));
         }
         else
         {
@@ -90,6 +99,18 @@ public class PlayerController : MonoBehaviour
     private void OnActivate(InputAction.CallbackContext input)
     {
         isActivatePressed = input.ReadValueAsButton();
+    }
+
+    private IEnumerator FootStep(float timeBetwenStep)
+    {
+        while (movePosition != Vector2.zero)
+        {
+            if (!string.IsNullOrWhiteSpace(footstepsSfx))
+            {
+                AudioManager.instance.PlaySound(footstepsSfx);
+                yield return new WaitForSeconds(timeBetwenStep);
+            }
+        }
     }
 
     private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)

@@ -14,9 +14,7 @@ public class Page : MonoBehaviour
     private float AnimationSpeed = 1f;
     public bool ExitOnNewPagePush = false;
     [SerializeField]
-    private AudioClip EntryClip;
-    [SerializeField]
-    private AudioClip ExitClip;
+    private string EntrySfx, ExitSfx;
     [SerializeField]
     private EntryMode EntryMode = EntryMode.SLIDE;
     [SerializeField]
@@ -35,8 +33,6 @@ public class Page : MonoBehaviour
     private UnityEvent PostPopAction;
 
     private Coroutine AnimationCoroutine;
-    private Coroutine AudioCoroutine;
-
     private void Awake()
     {
         RectTransform = GetComponent<RectTransform>();
@@ -158,40 +154,17 @@ public class Page : MonoBehaviour
 
     private void PlayEntryClip(bool PlayAudio)
     {
-        if (PlayAudio && EntryClip != null && AudioSource != null)
+        if (PlayAudio && !string.IsNullOrWhiteSpace(EntrySfx) && AudioSource != null)
         {
-            if (AudioCoroutine != null)
-            {
-                StopCoroutine(AudioCoroutine);
-            }
-
-            AudioCoroutine = StartCoroutine(PlayClip(EntryClip));
+            AudioManager.instance.PlaySound(EntrySfx);
         }
     }
     
     private void PlayExitClip(bool PlayAudio)
     {
-        if (PlayAudio && ExitClip != null && AudioSource != null)
+        if (PlayAudio && !string.IsNullOrWhiteSpace(ExitSfx) && AudioSource != null)
         {
-            if (AudioCoroutine != null)
-            {
-                StopCoroutine(AudioCoroutine);
-            }
-
-            AudioCoroutine = StartCoroutine(PlayClip(ExitClip));
+            AudioManager.instance.PlaySound(ExitSfx);
         }
-    }
-
-    private IEnumerator PlayClip(AudioClip Clip)
-    {
-        AudioSource.enabled = true;
-
-        WaitForSeconds Wait = new WaitForSeconds(Clip.length);
-
-        AudioSource.PlayOneShot(Clip);
-
-        yield return Wait;
-
-        AudioSource.enabled = false;
     }
 }

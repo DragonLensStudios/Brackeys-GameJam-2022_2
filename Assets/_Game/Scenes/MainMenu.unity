@@ -737,8 +737,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimationSpeed: 4
   ExitOnNewPagePush: 1
-  EntryClip: {fileID: 8300000, guid: 070319d20f59c3c4f9154807f414be51, type: 3}
-  ExitClip: {fileID: 8300000, guid: b921455bbb3af1c42a2c0423a5561a39, type: 3}
+  EntrySfx: Start Menu
+  ExitSfx: Menu Exit
   EntryMode: 2
   EntryDirection: 0
   ExitMode: 2
@@ -2374,8 +2374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimationSpeed: 4
   ExitOnNewPagePush: 1
-  EntryClip: {fileID: 8300000, guid: 070319d20f59c3c4f9154807f414be51, type: 3}
-  ExitClip: {fileID: 8300000, guid: b921455bbb3af1c42a2c0423a5561a39, type: 3}
+  EntrySfx: Start Menu
+  ExitSfx: Menu Exit
   EntryMode: 1
   EntryDirection: 1
   ExitMode: 1
@@ -3165,6 +3165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1242372010}
   - component: {fileID: 1242372009}
+  - component: {fileID: 1242372011}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -3249,6 +3250,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50.9, y: -10.89, z: 0}
+--- !u!114 &1242372011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242372008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1292107570
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,8 +4551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimationSpeed: 4
   ExitOnNewPagePush: 1
-  EntryClip: {fileID: 8300000, guid: 070319d20f59c3c4f9154807f414be51, type: 3}
-  ExitClip: {fileID: 8300000, guid: b921455bbb3af1c42a2c0423a5561a39, type: 3}
+  EntrySfx: Start Menu
+  ExitSfx: Menu Exit
   EntryMode: 2
   EntryDirection: 0
   ExitMode: 2

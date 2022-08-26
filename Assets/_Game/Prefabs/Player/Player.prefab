@@ -364,6 +364,8 @@ MonoBehaviour:
   baseMoveSpeed: 3
   runSpeed: 7
   currentSpeed: 0
+  timeBetweenFootsteps: 0.35
+  footstepsSfx: Footsteps Dirt
 --- !u!95 &4744463610684636142
 Animator:
   serializedVersion: 4
