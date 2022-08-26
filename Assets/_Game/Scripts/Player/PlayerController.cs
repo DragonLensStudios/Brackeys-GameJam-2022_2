@@ -103,6 +103,9 @@ public class PlayerController : MonoBehaviour
     }
 
 <<<<<<< feature/player-animations
+<<<<<<< feature/player-animations
+=======
+>>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
     private IEnumerator FootStep(float timeBetwenStep)
     {
         while (movePosition != Vector2.zero)
@@ -115,8 +118,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+<<<<<<< feature/player-animations
 =======
 >>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
+=======
+>>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
     private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
     {
         switch (color)

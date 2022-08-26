@@ -12,10 +12,15 @@ public class CandleController : MonoBehaviour
     [SerializeField]
     private bool candleStateFreeze;
 <<<<<<< feature/player-animations
+<<<<<<< feature/player-animations
     [SerializeField]
     private string refillSfx, candleOutSfx;
 =======
 >>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
+=======
+    [SerializeField]
+    private string refillSfx, candleOutSfx;
+>>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
 
     private bool isCandleLit = true;
     private Animator anim;
@@ -66,10 +71,14 @@ public class CandleController : MonoBehaviour
     private void Update()
     {
 <<<<<<< feature/player-animations
+<<<<<<< feature/player-animations
         if (!candleStateFreeze && isCandleLit)
 =======
         if (!candleStateFreeze)
 >>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
+=======
+        if (!candleStateFreeze && isCandleLit)
+>>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
         {
             //Countdown Time
             if (timeSeconds < _candleData.DivisibleFactor && CurrentState > 0)
@@ -86,9 +95,13 @@ public class CandleController : MonoBehaviour
             else if (CurrentState <= 0)
             {
 <<<<<<< feature/player-animations
+<<<<<<< feature/player-animations
                 EventManager.CandleOut();
 =======
 >>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
+=======
+                EventManager.CandleOut();
+>>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
                 Debug.Log("Melted");
             }
         }

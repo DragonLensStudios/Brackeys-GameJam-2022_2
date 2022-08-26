@@ -107,6 +107,9 @@ MonoBehaviour:
   offSprite: {fileID: -415579863, guid: 3d677a06cf3611f4e8fcbe521e35f7d7, type: 3}
   onSprite: {fileID: 1978440227, guid: 3d677a06cf3611f4e8fcbe521e35f7d7, type: 3}
   activateSfx: Candle Ignite 3
+<<<<<<< feature/player-animations
+>>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
+=======
 >>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
 --- !u!61 &6802277750177215966
 BoxCollider2D:

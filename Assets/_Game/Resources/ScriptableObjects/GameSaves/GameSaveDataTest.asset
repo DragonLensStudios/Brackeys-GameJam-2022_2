@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameData:
 <<<<<<< feature/player-animations
+<<<<<<< feature/player-animations
     _playerPosition: {x: 0, y: 0, z: 0}
     _puzzles: []
     _checkpoints: []
@@ -31,3 +32,8 @@ MonoBehaviour:
     - _checkPointId: TutorialCheckpoint
       _isCheckpointActivated: 1
 >>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
+=======
+    _playerPosition: {x: 0, y: 0, z: 0}
+    _puzzles: []
+    _checkpoints: []
+>>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
