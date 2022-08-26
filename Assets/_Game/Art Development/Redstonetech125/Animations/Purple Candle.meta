@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< refs/remotes/origin/develop
 guid: 72fe6dc91dda08746ac2798afb344f03
+=======
+guid: c26e7420379dbd8429722bd29eb413c3
+>>>>>>> Added Forest Level 3 Base
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
