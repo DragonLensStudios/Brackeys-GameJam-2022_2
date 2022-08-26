@@ -68,6 +68,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _candleData: {fileID: 11400000, guid: aab062270da61124ba43733295b6d2df, type: 2}
   candleStateFreeze: 0
+  refillSfx: Candle Refill
+  candleOutSfx: Flame Out
 --- !u!212 &5752555342323791914
 SpriteRenderer:
   m_ObjectHideFlags: 0

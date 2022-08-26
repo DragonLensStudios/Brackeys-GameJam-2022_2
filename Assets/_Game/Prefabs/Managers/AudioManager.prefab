@@ -47,8 +47,106 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeThreshold: -80
   mixer: {fileID: 24100000, guid: bc3bf5ce1089b2148b0677fb8ce74516, type: 2}
-  music: []
-  soundEffects: []
+  music:
+  - name: ForestBGM
+    clip: {fileID: 8300000, guid: 0b682c0d38320ad4e9da3ed6efea3520, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 1
+  soundEffects:
+  - name: Start Menu
+    clip: {fileID: 8300000, guid: bdc5223f110640b499a67ab1d3af3a2b, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Blow Out
+    clip: {fileID: 8300000, guid: 01f7eff80d72d85408fc1e2e1abf95e3, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Candle Ignite 1
+    clip: {fileID: 8300000, guid: d1046d35ff5582049a50ffff309364ca, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Candle Ignite 2
+    clip: {fileID: 8300000, guid: 1fd5701ad651e954cb9e6e5d470ab5ab, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Candle Ignite 3
+    clip: {fileID: 8300000, guid: a5a7ef93be0c60746b2f6ad8fcfb0490, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Candle Ignite
+    clip: {fileID: 8300000, guid: 43cc4fda0fda0824782681441668432e, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Candle Refill
+    clip: {fileID: 8300000, guid: 55d4bed939d4d2a498443c4f9e808420, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Flame Out
+    clip: {fileID: 8300000, guid: c43c102f5a3ebce49b8c325e7e82998a, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Footsteps Dirt
+    clip: {fileID: 8300000, guid: 47f4c50db95171b4892c0cab2bf59b0c, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.5
+    loop: 0
+  - name: Fox Screech
+    clip: {fileID: 8300000, guid: 81c554902a6cd9c4185403edb5aad1c1, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Menu Exit
+    clip: {fileID: 8300000, guid: 781d2dcb174b6e4488fcfa0d68c1eecc, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Puzzle Complete
+    clip: {fileID: 8300000, guid: 6667de7dabbf5aa44b0682f2af25ffa0, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Puzzle Fail
+    clip: {fileID: 8300000, guid: f7ad81cad10ac14499a9f26a74360821, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
 --- !u!114 &4881018219773680732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,4 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80bad7edc52cae4f9689a5260cbfb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicList: []
+  musicList:
+  - ForestBGM
+  - ForestBGM
+  - ForestBGM
+  - ForestBGM
+  - ForestBGM

@@ -10,6 +10,8 @@ public class ColorChangeTrigger : MonoBehaviour
     private float timeToLast = 15f;
     [SerializeField]
     private Sprite offSprite, onSprite;
+    [SerializeField]
+    private string activateSfx;
 
     private bool isAbleToActivate;
     private PlayerController pc;
@@ -51,10 +53,14 @@ public class ColorChangeTrigger : MonoBehaviour
 
     public void Activate(CandleColor color, float timeToLast)
     {
-        sr.sprite = onSprite;
-        isAbleToActivate = false;
         if(pc != null)
         {
+            sr.sprite = onSprite;
+            isAbleToActivate = false;
+            if (!string.IsNullOrEmpty(activateSfx))
+            {
+                AudioManager.instance.PlaySound(activateSfx);
+            }
             StartCoroutine(pc.CandleController.ChangeCandleColor(color, timeToLast));
             StartCoroutine(Deactivate(timeToLast));
         }

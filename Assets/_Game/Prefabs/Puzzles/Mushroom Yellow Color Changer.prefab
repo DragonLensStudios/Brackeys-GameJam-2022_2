@@ -102,6 +102,7 @@ MonoBehaviour:
   timeToLast: 90
   offSprite: {fileID: -1950861044, guid: d19e534cfc4d5304289df01d9d3e3b2a, type: 3}
   onSprite: {fileID: -404654171, guid: d19e534cfc4d5304289df01d9d3e3b2a, type: 3}
+  activateSfx: Candle Ignite 3
 --- !u!61 &1793243159446713483
 BoxCollider2D:
   m_ObjectHideFlags: 0
