@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 423297806}
   - component: {fileID: 423297805}
   - component: {fileID: 423297804}
+  - component: {fileID: 423297807}
   m_Layer: 5
   m_Name: DialogueStart
   m_TagString: Untagged
@@ -342,15 +343,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1097876678}
-        m_TargetAssemblyTypeName: DragonLens.BrackeysGameJam2022_2.Dialogue.DialogueController,
+      - m_Target: {fileID: 423297807}
+        m_TargetAssemblyTypeName: DragonLens.BrackeysGameJam2022_2.Tests.DialogueTest,
           Assembly-CSharp
         m_MethodName: StartDialogue
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 59dde36afbd52ea40bbdc51e567cc315, type: 2}
-          m_ObjectArgumentAssemblyTypeName: DragonLens.BrackeysGameJam2022_2.Dialogue.DialogueData,
-            Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -394,6 +394,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423297802}
   m_CullTransparentMesh: 1
+--- !u!114 &423297807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423297802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca1c035f18dcf3468df3001708dc371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 59dde36afbd52ea40bbdc51e567cc315, type: 2}
 --- !u!1 &829067377
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,17 +480,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224911982433472724, guid: a2cddd34c320a91418f1ce72709fe9e0, type: 3}
   m_PrefabInstance: {fileID: 1875706411}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1097876678 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114944461485377440, guid: a2cddd34c320a91418f1ce72709fe9e0, type: 3}
-  m_PrefabInstance: {fileID: 1875706411}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e3a1f8549105ff48ab50cf0cf1f20f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1444055032
 GameObject:
   m_ObjectHideFlags: 0
