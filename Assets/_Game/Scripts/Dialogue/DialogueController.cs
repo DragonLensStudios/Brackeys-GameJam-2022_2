@@ -7,24 +7,37 @@ namespace DragonLens.BrackeysGameJam2022_2.Dialogue
 {
 	public class DialogueController : MonoBehaviour
 	{
-        public bool isDebugMode;
-        public TextMeshProUGUI dialogueText;
-        public TextMeshProUGUI dialogueActor;
+        [SerializeField, Tooltip("Can the text animation be skipped?")]
+        private bool _canSkipAnimation;
+        [SerializeField, Tooltip("How long should the text animation last?")]
+        private float _animationDuration = 1f;
+        [SerializeField, Tooltip("How long should we wait to start the text animation?")]
+        private float _animationStartDelay = 0.5f;
 
-        public Animator animator;
+        [Header("TMP Text")]
+        [SerializeField]
+        private TextMeshProUGUI _dialogueActor;
+        [SerializeField]
+        private TextMeshProUGUI _dialogueMessage;
+
+        private Animator _animator;
         private bool _isAnimating;
-
         private Queue<DialogueMessage> _messages;
         private DialogueMessage _currentMessage;
 
         private void Awake()
         {
+            _animator = GetComponentInChildren<Animator>();
+            if(_animator == null) {
+                Debug.LogError($"{typeof(DialogueController)} could not find an animator component.", this);
+            }
+
             _messages = new();
         }
 
         public void StartDialogue(DialogueData dialogue)
         {
-            animator.SetBool("IsOpen", true);
+            _animator.SetBool("IsOpen", true);
 
             _messages.Clear();
 
@@ -40,12 +53,12 @@ namespace DragonLens.BrackeysGameJam2022_2.Dialogue
         {
             if(_isAnimating)
             {
-                if(isDebugMode)
+                if(_canSkipAnimation)
                 {
                     StopAllCoroutines();
                     _isAnimating = false;
-                    dialogueText.text = _currentMessage.Text;
-                    dialogueActor.text = _currentMessage.ActorName;
+                    _dialogueMessage.text = _currentMessage.Text;
+                    _dialogueActor.text = _currentMessage.ActorName;
                 }
                 return;
             }
@@ -60,26 +73,27 @@ namespace DragonLens.BrackeysGameJam2022_2.Dialogue
             StartCoroutine(AnimateSentence(_currentMessage));
         }
 
-        IEnumerator AnimateSentence(DialogueMessage message)
+        private IEnumerator AnimateSentence(DialogueMessage message)
         {
             _isAnimating = true;
-            dialogueText.text = "";
-            dialogueActor.text = message.ActorName;
-            yield return new WaitForSeconds(0.5f);
+            _dialogueMessage.text = "";
+            _dialogueActor.text = message.ActorName;
+            char[] messageChars = message.Text.ToCharArray();
+            float waitDuration = _animationDuration / messageChars.Length;
+            yield return new WaitForSeconds(_animationStartDelay);
 
-            foreach(char letter in message.Text.ToCharArray())
+            foreach(char letter in messageChars)
             {
-                dialogueText.text += letter;
-                yield return null;
+                _dialogueMessage.text += letter;
+                yield return new WaitForSeconds(waitDuration);
             }
 
             _isAnimating = false;
         }
 
-        void EndDialogue()
+        private void EndDialogue()
         {
-            animator.SetBool("IsOpen", false);
-            // TODO: Notify listeners with a dialogue end event?
+            _animator.SetBool("IsOpen", false);
         }
     }
 }

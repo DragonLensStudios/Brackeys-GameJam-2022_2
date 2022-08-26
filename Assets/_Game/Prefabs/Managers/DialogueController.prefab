@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &114768517038946446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,10 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3a1f8549105ff48ab50cf0cf1f20f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebugMode: 0
-  dialogueText: {fileID: 114330621882601986}
-  dialogueActor: {fileID: 6489537006362304360}
-  animator: {fileID: 95274957211156066}
+  _canSkipAnimation: 1
+  _animationDuration: 1
+  _animationStartDelay: 0.5
+  _dialogueActor: {fileID: 6489537006362304360}
+  _dialogueMessage: {fileID: 114330621882601986}
 --- !u!1 &1251215452536712
 GameObject:
   m_ObjectHideFlags: 0
