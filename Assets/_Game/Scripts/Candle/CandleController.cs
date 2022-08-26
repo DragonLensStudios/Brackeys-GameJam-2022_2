@@ -11,7 +11,10 @@ public class CandleController : MonoBehaviour
     private CandleData _candleData;
     [SerializeField]
     private bool candleStateFreeze;
+    [SerializeField]
+    private string refillSfx, candleOutSfx;
 
+    private bool isCandleLit = true;
     private Animator anim;
 
     private Queue<CandleColor> candleChanges = new Queue<CandleColor>();
@@ -35,12 +38,13 @@ public class CandleController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.onCandleColorChanged += EventManager_onCandleColorChanged;
+        EventManager.onCandleOut += EventManager_onCandleOut;
     }
 
     private void OnDisable()
     {
         EventManager.onCandleColorChanged -= EventManager_onCandleColorChanged;
-
+        EventManager.onCandleOut -= EventManager_onCandleOut;
     }
 
     private void Awake()
@@ -58,7 +62,7 @@ public class CandleController : MonoBehaviour
 
     private void Update()
     {
-        if (!candleStateFreeze)
+        if (!candleStateFreeze && isCandleLit)
         {
             //Countdown Time
             if (timeSeconds < _candleData.DivisibleFactor && CurrentState > 0)
@@ -74,6 +78,7 @@ public class CandleController : MonoBehaviour
             }
             else if (CurrentState <= 0)
             {
+                EventManager.CandleOut();
                 Debug.Log("Melted");
             }
         }
@@ -101,11 +106,16 @@ public class CandleController : MonoBehaviour
     {
         StopAllCoroutines();
         candleChanges.Clear();
-
+        isCandleLit = true;
         CurrentState = _candleData.MaxStateIndex;
         CurrentColor = _candleData.Color;
+        anim.SetTrigger("Refill");
         anim.SetInteger("Candlestate", CurrentState);
         timeSeconds = 0;
+        if (!string.IsNullOrWhiteSpace(refillSfx))
+        {
+            AudioManager.instance.PlaySound(refillSfx);
+        }
     }
 
     private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
@@ -146,6 +156,15 @@ public class CandleController : MonoBehaviour
             anim.runtimeAnimatorController = _candleData.Anim;
             anim.SetInteger("Candlestate", CurrentState);
 
+        }
+    }
+
+    private void EventManager_onCandleOut()
+    {
+        isCandleLit = false;
+        if (!string.IsNullOrWhiteSpace(candleOutSfx))
+        {
+            AudioManager.instance.PlaySound(candleOutSfx);
         }
     }
 }

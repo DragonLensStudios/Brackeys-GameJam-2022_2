@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchName: S1
-  sfxActivateSound: 
+  sfxActivateSound: Candle Ignite 1
   sfxDeactivateSound: 
   candleColor: 0
   offSprite: {fileID: -1297615869, guid: fe6656f1a044c964786d8c3f0d838fd1, type: 3}

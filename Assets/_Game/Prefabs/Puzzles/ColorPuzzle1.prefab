@@ -52,6 +52,8 @@ MonoBehaviour:
   isPuzzleComplete: 0
   isOrderRequired: 0
   switchesOrderRequired: []
+  puzzleCompleteSfx: Puzzle Complete
+  puzzleFailedSfx: Puzzle Fail
   activatedSwitchesCallback:
     m_PersistentCalls:
       m_Calls: []

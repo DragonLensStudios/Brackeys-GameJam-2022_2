@@ -17,6 +17,8 @@ public class ColorPuzzleController : MonoBehaviour
     [SerializeField]
     private List<string> switchesOrderRequired = new List<string>();
     [SerializeField]
+    private string puzzleCompleteSfx, puzzleFailedSfx;
+    [SerializeField]
     private UnityEvent activatedSwitchesCallback;
 
     private float currentTimer;
@@ -64,6 +66,10 @@ public class ColorPuzzleController : MonoBehaviour
         activatedSwitches.ForEach(x => x.Sr.enabled = true);
         activatedSwitches.ForEach(x => x.Activate(x.CandleColor));
         activatedSwitches.ForEach(x => x.GetComponent<VisibleGameObject>().enabled = false);
+        if (!string.IsNullOrWhiteSpace(puzzleCompleteSfx))
+        {
+            AudioManager.instance.PlaySound(puzzleCompleteSfx);
+        }
         activatedSwitchesCallback.Invoke();
     }
 
@@ -76,6 +82,10 @@ public class ColorPuzzleController : MonoBehaviour
         activatedSwitches.Clear();
         isPuzzleStarted = false;
         currentTimer = 0;
+        if (!string.IsNullOrWhiteSpace(puzzleFailedSfx))
+        {
+            AudioManager.instance.PlaySound(puzzleFailedSfx);
+        }
     }
 
     private void EventManager_onColorSwitchActivate(string name, CandleColor color)

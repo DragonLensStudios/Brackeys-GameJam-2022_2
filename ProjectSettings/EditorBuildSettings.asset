@@ -5,8 +5,23 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/_Game/Scenes/MainMenu.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/_Game/Scenes/ForestLevelStarting.unity
+    guid: bceb960578cd9d043827951adbc8cdbc
+  - enabled: 1
+    path: Assets/_Game/Scenes/ForestLevel1.unity
+    guid: 648fe963374c97e49bec759dccfa1494
+  - enabled: 1
+    path: Assets/_Game/Scenes/ForestLevel1Maze.unity
+    guid: 17bf767e78307e243b77536d61ef6ba2
+  - enabled: 1
+    path: Assets/_Game/Scenes/ForestLevel2Maze.unity
+    guid: d537534b3d5e50e40aac00521a4124ce
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8abfe3a5e7921034c9e1dec8036ca745, type: 2}
