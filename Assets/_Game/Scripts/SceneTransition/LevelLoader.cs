@@ -7,16 +7,10 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
-    public float transitionTime;
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            LoadNextLevel();
-        }
-    }
 
+    /**
+     * This should be called from an in game checkpoint
+     */
     public void LoadNextLevel()
     {
         //What happens on the last scene?
@@ -25,10 +19,15 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadLevel(int levelIndex)
     {
-        transition.SetTrigger("Start");
+        transition.SetTrigger("Start_Load");
 
-        yield return new WaitForSeconds(transitionTime);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(levelIndex);
 
-        SceneManager.LoadScene(levelIndex);
+        while(!asyncOperation.isDone)
+        {
+            yield return null;
+        }
+
+        transition.SetTrigger("End_Load");
     }
 }
