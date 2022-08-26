@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsActivatePressed { get => isActivatePressed; set => isActivatePressed = value; }
     public CandleController CandleController { get => candleController; set => candleController = value; }
+    public Animator Anim { get => anim; set => anim = value; }
 
     private void OnEnable()
     {

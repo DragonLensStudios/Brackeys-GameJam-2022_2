@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -415579863, guid: 3d677a06cf3611f4e8fcbe521e35f7d7, type: 3}
+  m_Sprite: {fileID: -123654313, guid: 991276e5f8d194475a681c8f7c336e58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,9 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 3
   timeToLast: 90
-  offSprite: {fileID: -415579863, guid: 3d677a06cf3611f4e8fcbe521e35f7d7, type: 3}
-  onSprite: {fileID: 1978440227, guid: 3d677a06cf3611f4e8fcbe521e35f7d7, type: 3}
-  activateSfx: Candle Ignite 3
+  offSprite: {fileID: -123654313, guid: 991276e5f8d194475a681c8f7c336e58, type: 3}
+  onSprite: {fileID: -1772165413, guid: 991276e5f8d194475a681c8f7c336e58, type: 3}
 --- !u!61 &6802277750177215966
 BoxCollider2D:
   m_ObjectHideFlags: 0
