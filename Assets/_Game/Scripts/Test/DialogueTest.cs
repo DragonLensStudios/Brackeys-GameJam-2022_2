@@ -5,10 +5,21 @@ namespace DragonLens.BrackeysGameJam2022_2.Tests
 {
     public class DialogueTest : MonoBehaviour
     {
-        public DialogueData data;
+        [SerializeField]
+        private bool _startDialogue;
 
-        public void StartDialogue() {
-            data.RequestDialogueStart();
+        [SerializeField]
+        private DialogueData _dialogueData;
+
+        private void Update() {
+            if(_startDialogue) {
+                _startDialogue = false;
+                StartDialogue();
+            }
+        }
+
+        private void StartDialogue() {
+            _dialogueData.RequestDialogueStart();
         }
     }
 }

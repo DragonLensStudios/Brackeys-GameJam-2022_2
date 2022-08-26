@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114114106183555144}
   - component: {fileID: 114768517038946446}
   - component: {fileID: 114944461485377440}
+  - component: {fileID: 5411118641526263436}
   m_Layer: 5
   m_Name: DialogueController
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &114768517038946446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +120,18 @@ MonoBehaviour:
   _animationStartDelay: 0.5
   _dialogueActor: {fileID: 6489537006362304360}
   _dialogueMessage: {fileID: 114330621882601986}
+--- !u!114 &5411118641526263436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208031621696750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead725f392099b849909bf5b043b5937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1251215452536712
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +269,7 @@ MonoBehaviour:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
-    m_SelectedTrigger: Highlighted
+    m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 114559755863707104}
@@ -264,8 +277,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114944461485377440}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: DisplayNextSentence
+        m_TargetAssemblyTypeName: DragonLens.BrackeysGameJam2022_2.Dialogue.DialogueController,
+          Assembly-CSharp
+        m_MethodName: DisplayNextMessage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

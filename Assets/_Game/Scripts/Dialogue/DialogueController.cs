@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -25,6 +26,9 @@ namespace DragonLens.BrackeysGameJam2022_2.Dialogue
         private Queue<DialogueMessage> _messages;
         private DialogueMessage _currentMessage;
 
+        public event Action OnDialogueStart;
+        public event Action OnDialogueEnd;
+
         private void Awake()
         {
             _animator = GetComponentInChildren<Animator>();
@@ -46,10 +50,11 @@ namespace DragonLens.BrackeysGameJam2022_2.Dialogue
                 _messages.Enqueue(message);
             }
 
-            DisplayNextSentence();
+            DisplayNextMessage();
+            OnDialogueStart?.Invoke();
         }
 
-        public void DisplayNextSentence()
+        public void DisplayNextMessage()
         {
             if(_isAnimating)
             {
@@ -70,10 +75,10 @@ namespace DragonLens.BrackeysGameJam2022_2.Dialogue
 
             _currentMessage = _messages.Dequeue();
             StopAllCoroutines();
-            StartCoroutine(AnimateSentence(_currentMessage));
+            StartCoroutine(AnimateMessage(_currentMessage));
         }
 
-        private IEnumerator AnimateSentence(DialogueMessage message)
+        private IEnumerator AnimateMessage(DialogueMessage message)
         {
             _isAnimating = true;
             _dialogueMessage.text = "";
@@ -94,6 +99,7 @@ namespace DragonLens.BrackeysGameJam2022_2.Dialogue
         private void EndDialogue()
         {
             _animator.SetBool("IsOpen", false);
+            OnDialogueEnd?.Invoke();
         }
     }
 }
