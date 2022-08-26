@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class ColorPuzzleSwitch : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class ColorPuzzleSwitch : MonoBehaviour
     private Sprite offSprite, onSprite;
     [SerializeField]
     private bool isEnabled, isActivated;
+    [SerializeField]
+    private float timeActivate;
 
     private SpriteRenderer sr;
     private PlayerController pc;
@@ -42,10 +45,7 @@ public class ColorPuzzleSwitch : MonoBehaviour
             {
                 sr.sprite = onSprite;
             }
-            if (anim != null)
-            {
-                anim.SetBool("isLit", true);
-            }
+            StartCoroutine(TimeActivate(timeActivate));
             if (!string.IsNullOrWhiteSpace(sfxActivateSound))
             {
                 AudioManager.instance.PlaySound(sfxActivateSound);
@@ -71,6 +71,24 @@ public class ColorPuzzleSwitch : MonoBehaviour
                 AudioManager.instance.PlaySound(sfxDeactivateSound);
             }
         }
+    }
+
+    public IEnumerator TimeActivate (float seconds)
+    {
+
+        if (pc != null && pc.Anim != null)
+        {
+            pc.Anim.SetTrigger("Light");
+
+        }
+        yield return new WaitForSeconds(seconds);
+        if (anim != null)
+        {
+            anim.SetBool("isLit", true);
+
+        }
+        yield return null;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

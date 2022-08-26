@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 2007592222, guid: 83224d44779b947488b9d1e82c3c31dd, type: 3}
+  m_Sprite: {fileID: 996601544, guid: 03ecd3ce22769483583e7a242f86fbbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 2
   timeToLast: 90
-  offSprite: {fileID: 2007592222, guid: 83224d44779b947488b9d1e82c3c31dd, type: 3}
-  onSprite: {fileID: 886300069, guid: 83224d44779b947488b9d1e82c3c31dd, type: 3}
+  offSprite: {fileID: 996601544, guid: 03ecd3ce22769483583e7a242f86fbbc, type: 3}
+  onSprite: {fileID: -1693897617, guid: 03ecd3ce22769483583e7a242f86fbbc, type: 3}
 --- !u!61 &2281151018930799645
 BoxCollider2D:
   m_ObjectHideFlags: 0
