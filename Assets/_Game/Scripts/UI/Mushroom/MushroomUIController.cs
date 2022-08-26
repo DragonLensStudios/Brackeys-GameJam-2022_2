@@ -26,7 +26,6 @@ public class MushroomUIController : MonoBehaviour
         EventManager.onCandleColorChanged -= EventManager_onCandleColorChanged;
     }
 
-<<<<<<< feature/player-animations
     //private void Update()
     //{
     //    if(sr != null) {
@@ -41,26 +40,6 @@ public class MushroomUIController : MonoBehaviour
     //        }
     //    }
     //}
-=======
-    private void Update()
-    {
-        //if(sr != null)
-        //{
-        //    Color initColor = sr.color;
-        //    Color targetColor = new Color(initColor.r, initColor.g, initColor.b, 0f);
-
-        //    float elapsedTime = 0f;
-        //    if(elapsedTime <= remainingTime)
-        //    {
-        //        sr.color = Color.Lerp(initColor, targetColor, elapsedTime / remainingTime);
-        //        elapsedTime += Time.deltaTime;
-        //        remainingTime -= Time.deltaTime;
-        //    }
-
-        //}
-
-    }
->>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
 
     private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
     {
