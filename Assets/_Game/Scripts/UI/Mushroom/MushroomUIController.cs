@@ -26,24 +26,20 @@ public class MushroomUIController : MonoBehaviour
         EventManager.onCandleColorChanged -= EventManager_onCandleColorChanged;
     }
 
-    private void Update()
-    {
-        //if(sr != null)
-        //{
-        //    Color initColor = sr.color;
-        //    Color targetColor = new Color(initColor.r, initColor.g, initColor.b, 0f);
+    //private void Update()
+    //{
+    //    if(sr != null) {
+    //        Color initColor = sr.color;
+    //        Color targetColor = new Color(initColor.r, initColor.g, initColor.b, 0f);
 
-        //    float elapsedTime = 0f;
-        //    if(elapsedTime <= remainingTime)
-        //    {
-        //        sr.color = Color.Lerp(initColor, targetColor, elapsedTime / remainingTime);
-        //        elapsedTime += Time.deltaTime;
-        //        remainingTime -= Time.deltaTime;
-        //    }
-
-        //}
-
-    }
+    //        float elapsedTime = 0f;
+    //        if(elapsedTime <= remainingTime) {
+    //            sr.color = Color.Lerp(initColor, targetColor, elapsedTime / remainingTime);
+    //            elapsedTime += Time.deltaTime;
+    //            remainingTime -= Time.deltaTime;
+    //        }
+    //    }
+    //}
 
     private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
     {
