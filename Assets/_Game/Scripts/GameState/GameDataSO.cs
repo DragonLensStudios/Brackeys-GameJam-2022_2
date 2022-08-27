@@ -105,11 +105,12 @@ public class GameDataSO : ScriptableObject
             if(puzzleData == null) 
             {
                 //Add new entry
-                _gameData.Puzzles.Add(new PuzzleData(colorPuzzleController.Id, colorPuzzleController.IsPuzzleComplete));
+                puzzleData = new PuzzleData(colorPuzzleController.Id, colorPuzzleController.IsPuzzleComplete);
                 for(var i = 0; i < colorPuzzleController.ActivatedSwitches.Count; i++) 
                 {
                     puzzleData.Switches.Add(colorPuzzleController.ActivatedSwitches[i].SwitchName);
                 }
+                _gameData.Puzzles.Add(puzzleData);
             } 
             else 
             {
