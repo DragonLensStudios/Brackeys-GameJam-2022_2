@@ -42,4 +42,11 @@ public class SpiritOrb : MonoBehaviour
     private void Despawn() {
         OnDespawn?.Invoke(this);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.CompareTag("Player")) {
+            Despawn();
+            // TODO: trigger game over?
+        }
+    }
 }

@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769118814754728381}
   - component: {fileID: 769118814754728354}
+  - component: {fileID: 6507204786626539913}
   m_Layer: 0
   m_Name: SpiritOrb
   m_TagString: Untagged
@@ -175,3 +176,19 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _speed: 0.25
+--- !u!58 &6507204786626539913
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769118814754728355}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.01, y: 0.06}
+  serializedVersion: 2
+  m_Radius: 0.16
