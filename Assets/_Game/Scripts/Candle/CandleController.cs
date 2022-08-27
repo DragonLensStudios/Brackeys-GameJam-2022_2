@@ -140,33 +140,28 @@ public class CandleController : MonoBehaviour
                 anim.SetBool("Red", false);
                 anim.SetBool("Purple", false);
                 anim.SetBool("Blue", false);
-                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandleYellow");
                 break;
             case CandleColor.Red:
                 anim.SetBool("Yellow", false);
                 anim.SetBool("Red", true);
                 anim.SetBool("Purple", false);
                 anim.SetBool("Blue", false);
-                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandleRed");
                 break;
             case CandleColor.Purple:
                 anim.SetBool("Yellow", false);
                 anim.SetBool("Red", false);
                 anim.SetBool("Purple", true);
                 anim.SetBool("Blue", false);
-                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandlePurple");
                 break;
             case CandleColor.Blue:
                 anim.SetBool("Yellow", false);
                 anim.SetBool("Red", false);
                 anim.SetBool("Purple", false);
                 anim.SetBool("Blue", true);
-                _candleData = Resources.Load<CandleData>("ScriptableObjects/CandleBlue");
                 break;
         }
         if (anim != null)
         {
-            anim.runtimeAnimatorController = _candleData.Anim;
             anim.SetInteger("Candlestate", CurrentState);
 
         }
