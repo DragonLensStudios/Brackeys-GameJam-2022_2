@@ -11,6 +11,7 @@ public class CheckpointTrigger : MonoBehaviour
     private PlayerController pc;
     private Animator anim;
     private bool isActivated;
+    private bool isSaved = false;
 
     public bool IsActivated { get => isActivated; set => isActivated = value; }
     public string Id { get => id; }
@@ -26,15 +27,10 @@ public class CheckpointTrigger : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             pc = collision.GetComponent<PlayerController>();
-            if (isActivated)
+            if (isActivated && candleController != null)
             {
-                if(candleController != null)
-                {
-                    if (isActivated)
-                    {
-                        candleController.CandleStateFreeze = true;
-                    }
-                }
+                candleController.CandleStateFreeze = true;
+                isSaved = false;
             }
         }
     }
@@ -52,14 +48,15 @@ public class CheckpointTrigger : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (pc != null)
-        {
-            if (pc.IsActivatePressed)
-            {
-                if (anim != null && candleController != null)
-                {
-                    Activate();
-                }
+        if(pc == null || anim == null || candleController == null) return;
+
+        if(pc.IsActivatePressed) {
+            Activate();
+
+            if(!isSaved) {
+                print("Saving");
+                _gameData.SaveGameData();
+                isSaved = true;
             }
         }
     }
@@ -73,7 +70,6 @@ public class CheckpointTrigger : MonoBehaviour
             anim.SetBool("IsOn", true);
             candleController.Reset();
             candleController.CandleStateFreeze = true;
-            _gameData.SaveGameData();
         }
     }
 
