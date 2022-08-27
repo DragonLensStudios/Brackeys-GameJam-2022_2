@@ -60,17 +60,20 @@ public class ColorPuzzleController : MonoBehaviour
         }
     }
 
-    public void Activate()
+    public void Activate(string puzzleId)
     {
-        isPuzzleComplete = true;
-        activatedSwitches.ForEach(x => x.Sr.enabled = true);
-        activatedSwitches.ForEach(x => x.Activate(x.CandleColor));
-        activatedSwitches.ForEach(x => x.GetComponent<VisibleGameObject>().enabled = false);
-        if (!string.IsNullOrWhiteSpace(puzzleCompleteSfx))
+        if(puzzleId == id)
         {
-            AudioManager.instance.PlaySound(puzzleCompleteSfx);
+            isPuzzleComplete = true;
+            activatedSwitches.ForEach(x => x.Sr.enabled = true);
+            activatedSwitches.ForEach(x => x.Activate(x.CandleColor));
+            activatedSwitches.ForEach(x => x.GetComponent<VisibleGameObject>().enabled = false);
+            if (!string.IsNullOrWhiteSpace(puzzleCompleteSfx))
+            {
+                AudioManager.instance.PlaySound(puzzleCompleteSfx);
+            }
+            activatedSwitchesCallback.Invoke();
         }
-        activatedSwitchesCallback.Invoke();
     }
 
     public void ResetPuzzle()
@@ -88,7 +91,7 @@ public class ColorPuzzleController : MonoBehaviour
         }
     }
 
-    private void EventManager_onColorSwitchActivate(string name, CandleColor color)
+    private void EventManager_onColorSwitchActivate(string puzzleId, string name, CandleColor color)
     {
         var colorSwitch = switches.Find(x => x.SwitchName == name);
         if(colorSwitch != null)
@@ -118,7 +121,7 @@ public class ColorPuzzleController : MonoBehaviour
         {
             if(activatedSwitches.All(x=> x.IsActivated))
             {
-                Activate();
+                Activate(puzzleId);
             }
         }
     }

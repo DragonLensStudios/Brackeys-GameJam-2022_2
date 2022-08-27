@@ -1,10 +1,8 @@
-﻿namespace AdrianKovatana.Essentials.FiniteStateMachine
+﻿public interface IState
 {
-    public interface IState
-    {
-        void StateEnter();
-        void StateUpdate();
-        void StateFixedUpdate();
-        void StateExit();
-    }
+    void StateEnter();
+    void StateUpdate();
+    void StateFixedUpdate();
+    void StateExit();
 }
+

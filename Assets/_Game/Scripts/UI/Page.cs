@@ -1,18 +1,17 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(AudioSource), typeof(CanvasGroup))]
+[RequireComponent(typeof(CanvasGroup))]
 [DisallowMultipleComponent]
 public class Page : MonoBehaviour
 {
-    private AudioSource AudioSource;
-    private RectTransform RectTransform;
-    private CanvasGroup CanvasGroup;
-
+    public bool ExitOnNewPagePush = false;
+    [SerializeField]
+    private GameObject firstFocusItem;
     [SerializeField]
     private float AnimationSpeed = 1f;
-    public bool ExitOnNewPagePush = false;
     [SerializeField]
     private string EntrySfx, ExitSfx;
     [SerializeField]
@@ -32,17 +31,13 @@ public class Page : MonoBehaviour
     [SerializeField]
     private UnityEvent PostPopAction;
 
+    private RectTransform RectTransform;
+    private CanvasGroup CanvasGroup;
     private Coroutine AnimationCoroutine;
     private void Awake()
     {
         RectTransform = GetComponent<RectTransform>();
         CanvasGroup = GetComponent<CanvasGroup>();
-        AudioSource = GetComponent<AudioSource>();
-
-        AudioSource.playOnAwake = false;
-        AudioSource.loop = false;
-        AudioSource.spatialBlend = 0;
-        AudioSource.enabled = false;
     }
 
     public void Enter(bool PlayAudio)
@@ -50,6 +45,10 @@ public class Page : MonoBehaviour
         if (!gameObject.activeSelf)
         {
             gameObject.SetActive(true);
+        }
+        if (firstFocusItem != null)
+        {
+            EventSystem.current.SetSelectedGameObject(firstFocusItem);
         }
         PrePushAction?.Invoke();
 
@@ -154,7 +153,7 @@ public class Page : MonoBehaviour
 
     private void PlayEntryClip(bool PlayAudio)
     {
-        if (PlayAudio && !string.IsNullOrWhiteSpace(EntrySfx) && AudioSource != null)
+        if (PlayAudio && !string.IsNullOrWhiteSpace(EntrySfx))
         {
             AudioManager.instance.PlaySound(EntrySfx);
         }
@@ -162,7 +161,7 @@ public class Page : MonoBehaviour
     
     private void PlayExitClip(bool PlayAudio)
     {
-        if (PlayAudio && !string.IsNullOrWhiteSpace(ExitSfx) && AudioSource != null)
+        if (PlayAudio && !string.IsNullOrWhiteSpace(ExitSfx))
         {
             AudioManager.instance.PlaySound(ExitSfx);
         }

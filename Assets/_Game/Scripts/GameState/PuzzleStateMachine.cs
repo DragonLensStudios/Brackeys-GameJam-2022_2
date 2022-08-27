@@ -1,14 +1,11 @@
-﻿using AdrianKovatana.Essentials.FiniteStateMachine;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace DragonLens.BrackeysGameJam2022_2.GameStates
+public class PuzzleStateMachine : StateMachine
 {
-    public class PuzzleStateMachine : StateMachine
-    {
-        [SerializeField] private InitializationState _initializationState;
+    [SerializeField] private InitializationState _initializationState;
 
-        private void Start() {
-            ChangeState(_initializationState);
-        }
+    private void Start() 
+    {
+        ChangeState(_initializationState);
     }
 }

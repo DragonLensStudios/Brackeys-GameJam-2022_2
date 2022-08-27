@@ -18,6 +18,7 @@ public class CandleController : MonoBehaviour
     private Animator anim;
 
     private Queue<CandleColor> candleChanges = new Queue<CandleColor>();
+    private PlayerController pc;
     
     /// <summary>
     /// Seconds counting down
@@ -53,6 +54,7 @@ public class CandleController : MonoBehaviour
 
         anim = GetComponent<Animator>();
         if(anim != null) anim.runtimeAnimatorController = _candleData.Anim;
+        pc = FindObjectOfType<PlayerController>();
     }
 
     private void Start()
@@ -67,19 +69,30 @@ public class CandleController : MonoBehaviour
             //Countdown Time
             if (timeSeconds < _candleData.DivisibleFactor && CurrentState > 0)
             {
-                timeSeconds += Time.deltaTime;
+                if (pc != null)
+                {
+                    if (pc.IsRunning) 
+                    {
+                        timeSeconds += Time.deltaTime * 2;
+                    }
+                    else
+                    {
+                        timeSeconds += Time.deltaTime;
+                    }
+                }
+
             }
             else if (timeSeconds >= _candleData.DivisibleFactor && CurrentState > 0)
             {
                 timeSeconds = 0;
                 CurrentState -= 1;
-                Debug.Log(CurrentState);
+                //Debug.Log(CurrentState);
                 anim.SetInteger("Candlestate", CurrentState);
             }
             else if (CurrentState <= 0)
             {
                 EventManager.CandleOut();
-                Debug.Log("Melted");
+                Debug.Log("Candle Out");
             }
         }
     }

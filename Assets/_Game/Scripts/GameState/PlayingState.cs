@@ -1,49 +1,55 @@
-using AdrianKovatana.Essentials.FiniteStateMachine;
 using UnityEngine;
 
-namespace DragonLens.BrackeysGameJam2022_2.GameStates
+public class PlayingState : MonoBehaviour, IState
 {
-    public class PlayingState : MonoBehaviour, IState
+    private PuzzleStateMachine _stateMachine;
+    [SerializeField] private GameOverState _gameOverState;
+    [SerializeField] private PauseState _pauseState;
+
+    private PlayerController _player;
+    private CandleController _candle;
+
+    private void Awake() 
     {
-        private PuzzleStateMachine _stateMachine;
-        [SerializeField] private GameOverState _gameOverState;
-        [SerializeField] private PauseState _pauseState;
+        _stateMachine = GetComponentInParent<PuzzleStateMachine>();
+        if(_stateMachine == null)
+            Debug.LogError($"{typeof(PlayingState)} must have a state machine to work properly.", this);
 
-        private PlayerController _player;
-        private CandleController _candle;
+        _player = FindObjectOfType<PlayerController>();
+        if(_player == null)
+            Debug.LogError($"{typeof(PlayingState)} must have a player controller to work properly.", this);
 
-        private void Awake() {
-            _stateMachine = GetComponentInParent<PuzzleStateMachine>();
-            if(_stateMachine == null)
-                Debug.LogError($"{typeof(PlayingState)} must have a state machine to work properly.", this);
+        _candle = FindObjectOfType<CandleController>();
+        if(_candle == null)
+            Debug.LogError($"{typeof(PlayingState)} must have a candle controller to work properly.", this);
+    }
 
-            _player = FindObjectOfType<PlayerController>();
-            if(_player == null)
-                Debug.LogError($"{typeof(PlayingState)} must have a player controller to work properly.", this);
+    public void StateEnter() 
+    {
+        _player.DisableMovement = false;
+        _candle.CandleStateFreeze = false;
+    }
 
-            _candle = FindObjectOfType<CandleController>();
-            if(_candle == null)
-                Debug.LogError($"{typeof(PlayingState)} must have a candle controller to work properly.", this);
+    public void StateUpdate() 
+    {
+        if (_candle.CurrentState <= 0)
+        {
+            _stateMachine.ChangeState(_gameOverState);
+            return;
         }
 
-        public void StateEnter() {
-            _player.enabled = true;
-        }
+        if (_player.IsPaused) { _pauseState.Data.ShouldBePaused = _player.IsPaused; }
 
-        public void StateUpdate() {
-            if(_candle.CurrentState <= 0) {
-                _stateMachine.ChangeState(_gameOverState);
-                return;
-            }
+        // Monitor game pause request
+        if(_pauseState.Data.ShouldBePaused) _stateMachine.ChangeState(_pauseState);
+    }
 
-            // Monitor game pause request
-            if(_pauseState.Data.ShouldBePaused) _stateMachine.ChangeState(_pauseState);
-        }
+    public void StateFixedUpdate() {}
 
-        public void StateFixedUpdate() {}
-
-        public void StateExit() {
-            _player.enabled = false;
-        }
+    public void StateExit() 
+    {
+        _player.DisableMovement = true;
+        _candle.CandleStateFreeze = true;
     }
 }
+

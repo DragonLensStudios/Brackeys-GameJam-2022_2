@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private string footstepsSfx;
 
-    private bool isRunning, isActivatePressed;
+    private bool isRunning, isActivatePressed, isPaused, disableMovement;
     private PlayerInput playerInput;
     private Vector2 movePosition;
     private Animator anim;
@@ -20,8 +20,10 @@ public class PlayerController : MonoBehaviour
 
     private CandleController candleController;
     private Coroutine footStepCoroutine;
-
-    public bool IsActivatePressed { get => isActivatePressed; set => isActivatePressed = value; }
+    public bool IsRunning { get => isRunning; }
+    public bool IsActivatePressed { get => isActivatePressed; }
+    public bool IsPaused { get => isPaused; }
+    public bool DisableMovement { get => disableMovement; set => disableMovement = value; }
     public CandleController CandleController { get => candleController; set => candleController = value; }
     public Animator Anim { get => anim; set => anim = value; }
 
@@ -36,8 +38,10 @@ public class PlayerController : MonoBehaviour
             playerInput.actions["Run"].canceled += OnRun;
             playerInput.actions["Activate"].performed += OnActivate;
             playerInput.actions["Activate"].canceled += OnActivate;
+            playerInput.actions["Pause"].performed += OnPause;
         }
     }
+
 
     private void OnDisable()
     {
@@ -51,6 +55,7 @@ public class PlayerController : MonoBehaviour
             playerInput.actions["Run"].canceled -= OnRun;
             playerInput.actions["Activate"].performed -= OnActivate;
             playerInput.actions["Activate"].canceled -= OnActivate;
+            playerInput.actions["Pause"].performed -= OnPause;
         }
     }
     private void Awake()
@@ -63,38 +68,46 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        currentSpeed = isRunning ? runSpeed : baseMoveSpeed;
-        transform.position += (Vector3)movePosition * Time.deltaTime * currentSpeed;
+        if (!disableMovement)
+        {
+            currentSpeed = isRunning ? runSpeed : baseMoveSpeed;
+            transform.position += (Vector3)movePosition * Time.deltaTime * currentSpeed;
+        }
     }
 
     private void OnMove(InputAction.CallbackContext input)
     {
-        movePosition = input.ReadValue<Vector2>();
-        anim.SetFloat("MoveX", movePosition.x);
-        anim.SetFloat("MoveY", movePosition.y);
-
-        if (movePosition != Vector2.zero)
+        if (!disableMovement)
         {
-            anim.SetBool("isMoving", true);
-            lastMove = movePosition;
-            anim.SetFloat("LastMoveX", lastMove.x);
-            anim.SetFloat("LastMoveY", lastMove.y);
-            if(footStepCoroutine != null)
+            movePosition = input.ReadValue<Vector2>();
+            anim.SetFloat("MoveX", movePosition.x);
+            anim.SetFloat("MoveY", movePosition.y);
+
+            if (movePosition != Vector2.zero)
             {
-                StopCoroutine(footStepCoroutine);
+                anim.SetBool("isMoving", true);
+                lastMove = movePosition;
+                anim.SetFloat("LastMoveX", lastMove.x);
+                anim.SetFloat("LastMoveY", lastMove.y);
+                if (footStepCoroutine != null)
+                {
+                    StopCoroutine(footStepCoroutine);
+                }
+                footStepCoroutine = StartCoroutine(FootStep(timeBetweenFootsteps));
             }
-            footStepCoroutine = StartCoroutine(FootStep(timeBetweenFootsteps));
+            else
+            {
+                anim.SetBool("isMoving", false);
+            }
         }
-        else
-        {
-            anim.SetBool("isMoving", false);
-        }
-
     }
 
     private void OnRun(InputAction.CallbackContext input)
     {
-        isRunning = input.ReadValueAsButton();
+        if (!disableMovement)
+        {
+            isRunning = input.ReadValueAsButton();
+        }
     }
 
     private void OnActivate(InputAction.CallbackContext input)
@@ -102,9 +115,14 @@ public class PlayerController : MonoBehaviour
         isActivatePressed = input.ReadValueAsButton();
     }
 
+    private void OnPause(InputAction.CallbackContext input)
+    {
+        isPaused = !isPaused;
+    }
+
     private IEnumerator FootStep(float timeBetwenStep)
     {
-        while (movePosition != Vector2.zero)
+        while (movePosition != Vector2.zero && !disableMovement)
         {
             if (!string.IsNullOrWhiteSpace(footstepsSfx))
             {

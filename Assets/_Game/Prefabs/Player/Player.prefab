@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 4744463610684636142}
   - component: {fileID: 4744463610684636144}
   - component: {fileID: 4744463610684636145}
+  - component: {fileID: 7767917163915874970}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -264,7 +265,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4744463610684636140
@@ -361,8 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ffc20a6b0f7e5469a19e86561c2d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 3
-  runSpeed: 7
+  baseMoveSpeed: 2.5
+  runSpeed: 5
   currentSpeed: 0
   timeBetweenFootsteps: 0.35
   footstepsSfx: Footsteps Dirt
@@ -423,3 +424,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &7767917163915874970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744463610684636139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: Flick
+  nameColor: {r: 1, g: 0.55868834, b: 0, a: 1}
+  soundEffect: {fileID: 0}
+  portraits: []
+  portraitsFace: 0
+  setSayDialog: {fileID: 0}
+  description: 

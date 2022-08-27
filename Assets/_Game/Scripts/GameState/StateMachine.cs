@@ -1,39 +1,39 @@
 ﻿using UnityEngine;
 
-namespace AdrianKovatana.Essentials.FiniteStateMachine
+public abstract class StateMachine : MonoBehaviour
 {
-	public abstract class StateMachine : MonoBehaviour
+	public IState CurrentState { get; private set; }
+
+	private bool _inTransition = false;
+
+	public void ChangeState(IState newState) 
 	{
-		public IState CurrentState { get; private set; }
+		if(CurrentState == newState || _inTransition) return;
 
-		private bool _inTransition = false;
+        _inTransition = true;
 
-		public void ChangeState(IState newState) {
-			if(CurrentState == newState || _inTransition) return;
+        if(CurrentState != null) CurrentState.StateExit();
 
-            _inTransition = true;
+        CurrentState = newState;
 
-            if(CurrentState != null) CurrentState.StateExit();
+        if(CurrentState != null) CurrentState.StateEnter();
 
-            CurrentState = newState;
+        _inTransition = false;
+    }
 
-            if(CurrentState != null) CurrentState.StateEnter();
+	private void Update() 
+	{
+		if(CurrentState == null) return;
+		if(_inTransition) return;
 
-            _inTransition = false;
-        }
+		CurrentState.StateUpdate();
+	}
 
-		private void Update() {
-			if(CurrentState == null) return;
-			if(_inTransition) return;
+	private void FixedUpdate() 
+	{
+        if(CurrentState == null) return;
+        if(_inTransition) return;
 
-			CurrentState.StateUpdate();
-		}
-
-		private void FixedUpdate() {
-            if(CurrentState == null) return;
-            if(_inTransition) return;
-
-			CurrentState.StateFixedUpdate();
-		}
+		CurrentState.StateFixedUpdate();
 	}
 }

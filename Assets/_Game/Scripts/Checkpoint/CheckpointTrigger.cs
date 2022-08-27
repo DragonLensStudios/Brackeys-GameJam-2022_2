@@ -29,7 +29,6 @@ public class CheckpointTrigger : MonoBehaviour
             pc = collision.GetComponent<PlayerController>();
             if (isActivated && candleController != null)
             {
-                candleController.CandleStateFreeze = true;
                 isSaved = false;
             }
         }
@@ -50,7 +49,9 @@ public class CheckpointTrigger : MonoBehaviour
     {
         if(pc == null || anim == null || candleController == null) return;
 
-        if(pc.IsActivatePressed) {
+        candleController.CandleStateFreeze = true;
+        if (pc.IsActivatePressed) 
+        {
             Activate();
 
             if(!isSaved) {

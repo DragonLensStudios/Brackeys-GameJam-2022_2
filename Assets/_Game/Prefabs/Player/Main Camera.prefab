@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5752555342323791919}
   - component: {fileID: 5752555342323791913}
   - component: {fileID: 5752555342323791912}
-  - component: {fileID: 5752555342323791914}
+  - component: {fileID: 752555342323791914}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Candle
@@ -351,7 +351,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -404654171, guid: d19e534cfc4d5304289df01d9d3e3b2a, type: 3}
+  m_Sprite: {fileID: 2083644150, guid: df917c9a00c92490793507987c826e5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2638577854c3a3f4fbba92910d2fb118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yellowMushroom: {fileID: -404654171, guid: d19e534cfc4d5304289df01d9d3e3b2a, type: 3}
-  redMushroom: {fileID: -547645560, guid: 43df84500c1872d46a2ce14f3a3a9222, type: 3}
-  purpleMushroom: {fileID: 886300069, guid: 83224d44779b947488b9d1e82c3c31dd, type: 3}
-  blueMushroom: {fileID: 1978440227, guid: 3d677a06cf3611f4e8fcbe521e35f7d7, type: 3}
+  yellowMushroom: {fileID: 2083644150, guid: df917c9a00c92490793507987c826e5a, type: 3}
+  redMushroom: {fileID: -1112254851, guid: 3ed3507258e3545fba5a91b2375071b4, type: 3}
+  purpleMushroom: {fileID: -1693897617, guid: 03ecd3ce22769483583e7a242f86fbbc, type: 3}
+  blueMushroom: {fileID: -1772165413, guid: 991276e5f8d194475a681c8f7c336e58, type: 3}
   remainingTime: 0

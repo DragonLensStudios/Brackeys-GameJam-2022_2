@@ -15,6 +15,7 @@ public class ColorPuzzleSwitch : MonoBehaviour
     [SerializeField]
     private float timeActivate;
 
+    private ColorPuzzleController puzzleController;
     private SpriteRenderer sr;
     private PlayerController pc;
     private Animator anim;
@@ -33,6 +34,7 @@ public class ColorPuzzleSwitch : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        puzzleController = GetComponentInParent<ColorPuzzleController>();
         sr.sprite = offSprite;
     }
 
@@ -116,7 +118,10 @@ public class ColorPuzzleSwitch : MonoBehaviour
                 if (pc.IsActivatePressed)
                 {
                     Activate(pc.CandleController.CurrentColor);
-                    EventManager.ColorSwitchActivate(switchName, pc.CandleController.CurrentColor);
+                    if(puzzleController != null)
+                    {
+                        EventManager.ColorSwitchActivate(puzzleController.Id, switchName, pc.CandleController.CurrentColor);
+                    }
                 }
             }
         }

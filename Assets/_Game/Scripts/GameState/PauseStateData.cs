@@ -1,14 +1,14 @@
 using UnityEngine;
 
-namespace DragonLens.BrackeysGameJam2022_2.GameStates
+//[CreateAssetMenu(menuName = "Game Jam/Pause State Data")]
+public class PauseStateData : ScriptableObject
 {
-    //[CreateAssetMenu(menuName = "Game Jam/Pause State Data")]
-    public class PauseStateData : ScriptableObject
-    {
-        public bool ShouldBePaused { get; set; }
+    [SerializeField]
+    private bool shouldBePaused;
+    public bool ShouldBePaused { get => shouldBePaused; set => shouldBePaused = value; }
 
-        private void OnEnable() {
-            ShouldBePaused = false;
-        }
+    private void OnEnable() {
+        shouldBePaused = false;
     }
 }
+

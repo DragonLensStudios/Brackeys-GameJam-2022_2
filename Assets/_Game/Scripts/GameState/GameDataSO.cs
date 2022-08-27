@@ -26,25 +26,29 @@ public class GameDataSO : ScriptableObject
 
     public bool LoadPuzzleData() {
         ColorPuzzleController[] puzzleControllers = FindObjectsOfType<ColorPuzzleController>();
-        if(puzzleControllers.Length == 0) {
+        if(puzzleControllers.Length == 0) 
+        {
             Debug.LogWarning("Load puzzle data failed! No puzzle controllers could be found in this scene.");
             return false;
         }
 
-        for (int j = 0; j < puzzleControllers.Length; j++) {
+        for (int j = 0; j < puzzleControllers.Length; j++) 
+        {
             ColorPuzzleController controller = puzzleControllers[j];
             PuzzleData puzzleData = _gameData.Puzzles.Find(x => x.PuzzleId == controller.Id);
-            if(puzzleData == null) {
+            if(puzzleData == null) 
+            {
                 Debug.LogWarning($"PuzzleController[{controller.Id}] save data not found! Skipping...", controller);
                 continue;
             }
             if(puzzleData.IsPuzzleComplete) {
-                for(var i = 0; i < puzzleData.Switches.Count; i++) {
+                for(var i = 0; i < puzzleData.Switches.Count; i++) 
+                {
                     ColorPuzzleSwitch puzzleSwitch = controller.Switches.Find(x => x.SwitchName == puzzleData.Switches[i]);
                     if(puzzleSwitch == null) continue;
                     controller.ActivatedSwitches.Add(puzzleSwitch);
                 }
-                controller.Activate();
+                controller.Activate(puzzleData.PuzzleId);
             }
         }
 
@@ -94,20 +98,26 @@ public class GameDataSO : ScriptableObject
     public void SavePuzzleData() {
         ColorPuzzleController[] colorPuzzleControllers = FindObjectsOfType<ColorPuzzleController>(true);
 
-        for(int j = 0; j < colorPuzzleControllers.Length; j++) {
+        for(int j = 0; j < colorPuzzleControllers.Length; j++) 
+        {
             ColorPuzzleController colorPuzzleController = colorPuzzleControllers[j];
             PuzzleData puzzleData = _gameData.Puzzles.Find(x => x.PuzzleId == colorPuzzleController.Id);
-            if(puzzleData == null) {
+            if(puzzleData == null) 
+            {
                 //Add new entry
                 _gameData.Puzzles.Add(new PuzzleData(colorPuzzleController.Id, colorPuzzleController.IsPuzzleComplete));
-                for(var i = 0; i < colorPuzzleController.ActivatedSwitches.Count; i++) {
+                for(var i = 0; i < colorPuzzleController.ActivatedSwitches.Count; i++) 
+                {
                     puzzleData.Switches.Add(colorPuzzleController.ActivatedSwitches[i].SwitchName);
                 }
-            } else {
+            } 
+            else 
+            {
                 //Overwrite entry
                 puzzleData.Switches.Clear();
                 puzzleData.IsPuzzleComplete = colorPuzzleController.IsPuzzleComplete;
-                for(var i = 0; i < colorPuzzleController.ActivatedSwitches.Count; i++) {
+                for(var i = 0; i < colorPuzzleController.ActivatedSwitches.Count; i++) 
+                {
                     puzzleData.Switches.Add(colorPuzzleController.ActivatedSwitches[i].SwitchName);
                 }
             }

@@ -1,8 +1,6 @@
-namespace DragonLens.BrackeysGameJam2022_2.GameStates
+public interface IPauseable
 {
-    public interface IPauseable
-    {
-        void OnGamePaused();
-        void OnGameUnpaused();
-    }
+    void OnGamePaused();
+    void OnGameUnpaused();
 }
+
