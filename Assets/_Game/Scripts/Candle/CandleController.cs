@@ -62,19 +62,7 @@ public class CandleController : MonoBehaviour
 
     private void Update()
     {
-<<<<<<< HEAD
-<<<<<<< feature/player-animations
-<<<<<<< feature/player-animations
         if (!candleStateFreeze && isCandleLit)
-=======
-        if (!candleStateFreeze)
->>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
-=======
-        if (!candleStateFreeze && isCandleLit)
->>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
-=======
-        if (!candleStateFreeze && isCandleLit)
->>>>>>> develop
         {
             //Countdown Time
             if (timeSeconds < _candleData.DivisibleFactor && CurrentState > 0)
@@ -90,18 +78,7 @@ public class CandleController : MonoBehaviour
             }
             else if (CurrentState <= 0)
             {
-<<<<<<< HEAD
-<<<<<<< feature/player-animations
-<<<<<<< feature/player-animations
                 EventManager.CandleOut();
-=======
->>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
-=======
-                EventManager.CandleOut();
->>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
-=======
-                EventManager.CandleOut();
->>>>>>> develop
                 Debug.Log("Melted");
             }
         }
