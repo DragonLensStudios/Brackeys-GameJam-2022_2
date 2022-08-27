@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 4036355874024187646}
-  secondsForLoadingScreen: 0
+  secondsForLoadingScreen: 5
 --- !u!61 &1275571637603058541
 BoxCollider2D:
   m_ObjectHideFlags: 0

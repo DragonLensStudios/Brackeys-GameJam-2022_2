@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Canvas))]
 [DisallowMultipleComponent]
@@ -102,5 +103,10 @@ public class MenuController : MonoBehaviour
     public void OpenURL(string url)
     {
         Application.OpenURL(url);
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName);
     }
 }
