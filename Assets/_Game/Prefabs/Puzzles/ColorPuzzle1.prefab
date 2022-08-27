@@ -52,16 +52,8 @@ MonoBehaviour:
   isPuzzleComplete: 0
   isOrderRequired: 0
   switchesOrderRequired: []
-<<<<<<< feature/player-animations
-<<<<<<< feature/player-animations
   puzzleCompleteSfx: Puzzle Complete
   puzzleFailedSfx: Puzzle Fail
-=======
->>>>>>> Added Tutorial Level Puzzle Added SaveData for checkpoints Added Lantern
-=======
-  puzzleCompleteSfx: Puzzle Complete
-  puzzleFailedSfx: Puzzle Fail
->>>>>>> Added SFX/BGM, Edited scripts to play SFX/BGM accordingly
   activatedSwitchesCallback:
     m_PersistentCalls:
       m_Calls: []
