@@ -1,0 +1,3 @@
+Title:Description:IsComplete
+Level Up!:Complete the first level:False
+You're aMAZEing!:Complete the first maze:True
