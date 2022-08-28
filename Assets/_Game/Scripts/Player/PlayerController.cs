@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class PlayerController : MonoBehaviour
     private float baseMoveSpeed, runSpeed, currentSpeed, timeBetweenFootsteps;
 
     [SerializeField]
+    private Light2D[] candleLights;
+
+    [SerializeField]
     private string footstepsSfx;
 
-    private bool isRunning, isActivatePressed, isPaused, disableMovement;
+    private bool isRunning, isActivatePressed, isPaused, disableMovement, isCandleOut;
     private PlayerInput playerInput;
     private Vector2 movePosition;
     private Animator anim;
@@ -26,10 +30,17 @@ public class PlayerController : MonoBehaviour
     public bool DisableMovement { get => disableMovement; set => disableMovement = value; }
     public CandleController CandleController { get => candleController; set => candleController = value; }
     public Animator Anim { get => anim; set => anim = value; }
+    public bool IsRunning1 { get => isRunning; set => isRunning = value; }
+    public bool IsActivatePressed1 { get => isActivatePressed; set => isActivatePressed = value; }
+    public bool IsPaused1 { get => isPaused; set => isPaused = value; }
+    public bool DisableMovement1 { get => disableMovement; set => disableMovement = value; }
+    public bool IsCandleOut { get => isCandleOut; set => isCandleOut = value; }
 
     private void OnEnable()
     {
         EventManager.onCandleColorChanged += EventManager_onCandleColorChanged;
+        EventManager.onCandleOut += EventManager_onCandleOut;
+        EventManager.onCandleReset += EventManager_onCandleReset;
         if(playerInput != null)
         {
             playerInput.actions["Move"].performed += OnMove;
@@ -43,9 +54,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
     private void OnDisable()
     {
         EventManager.onCandleColorChanged -= EventManager_onCandleColorChanged;
+        EventManager.onCandleOut -= EventManager_onCandleOut;
+        EventManager.onCandleReset -= EventManager_onCandleReset;
 
         if (playerInput != null)
         {
@@ -64,6 +78,7 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         candleController = GameObject.FindGameObjectWithTag("Candle").GetComponent<CandleController>();
         anim.SetBool("Yellow", true);
+        candleLights = GetComponentsInChildren<Light2D>();
     }
 
     private void Update()
@@ -159,6 +174,29 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("Purple", false);
                 anim.SetBool("Blue", true);
                 break;
+        }
+    }
+    private void EventManager_onCandleOut()
+    {
+        isCandleOut = true;
+        for (int i = 0; i < candleLights.Length; i++)
+        {
+            if (candleLights[i] != null)
+            {
+                candleLights[i].enabled = false;
+            }
+        }
+    }
+
+    private void EventManager_onCandleReset()
+    {
+        isCandleOut = false;
+        for (int i = 0; i < candleLights.Length; i++)
+        {
+            if (candleLights[i] != null)
+            {
+                candleLights[i].enabled = true;
+            }
         }
     }
 }

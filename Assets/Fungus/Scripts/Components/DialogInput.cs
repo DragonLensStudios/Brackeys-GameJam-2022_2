@@ -98,7 +98,7 @@ namespace Fungus
                 case ClickMode.Disabled:
                     break;
                 case ClickMode.ClickAnywhere:
-                    if ((Keyboard.current.anyKey.wasPressedThisFrame || Gamepad.current.aButton.wasPressedThisFrame))
+                    if (Keyboard.current.anyKey.wasPressedThisFrame || Gamepad.current.aButton.wasPressedThisFrame)
                     {
                         SetNextLineFlag();
                     }

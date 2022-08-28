@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.Rendering.Universal;
 
 public class ColorPuzzleSwitch : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class ColorPuzzleSwitch : MonoBehaviour
     private bool isEnabled, isActivated;
     [SerializeField]
     private float timeActivate;
+    [SerializeField]
+    private Light2D light;
 
     private ColorPuzzleController puzzleController;
     private SpriteRenderer sr;
@@ -36,6 +39,7 @@ public class ColorPuzzleSwitch : MonoBehaviour
         anim = GetComponent<Animator>();
         puzzleController = GetComponentInParent<ColorPuzzleController>();
         sr.sprite = offSprite;
+        light = GetComponent<Light2D>();
     }
 
     public void Activate(CandleColor color)
@@ -43,6 +47,10 @@ public class ColorPuzzleSwitch : MonoBehaviour
         if (candleColor == color)
         {
             isActivated = true;
+            if(light != null)
+            {
+                light.enabled = true;
+            }
             if (sr != null)
             {
                 sr.sprite = onSprite;
@@ -60,6 +68,10 @@ public class ColorPuzzleSwitch : MonoBehaviour
         if(candleColor == color)
         {
             IsActivated = false;
+            if(light != null)
+            {
+                light.enabled = false;
+            }
             if (sr != null)
             {
                 sr.sprite = offSprite;
