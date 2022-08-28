@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playingState: {fileID: 9148329050147522441}
-  _animationDuration: 1
+  _gameDataToLoad: {fileID: 0}
 --- !u!114 &9148329050147522441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverState: {fileID: 9148329050147522442}
   _pauseState: {fileID: 9148329050147522453}
-  _candleDuration: 6.9
+  Data: {fileID: 11400000, guid: 89f89dd112f06fd4eacff08282324489, type: 2}
 --- !u!114 &9148329050147522453
 MonoBehaviour:
   m_ObjectHideFlags: 0

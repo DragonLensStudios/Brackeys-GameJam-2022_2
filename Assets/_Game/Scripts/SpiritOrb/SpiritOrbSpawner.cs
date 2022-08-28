@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class SpiritOrbSpawner : MonoBehaviour
+public class SpiritOrbSpawner : MonoBehaviour, IPauseable
 {
     [SerializeField]
     private SpiritOrb _orbPrefab;
@@ -19,6 +19,8 @@ public class SpiritOrbSpawner : MonoBehaviour
     private int _maxCapacity = 100;
 
     private ObjectPool<SpiritOrb> _orbPool;
+    private float _currentCooldown = 0f;
+    private bool _isPaused = false;
 
     private void Awake() {
         SetupObjectPool();
@@ -36,6 +38,9 @@ public class SpiritOrbSpawner : MonoBehaviour
         }, false, _minCapacity, _maxCapacity);
     }
 
+    /// <summary>
+    /// Spawns a single orb with a random start/target position within the spawn radius.
+    /// </summary>
     public void SpawnOrb() {
         SpiritOrb orb = GetOrbFromPool();
         orb.OnDespawn += ReturnOrbToPool;
@@ -50,13 +55,42 @@ public class SpiritOrbSpawner : MonoBehaviour
         orb.Spawn(startPosition, targetPosition);
     }
 
-    public SpiritOrb GetOrbFromPool() {
+    /// <summary>
+    /// Uses a cooldown timer to decide if it should spawn orbs or not.
+    /// </summary>
+    /// <param name="spawnAmount">The amount you want to spawn.</param>
+    /// <param name="cooldown">Seconds. How long should the cooldown be to spawn the next wave?</param>
+    public void TrySpawnOrbsWithCooldown(int spawnAmount, float cooldown) {
+        if(_currentCooldown > 0f) return;
+
+        for(var i = 0; i < spawnAmount; i++) {
+            SpawnOrb();
+        }
+
+        _currentCooldown = cooldown;
+    }
+
+    private void Update() {
+        if(_isPaused) return;
+        if(_currentCooldown <= 0f) return;
+
+        _currentCooldown -= Time.deltaTime;
+    }
+
+    private SpiritOrb GetOrbFromPool() {
         return _orbPool.Get();
     }
 
-    public void ReturnOrbToPool(SpiritOrb orb) {
+    private void ReturnOrbToPool(SpiritOrb orb) {
         orb.OnDespawn -= ReturnOrbToPool;
         _orbPool.Release(orb);
+    }
+    public void OnGamePaused() {
+        _isPaused = true;
+    }
+
+    public void OnGameUnpaused() {
+        _isPaused = false;
     }
 
 #if UNITY_EDITOR
