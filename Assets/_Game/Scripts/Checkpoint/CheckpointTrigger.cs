@@ -69,7 +69,7 @@ public class CheckpointTrigger : MonoBehaviour
             isActivated = true;
             anim.SetTrigger("Activate");
             anim.SetBool("IsOn", true);
-            candleController.Reset();
+            EventManager.CandleReset();
             candleController.CandleStateFreeze = true;
         }
     }

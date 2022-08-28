@@ -53,7 +53,7 @@ public class PlayingState : MonoBehaviour, IState
             return;
         }
 
-        if(_candle.CurrentState <= 0) {
+        if(_player.IsCandleOut) {
             _orbSpawner.transform.position = _player.transform.position;
             _orbSpawner.TrySpawnOrbsWithCooldown();
         }

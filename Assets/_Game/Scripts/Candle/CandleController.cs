@@ -40,12 +40,14 @@ public class CandleController : MonoBehaviour
     {
         EventManager.onCandleColorChanged += EventManager_onCandleColorChanged;
         EventManager.onCandleOut += EventManager_onCandleOut;
+        EventManager.onCandleReset += EventManager_onCandleReset;
     }
 
     private void OnDisable()
     {
         EventManager.onCandleColorChanged -= EventManager_onCandleColorChanged;
         EventManager.onCandleOut -= EventManager_onCandleOut;
+        EventManager.onCandleReset -= EventManager_onCandleReset;
     }
 
     private void Awake()
@@ -62,7 +64,7 @@ public class CandleController : MonoBehaviour
 
     private void Start()
     {
-        Reset();
+        EventManager.CandleReset();
     }
 
     private void Update()
@@ -118,23 +120,6 @@ public class CandleController : MonoBehaviour
         }
     }
 
-    public void Reset()
-    {
-        StopAllCoroutines();
-        candleChanges.Clear();
-        isCandleLit = true;
-        CurrentState = _candleData.MaxStateIndex;
-        CurrentColor = _candleData.Color;
-        anim.SetTrigger("Refill");
-        anim.SetInteger("Candlestate", CurrentState);
-        anim.SetBool("Yellow", true);
-        timeSeconds = 0;
-        if (!string.IsNullOrWhiteSpace(refillSfx))
-        {
-            AudioManager.instance.PlaySound(refillSfx);
-        }
-    }
-
     private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
     {
         switch (color)
@@ -177,6 +162,23 @@ public class CandleController : MonoBehaviour
         if (!string.IsNullOrWhiteSpace(candleOutSfx))
         {
             AudioManager.instance.PlaySound(candleOutSfx);
+        }
+    }
+
+    private void EventManager_onCandleReset()
+    {
+        StopAllCoroutines();
+        candleChanges.Clear();
+        isCandleLit = true;
+        CurrentState = _candleData.MaxStateIndex;
+        CurrentColor = _candleData.Color;
+        anim.SetTrigger("Refill");
+        anim.SetInteger("Candlestate", CurrentState);
+        anim.SetBool("Yellow", true);
+        timeSeconds = 0;
+        if (!string.IsNullOrWhiteSpace(refillSfx))
+        {
+            AudioManager.instance.PlaySound(refillSfx);
         }
     }
 }

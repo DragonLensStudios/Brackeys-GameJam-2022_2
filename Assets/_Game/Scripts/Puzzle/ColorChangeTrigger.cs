@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ColorChangeTrigger : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class ColorChangeTrigger : MonoBehaviour
     private Sprite offSprite, onSprite;
     [SerializeField]
     private string activateSfx;
+    [SerializeField]
+    private Light2D light;
 
-    private bool isAbleToActivate;
     private PlayerController pc;
     private SpriteRenderer sr;
 
@@ -21,7 +23,7 @@ public class ColorChangeTrigger : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = offSprite;
-        isAbleToActivate = true;
+        light = GetComponent<Light2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,7 +46,7 @@ public class ColorChangeTrigger : MonoBehaviour
     {
         if (pc != null)
         {
-            if (pc.IsActivatePressed && isAbleToActivate)
+            if (pc.IsActivatePressed)
             {
                 Activate(color, timeToLast);
             }
@@ -56,7 +58,10 @@ public class ColorChangeTrigger : MonoBehaviour
         if(pc != null)
         {
             sr.sprite = onSprite;
-            isAbleToActivate = false;
+            if(light != null)
+            {
+                light.enabled = true;
+            }
             if (!string.IsNullOrEmpty(activateSfx))
             {
                 AudioManager.instance.PlaySound(activateSfx);
@@ -70,6 +75,9 @@ public class ColorChangeTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToLast);
         sr.sprite = offSprite;
-        isAbleToActivate = true;
+        if(light != null)
+        {
+            light.enabled = false;
+        }
     }
 }

@@ -8,6 +8,7 @@ public class EventManager : MonoBehaviour
     public static event Action<string,string, CandleColor> onCandleColorSwitchActivate;
     public static event Action<CandleColor, float> onCandleColorChanged;
     public static event Action onCandleOut;
+    public static event Action onCandleReset;
 
     /// <summary>
     /// This method invokes the event <see cref="onCandleColorSwitchActivate"/>
@@ -25,4 +26,9 @@ public class EventManager : MonoBehaviour
     /// This method invokes the event <see cref="onCandleOut"/>
     /// </summary>
     public static void CandleOut() { onCandleOut?.Invoke(); }
+
+    /// <summary>
+    /// This method invokes the event <see cref="onCandleReset"/>
+    /// </summary>
+    public static void CandleReset() { onCandleReset?.Invoke(); }
 }

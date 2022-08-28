@@ -13,14 +13,16 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
     private ObjectPool<SpiritOrb> _orbPool;
     private float _currentCooldown = 0f;
     private bool _isPaused = false;
+    private GameObject _rootGO;
 
     private void Awake() {
         SetupObjectPool();
+        _rootGO = new GameObject("FOX ORB");
     }
 
     private void SetupObjectPool() {
         _orbPool = new(() => {
-            return Instantiate(_orbPrefab, transform);
+            return Instantiate(_orbPrefab, _rootGO.transform);
         }, orb => {
             orb.gameObject.SetActive(true);
         }, orb => {
@@ -41,8 +43,8 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
         float randomAngleRads = Random.Range(0f, Mathf.PI * 2);
         float startX = Mathf.Cos(randomAngleRads) * randomRadius;
         float startY = Mathf.Sin(randomAngleRads) * randomRadius;
-        Vector2 startPosition = new Vector2(startX, startY);
-        Vector2 targetPosition = Random.insideUnitCircle * _spawnerData.TargetRadius;
+        Vector2 startPosition = new Vector2(startX, startY) + (Vector2)transform.position;
+        Vector2 targetPosition = Random.insideUnitCircle * _spawnerData.TargetRadius + (Vector2)transform.position;
 
         orb.Spawn(startPosition, targetPosition);
     }
