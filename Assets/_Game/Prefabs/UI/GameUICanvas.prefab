@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExitOnNewPagePush: 0
   firstFocusItem: {fileID: 8015662657327299641}
-  AnimationSpeed: 1
+  AnimationSpeed: 5
   EntrySfx: Fox Screech
   ExitSfx: 
   EntryMode: 2

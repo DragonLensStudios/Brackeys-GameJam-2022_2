@@ -127,6 +127,7 @@ public class CandleController : MonoBehaviour
         CurrentColor = _candleData.Color;
         anim.SetTrigger("Refill");
         anim.SetInteger("Candlestate", CurrentState);
+        anim.SetBool("Yellow", true);
         timeSeconds = 0;
         if (!string.IsNullOrWhiteSpace(refillSfx))
         {
