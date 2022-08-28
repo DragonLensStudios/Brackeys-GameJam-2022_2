@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4be08762e8c6c46865124d5e83e439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flickerLightMaxRadius: 8.5
-  flickerLightMinRadius: 3
+  flickerLightMaxRadius: 5
+  flickerLightMinRadius: 2.5
   radiusIncrementPerUpdate: 0.05
   intensityIncrementPerUpdate: 0.005
   framesPerLightUpdate: 4

@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.05
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -5610,6 +5610,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cc2836616989dd4b85ba6aa5ddeb077, type: 3}
+--- !u!1001 &1120463170
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5869893064832991959, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_Name
+      value: Achievement Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: AchievementList.Array.data[0].Key
+      value: CompleteTutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: AchievementList.Array.data[0].Description
+      value: You completed the tutorial!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: AchievementList.Array.data[0].DisplayName
+      value: Complete Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: AchievementList.Array.data[0].Progression
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: AchievementList.Array.data[0].ProgressGoal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991960, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: AchievementList.Array.data[0].NotificationFrequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 522
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 222.45755
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.520151
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
 --- !u!1001 &1128069663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5938,6 +6019,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1741968921203254572, guid: 2cc2836616989dd4b85ba6aa5ddeb077, type: 3}
   m_PrefabInstance: {fileID: 1802332085}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1217736025
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843789, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843791, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_Name
+      value: OrbSpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
 --- !u!1001 &1227759063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12256,7 +12394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 232, y: 183}
+  scrollPos: {x: 395.5, y: 227.5}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -12270,7 +12408,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1964933310}
   selectedCommands:
-  - {fileID: 1964933316}
+  - {fileID: 1964933309}
   variables: []
   description: 
   stepPause: 0
@@ -12296,8 +12434,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 4
   indentLevel: 0
-  storyText: The light you hold may prevent me from reaching you now but for how
-    long will be able to hold out?
+  storyText: The light you hold may prevent me from reaching you. How long will be
+    able to hold out?
   description: 
   character: {fileID: 1187892300}
   portrait: {fileID: 0}
@@ -12385,7 +12523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 2
   indentLevel: 0
-  storyText: Tisk Tisk Tisk, Wandering my forest at dusk your careless mistake will
+  storyText: Tsk Tsk Tsk. Wandering my forest at dusk? Your careless mistake will
     cost you dearly.
   description: 
   character: {fileID: 1187892300}
@@ -12413,8 +12551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   indentLevel: 0
-  storyText: I shouldn't have wandered so far i'm lost and sun has already gone down.
-    I've heard rumors that once the sun has set no one can escape this forest.
+  storyText: I shouldn't have wandered so far. I'm lost and sun has already gone
+    down. I've heard rumors that once the sun has set no one can escape this forest.
   description: 
   character: {fileID: 758048874}
   portrait: {fileID: 0}
@@ -12459,7 +12597,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1964933316
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12515,7 +12653,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &1964933317
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12571,7 +12709,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &1964933318
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12627,7 +12765,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &1964933319
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

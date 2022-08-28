@@ -1502,6 +1502,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d51fcc2193b8ab4f91b585e31698c06, type: 3}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[0].name
+      value: Main Menu BGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 20986cb99035d7a459b7d42128700773, type: 3}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[1].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[1].name
+      value: Intense BGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0b682c0d38320ad4e9da3ed6efea3520, type: 3}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[2].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[2].name
+      value: ForestBGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680731, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: music.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881018219773680732, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
+      propertyPath: musicList.Array.data[0]
+      value: Main Menu BGM
+      objectReference: {fileID: 0}
     - target: {fileID: 4881018219773680733, guid: 53772dcd0f7f3f74fb469cfac3c81cf0, type: 3}
       propertyPath: m_Name
       value: AudioManager

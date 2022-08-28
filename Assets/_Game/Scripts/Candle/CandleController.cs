@@ -12,7 +12,7 @@ public class CandleController : MonoBehaviour
     [SerializeField]
     private bool candleStateFreeze;
     [SerializeField]
-    private string refillSfx, candleOutSfx;
+    private string refillSfx, candleOutSfx, foxBgm, levelBGM;
 
     private bool isCandleLit = true;
     private Animator anim;
@@ -163,6 +163,14 @@ public class CandleController : MonoBehaviour
         {
             AudioManager.instance.PlaySound(candleOutSfx);
         }
+        if (!string.IsNullOrWhiteSpace(foxBgm))
+        {
+            if (foxBgm != AudioManager.instance.CurrentlyPlayingMusic)
+            {
+                AudioManager.instance.StopMusic(AudioManager.instance.CurrentlyPlayingMusic);
+                AudioManager.instance.PlayMusic(foxBgm);
+            }
+        }
     }
 
     private void EventManager_onCandleReset()
@@ -179,6 +187,14 @@ public class CandleController : MonoBehaviour
         if (!string.IsNullOrWhiteSpace(refillSfx))
         {
             AudioManager.instance.PlaySound(refillSfx);
+        }
+        if (!string.IsNullOrWhiteSpace(levelBGM))
+        {
+            if (levelBGM != AudioManager.instance.CurrentlyPlayingMusic)
+            {
+                AudioManager.instance.StopMusic(AudioManager.instance.CurrentlyPlayingMusic);
+                AudioManager.instance.PlayMusic(levelBGM);
+            }
         }
     }
 }

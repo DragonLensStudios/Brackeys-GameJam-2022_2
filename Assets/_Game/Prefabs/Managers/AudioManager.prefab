@@ -48,8 +48,22 @@ MonoBehaviour:
   volumeThreshold: -80
   mixer: {fileID: 24100000, guid: bc3bf5ce1089b2148b0677fb8ce74516, type: 2}
   music:
-  - name: ForestBGM
+  - name: Main Menu BGM
+    clip: {fileID: 8300000, guid: 7d51fcc2193b8ab4f91b585e31698c06, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 1
+  - name: Forest BGM
     clip: {fileID: 8300000, guid: 0b682c0d38320ad4e9da3ed6efea3520, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 1
+  - name: Intense BGM
+    clip: {fileID: 8300000, guid: 20986cb99035d7a459b7d42128700773, type: 3}
     volume: 1
     pitch: 1
     randomVolume: 0
@@ -160,8 +174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicList:
-  - ForestBGM
-  - ForestBGM
-  - ForestBGM
-  - ForestBGM
-  - ForestBGM
+  - Main Menu BGM
+  - Forest BGM
+  - Forest BGM
+  - Forest BGM
+  - Forest BGM
+  - Main Menu BGM

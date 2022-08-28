@@ -64,6 +64,10 @@ public class ColorPuzzleController : MonoBehaviour
     {
         if(puzzleId == id)
         {
+            if(id == "ColorPuzzleTutorial")
+            {
+                AchievementManager.instance.AddAchievementProgress("CompleteTutorial", 1);
+            }
             isPuzzleComplete = true;
             activatedSwitches.ForEach(x => x.Sr.enabled = true);
             activatedSwitches.ForEach(x => x.Activate(x.CandleColor));
