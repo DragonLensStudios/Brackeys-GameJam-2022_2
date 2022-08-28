@@ -1,4 +1,3 @@
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace DragonLens.BrackeysGameJam2022_2.Candles

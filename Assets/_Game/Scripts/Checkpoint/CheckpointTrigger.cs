@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CheckpointTrigger : MonoBehaviour
 {
     [SerializeField] private string id;
     [SerializeField] private GameDataSO _gameData;
+    [SerializeField] private Light2D light;
 
     private CandleController candleController;
     private PlayerController pc;
@@ -20,6 +22,7 @@ public class CheckpointTrigger : MonoBehaviour
     {
         candleController = GameObject.FindGameObjectWithTag("Candle").GetComponent<CandleController>();
         anim = GetComponent<Animator>();
+        light = GetComponent<Light2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -67,6 +70,10 @@ public class CheckpointTrigger : MonoBehaviour
         if (anim != null && candleController != null)
         {
             isActivated = true;
+            if(light != null)
+            {
+                light.enabled = true;
+            }
             anim.SetTrigger("Activate");
             anim.SetBool("IsOn", true);
             EventManager.CandleReset();
@@ -79,6 +86,10 @@ public class CheckpointTrigger : MonoBehaviour
         if (anim != null && candleController != null)
         {
             anim.SetBool("IsOn", false);
+            if(light != null)
+            {
+                light.enabled = false;
+            }
             candleController.CandleStateFreeze = false;
         }
     }

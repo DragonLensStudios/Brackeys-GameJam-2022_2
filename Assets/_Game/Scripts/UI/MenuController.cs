@@ -114,4 +114,9 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
