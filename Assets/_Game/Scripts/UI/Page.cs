@@ -48,6 +48,8 @@ public class Page : MonoBehaviour
         }
         if (firstFocusItem != null)
         {
+            //Not sure if needed but it's not always working correctly to set focused item for event system.
+            EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(firstFocusItem);
         }
         PrePushAction?.Invoke();
