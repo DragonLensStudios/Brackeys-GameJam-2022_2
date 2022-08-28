@@ -45,8 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _orbPrefab: {fileID: 769118814754728354, guid: 02ac390698504874f8cdfdd9e734d92e, type: 3}
-  _spawnRadius: 5
-  _deadzoneRadius: 1
-  _canSpawn: 1
-  _minCapacity: 10
+  _spawnerData: {fileID: 11400000, guid: f511158dea3ba5343bf9c21da63684f0, type: 2}
   _maxCapacity: 100

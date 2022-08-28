@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class PlayingState : MonoBehaviour, IState
@@ -7,6 +6,7 @@ public class PlayingState : MonoBehaviour, IState
     [SerializeField] private GameOverState _gameOverState;
     [SerializeField] private PauseState _pauseState;
     public PlayingStateData Data;
+    public SpiritOrbSpawnerData OrbSpawnerData;
 
     private PlayerController _player;
     private CandleController _candle;
@@ -55,7 +55,7 @@ public class PlayingState : MonoBehaviour, IState
 
         if(_candle.CurrentState <= 0) {
             _orbSpawner.transform.position = _player.transform.position;
-            _orbSpawner.TrySpawnOrbsWithCooldown(10, 5f);
+            _orbSpawner.TrySpawnOrbsWithCooldown();
         }
     }
 

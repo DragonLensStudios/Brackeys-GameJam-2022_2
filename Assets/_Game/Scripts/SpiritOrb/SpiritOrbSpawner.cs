@@ -5,16 +5,8 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
 {
     [SerializeField]
     private SpiritOrb _orbPrefab;
-
-    [Header("Spawn Settings")]
-    [SerializeField, Min(1f), Tooltip("Spawn within this circle.")]
-    private float _spawnRadius;
-    [SerializeField, Min(0f), Tooltip("DO NOT spawn within this circle.")]
-    private float _deadzoneRadius;
-
-    [Header("Object Pool")]
-    [SerializeField, Tooltip("Starting pool size.")]
-    private int _minCapacity = 10;
+    [SerializeField]
+    private SpiritOrbSpawnerData _spawnerData;
     [SerializeField, Tooltip("Max pool size.")]
     private int _maxCapacity = 100;
 
@@ -35,7 +27,7 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
             orb.gameObject.SetActive(false);
         }, orb => {
             Destroy(orb.gameObject);
-        }, false, _minCapacity, _maxCapacity);
+        }, false, _spawnerData.AmountToSpawn, _maxCapacity);
     }
 
     /// <summary>
@@ -45,12 +37,12 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
         SpiritOrb orb = GetOrbFromPool();
         orb.OnDespawn += ReturnOrbToPool;
 
-        Vector2 startPosition = Random.insideUnitCircle * _spawnRadius;
-        if(startPosition.magnitude < _deadzoneRadius) {
-            float scalar = _deadzoneRadius / (_deadzoneRadius - startPosition.magnitude);
-            startPosition *= scalar;
-        }
-        Vector2 targetPosition = Random.insideUnitCircle * _spawnRadius;
+        float randomRadius = Random.Range(_spawnerData.DeadzoneRadius, _spawnerData.SpawnRadius);
+        float randomAngleRads = Random.Range(0f, Mathf.PI * 2);
+        float startX = Mathf.Cos(randomAngleRads) * randomRadius;
+        float startY = Mathf.Sin(randomAngleRads) * randomRadius;
+        Vector2 startPosition = new Vector2(startX, startY);
+        Vector2 targetPosition = Random.insideUnitCircle * _spawnerData.TargetRadius;
 
         orb.Spawn(startPosition, targetPosition);
     }
@@ -58,16 +50,14 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
     /// <summary>
     /// Uses a cooldown timer to decide if it should spawn orbs or not.
     /// </summary>
-    /// <param name="spawnAmount">The amount you want to spawn.</param>
-    /// <param name="cooldown">Seconds. How long should the cooldown be to spawn the next wave?</param>
-    public void TrySpawnOrbsWithCooldown(int spawnAmount, float cooldown) {
+    public void TrySpawnOrbsWithCooldown() {
         if(_currentCooldown > 0f) return;
 
-        for(var i = 0; i < spawnAmount; i++) {
+        for(var i = 0; i < _spawnerData.AmountToSpawn; i++) {
             SpawnOrb();
         }
 
-        _currentCooldown = cooldown;
+        _currentCooldown = _spawnerData.CooldownBetweenSpawns;
     }
 
     private void Update() {
@@ -94,12 +84,21 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
     }
 
 #if UNITY_EDITOR
-    private void OnDrawGizmosSelected() {
+    [Header("Editor Only")]
+    [SerializeField]
+    private bool _drawGizmos = true;
+
+    private void OnDrawGizmos() {
+        if(_spawnerData == null || !_drawGizmos) return;
+
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, _spawnRadius);
+        Gizmos.DrawWireSphere(transform.position, _spawnerData.SpawnRadius);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _deadzoneRadius);
+        Gizmos.DrawWireSphere(transform.position, _spawnerData.DeadzoneRadius);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, _spawnerData.TargetRadius);
     }
 #endif
 }
