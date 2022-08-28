@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private Coroutine footStepCoroutine;
     public bool IsRunning { get => isRunning; }
     public bool IsActivatePressed { get => isActivatePressed; }
-    public bool IsPaused { get => isPaused; }
+    public bool IsPaused { get => isPaused; set => isPaused = value; }
     public bool DisableMovement { get => disableMovement; set => disableMovement = value; }
     public CandleController CandleController { get => candleController; set => candleController = value; }
     public Animator Anim { get => anim; set => anim = value; }
