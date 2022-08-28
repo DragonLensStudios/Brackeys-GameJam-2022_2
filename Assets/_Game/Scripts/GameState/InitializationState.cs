@@ -20,6 +20,7 @@ public class InitializationState : MonoBehaviour, IState
 
     public void StateEnter() 
     {
+        _playingState.Data.ShouldBeGameOver = false;
         if(_gameDataToLoad != null) {
             _gameDataToLoad.LoadGameData();
         }

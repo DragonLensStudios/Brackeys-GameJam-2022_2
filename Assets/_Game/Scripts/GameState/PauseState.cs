@@ -21,11 +21,13 @@ public class PauseState : MonoBehaviour, IState
         if (_player == null)
             Debug.LogError($"{typeof(PlayingState)} must have a player controller to work properly.", this);
 
-        RegisterListeners();
+        _listeners = new();
     }
 
     public void StateEnter() 
     {
+        RegisterListeners();
+
         // Notify listeners
         foreach(IPauseable listener in _listeners) {
             listener.OnGamePaused();
@@ -47,11 +49,11 @@ public class PauseState : MonoBehaviour, IState
         foreach(IPauseable listener in _listeners) {
             listener.OnGameUnpaused();
         }
+        _listeners.Clear();
     }
 
     public void RegisterListeners() 
     {
-        _listeners = new();
         var listeners = Resources.FindObjectsOfTypeAll<MonoBehaviour>().OfType<IPauseable>();
         foreach(var listener in listeners) {
             _listeners.Add(listener);

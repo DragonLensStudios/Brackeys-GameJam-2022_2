@@ -5,9 +5,12 @@ public class PlayingState : MonoBehaviour, IState
     private PuzzleStateMachine _stateMachine;
     [SerializeField] private GameOverState _gameOverState;
     [SerializeField] private PauseState _pauseState;
+    public PlayingStateData Data;
+    public SpiritOrbSpawnerData OrbSpawnerData;
 
     private PlayerController _player;
     private CandleController _candle;
+    private SpiritOrbSpawner _orbSpawner;
 
     private void Awake() 
     {
@@ -22,6 +25,10 @@ public class PlayingState : MonoBehaviour, IState
         _candle = FindObjectOfType<CandleController>();
         if(_candle == null)
             Debug.LogError($"{typeof(PlayingState)} must have a candle controller to work properly.", this);
+
+        _orbSpawner = FindObjectOfType<SpiritOrbSpawner>();
+        if(_orbSpawner == null)
+            Debug.LogError($"{typeof(PlayingState)} must have an orb spawner to work properly.", this);
     }
 
     public void StateEnter() 
@@ -32,8 +39,8 @@ public class PlayingState : MonoBehaviour, IState
 
     public void StateUpdate() 
     {
-        if (_candle.CurrentState <= 0)
-        {
+        // Monitor game over request
+        if (Data.ShouldBeGameOver){
             _stateMachine.ChangeState(_gameOverState);
             return;
         }
@@ -41,7 +48,15 @@ public class PlayingState : MonoBehaviour, IState
         if (_player.IsPaused) { _pauseState.Data.ShouldBePaused = _player.IsPaused; }
 
         // Monitor game pause request
-        if(_pauseState.Data.ShouldBePaused) _stateMachine.ChangeState(_pauseState);
+        if(_pauseState.Data.ShouldBePaused) {
+            _stateMachine.ChangeState(_pauseState);
+            return;
+        }
+
+        if(_candle.CurrentState <= 0) {
+            _orbSpawner.transform.position = _player.transform.position;
+            _orbSpawner.TrySpawnOrbsWithCooldown();
+        }
     }
 
     public void StateFixedUpdate() {}
@@ -52,4 +67,3 @@ public class PlayingState : MonoBehaviour, IState
         _candle.CandleStateFreeze = true;
     }
 }
-

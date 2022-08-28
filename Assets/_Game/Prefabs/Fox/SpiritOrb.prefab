@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af0c095225293744944fe38d70d5e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lerpCurve:
+  _accelerationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -175,7 +175,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _speed: 0.25
+  _accelerationDuration: 5
+  _startSpeed: 0.1
+  _targetSpeed: 1
+  _lifetime: 10
+  _stateData: {fileID: 11400000, guid: 89f89dd112f06fd4eacff08282324489, type: 2}
 --- !u!58 &6507204786626539913
 CircleCollider2D:
   m_ObjectHideFlags: 0
