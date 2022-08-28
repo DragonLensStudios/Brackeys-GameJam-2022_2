@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebbfebf96a5dc541b438954a40c2e54, type: 3}
   m_Name: OrbSpawnerSettings
   m_EditorClassIdentifier: 
-  _amountToSpawn: 10
+  _amountToSpawn: 5
   _cooldownBetweenSpawns: 5
   _spawnRadius: 4.75
   _deadzoneRadius: 2.5

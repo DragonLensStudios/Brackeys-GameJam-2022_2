@@ -20,6 +20,17 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
         _rootGO = new GameObject("FOX ORB");
     }
 
+    private void OnEnable()
+    {
+        EventManager.onCandleReset += EventManager_onCandleReset;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.onCandleReset -= EventManager_onCandleReset;
+
+    }
+
     private void SetupObjectPool() {
         _orbPool = new(() => {
             return Instantiate(_orbPrefab, _rootGO.transform);
@@ -35,7 +46,8 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
     /// <summary>
     /// Spawns a single orb with a random start/target position within the spawn radius.
     /// </summary>
-    public void SpawnOrb() {
+    public void SpawnOrb() 
+    {
         SpiritOrb orb = GetOrbFromPool();
         orb.OnDespawn += ReturnOrbToPool;
 
@@ -52,36 +64,43 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
     /// <summary>
     /// Uses a cooldown timer to decide if it should spawn orbs or not.
     /// </summary>
-    public void TrySpawnOrbsWithCooldown() {
-        if(_currentCooldown > 0f) return;
+    public void TrySpawnOrbsWithCooldown() 
+    {
 
-        for(var i = 0; i < _spawnerData.AmountToSpawn; i++) {
+        if (_currentCooldown > 0f) return;
+
+        for (var i = 0; i < _spawnerData.AmountToSpawn; i++) {
             SpawnOrb();
         }
 
         _currentCooldown = _spawnerData.CooldownBetweenSpawns;
     }
 
-    private void Update() {
+    private void Update() 
+    {
         if(_isPaused) return;
         if(_currentCooldown <= 0f) return;
 
         _currentCooldown -= Time.deltaTime;
     }
 
-    private SpiritOrb GetOrbFromPool() {
+    private SpiritOrb GetOrbFromPool() 
+    {
         return _orbPool.Get();
     }
 
-    private void ReturnOrbToPool(SpiritOrb orb) {
+    private void ReturnOrbToPool(SpiritOrb orb) 
+    {
         orb.OnDespawn -= ReturnOrbToPool;
         _orbPool.Release(orb);
     }
-    public void OnGamePaused() {
+    public void OnGamePaused() 
+    {
         _isPaused = true;
     }
 
-    public void OnGameUnpaused() {
+    public void OnGameUnpaused() 
+    {
         _isPaused = false;
     }
 
@@ -103,4 +122,13 @@ public class SpiritOrbSpawner : MonoBehaviour, IPauseable
         Gizmos.DrawWireSphere(transform.position, _spawnerData.TargetRadius);
     }
 #endif
+
+    private void EventManager_onCandleReset()
+    {
+        _orbPool.Dispose();
+        for (int i = _rootGO.transform.childCount -1; i >= 0; i--)
+        {
+            Destroy(_rootGO.transform.GetChild(i).gameObject);
+        }
+    }
 }

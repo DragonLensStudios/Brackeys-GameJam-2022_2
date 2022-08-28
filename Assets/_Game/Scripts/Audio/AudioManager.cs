@@ -19,7 +19,16 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private Audio[] soundEffects;
 
+    [SerializeField]
+    private string currentlyPlayingSfx, currentlyPlayingMusic;
+
+
     public static AudioManager instance;
+
+    public Audio[] Music { get => music; }
+    public Audio[] SoundEffects { get => soundEffects; }
+    public string CurrentlyPlayingSfx { get => currentlyPlayingSfx; }
+    public string CurrentlyPlayingMusic { get => currentlyPlayingMusic; }
 
     // Awake is always called before any Start functions
     void Awake()
@@ -78,6 +87,7 @@ public class AudioManager : MonoBehaviour
         {
             if (music[i].audioName == name)
             {
+                currentlyPlayingMusic = name;
                 music[i].Play();
                 return;
             }
@@ -93,6 +103,7 @@ public class AudioManager : MonoBehaviour
         {
             if (soundEffects[i].audioName == name)
             {
+                currentlyPlayingSfx = name;
                 soundEffects[i].Play();
                 return;
             }
@@ -178,6 +189,7 @@ public class AudioManager : MonoBehaviour
         {
             if (music[i].audioName == name)
             {
+                currentlyPlayingMusic = "";
                 music[i].Stop();
                 return;
             }
@@ -195,6 +207,7 @@ public class AudioManager : MonoBehaviour
         {
             if (soundEffects[i].audioName == name)
             {
+                currentlyPlayingSfx = "";
                 soundEffects[i].Stop();
                 return;
             }

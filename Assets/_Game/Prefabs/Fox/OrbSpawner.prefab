@@ -47,3 +47,5 @@ MonoBehaviour:
   _orbPrefab: {fileID: 769118814754728354, guid: 02ac390698504874f8cdfdd9e734d92e, type: 3}
   _spawnerData: {fileID: 11400000, guid: f511158dea3ba5343bf9c21da63684f0, type: 2}
   _maxCapacity: 100
+  foxBGm: Intense BGM
+  _drawGizmos: 1

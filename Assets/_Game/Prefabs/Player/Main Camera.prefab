@@ -70,6 +70,8 @@ MonoBehaviour:
   candleStateFreeze: 0
   refillSfx: Candle Refill
   candleOutSfx: Flame Out
+  foxBgm: Intense BGM
+  levelBGM: Forest BGM
 --- !u!212 &752555342323791914
 SpriteRenderer:
   m_ObjectHideFlags: 0
