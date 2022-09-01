@@ -2679,16 +2679,16 @@ MonoBehaviour:
     LastProgressUpdate: 0
     Achieved: 0
   AchievementList:
-  - Key: Example
-    DisplayName: Example
-    Description: Example
+  - Key: TutorialComplete
+    DisplayName: Tutorial Completed!
+    Description: You completed the tutorial!
     LockedIcon: {fileID: 0}
     LockOverlay: 0
     AchievedIcon: {fileID: 0}
     Spoiler: 0
-    Progression: 0
-    ProgressGoal: 0
-    NotificationFrequency: 0
+    Progression: 1
+    ProgressGoal: 1
+    NotificationFrequency: 1
     ProgressSuffix: 
   UseFinalAchievement: 0
   FinalAchievementKey: 

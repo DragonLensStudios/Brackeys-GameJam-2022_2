@@ -102,26 +102,9 @@ public class CandleController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// This method changes the current candle color and adds the color to the queue sets the <see cref="anim"/> bools to the respective color.
-    /// </summary>
-    /// <param name="color"></param>
-    public IEnumerator ChangeCandleColor(CandleColor color, float timeToLast)
+    private void EventManager_onCandleColorChanged(CandleColor color)
     {
-        candleChanges.Enqueue(color);
         CurrentColor = color;
-        EventManager.CandleColorChanged(color, timeToLast);
-        yield return new WaitForSeconds(timeToLast);
-        candleChanges.TryDequeue(out var queueColor);
-        if (candleChanges.Count <= 0)
-        {
-            CurrentColor = CandleColor.Yellow;
-            EventManager.CandleColorChanged(CandleColor.Yellow, 0);
-        }
-    }
-
-    private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
-    {
         switch (color)
         {
             case CandleColor.Yellow:
@@ -179,10 +162,9 @@ public class CandleController : MonoBehaviour
         candleChanges.Clear();
         isCandleLit = true;
         CurrentState = _candleData.MaxStateIndex;
-        CurrentColor = _candleData.Color;
+        EventManager.CandleColorChanged(_candleData.Color);
         anim.SetTrigger("Refill");
         anim.SetInteger("Candlestate", CurrentState);
-        anim.SetBool("Yellow", true);
         timeSeconds = 0;
         if (!string.IsNullOrWhiteSpace(refillSfx))
         {

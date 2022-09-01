@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
+    private void EventManager_onCandleColorChanged(CandleColor color)
     {
         switch (color)
         {

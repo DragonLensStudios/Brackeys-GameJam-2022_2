@@ -8,8 +8,6 @@ public class ColorChangeTrigger : MonoBehaviour
     [SerializeField]
     private CandleColor color;
     [SerializeField]
-    private float timeToLast = 15f;
-    [SerializeField]
     private Sprite offSprite, onSprite;
     [SerializeField]
     private string activateSfx;
@@ -18,6 +16,18 @@ public class ColorChangeTrigger : MonoBehaviour
 
     private PlayerController pc;
     private SpriteRenderer sr;
+
+    private void OnEnable()
+    {
+        EventManager.onCandleColorChanged += EventManager_onCandleColorChanged;
+    }
+
+
+
+    private void OnDisable()
+    {
+        EventManager.onCandleColorChanged -= EventManager_onCandleColorChanged;
+    }
 
     private void Awake()
     {
@@ -48,36 +58,41 @@ public class ColorChangeTrigger : MonoBehaviour
         {
             if (pc.IsActivatePressed)
             {
-                Activate(color, timeToLast);
+                Activate(color);
             }
         }
     }
 
-    public void Activate(CandleColor color, float timeToLast)
+    public void Activate(CandleColor color)
     {
         if(pc != null)
         {
-            sr.sprite = onSprite;
-            if(light != null)
-            {
-                light.enabled = true;
-            }
             if (!string.IsNullOrEmpty(activateSfx))
             {
                 AudioManager.instance.PlaySound(activateSfx);
             }
-            StartCoroutine(pc.CandleController.ChangeCandleColor(color, timeToLast));
-            StartCoroutine(Deactivate(timeToLast));
+            EventManager.CandleColorChanged(color);
         }
     }
 
-    public IEnumerator Deactivate(float timeToLast)
+    private void EventManager_onCandleColorChanged(CandleColor color)
     {
-        yield return new WaitForSeconds(timeToLast);
-        sr.sprite = offSprite;
-        if(light != null)
+        if (this.color == color)
         {
-            light.enabled = false;
+            sr.sprite = onSprite;
+            if (light != null)
+            {
+                light.enabled = true;
+            }
+        }
+        else
+        {
+            sr.sprite = offSprite;
+            if (light != null)
+            {
+                light.enabled = false;
+            }
         }
     }
+
 }

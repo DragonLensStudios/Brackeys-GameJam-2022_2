@@ -354,7 +354,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 2083644150, guid: df917c9a00c92490793507987c826e5a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -380,4 +380,3 @@ MonoBehaviour:
   redMushroom: {fileID: -1112254851, guid: 3ed3507258e3545fba5a91b2375071b4, type: 3}
   purpleMushroom: {fileID: -1693897617, guid: 03ecd3ce22769483583e7a242f86fbbc, type: 3}
   blueMushroom: {fileID: -1772165413, guid: 991276e5f8d194475a681c8f7c336e58, type: 3}
-  remainingTime: 0

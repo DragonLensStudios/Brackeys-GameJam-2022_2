@@ -87,7 +87,7 @@ namespace Fungus
 
             if (writer != null && writer.IsWriting)
             {
-                if (cancelEnabled && (Keyboard.current.anyKey.wasPressedThisFrame || Gamepad.current.aButton.wasPressedThisFrame))
+                if ((cancelEnabled && (Keyboard.current.anyKey.wasPressedThisFrame || Gamepad.current.aButton.wasPressedThisFrame)))
                 {
                     SetNextLineFlag();
                 }
