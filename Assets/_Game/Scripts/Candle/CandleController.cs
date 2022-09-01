@@ -102,25 +102,6 @@ public class CandleController : MonoBehaviour
         }
     }
 
-    ///// <summary>
-    ///// This method changes the current candle color and adds the color to the queue sets the <see cref="anim"/> bools to the respective color.
-    ///// </summary>
-    ///// <param name="color"></param>
-    //public IEnumerator ChangeCandleColor(CandleColor color)
-    //{
-    //    candleChanges.Enqueue(color);
-    //    CurrentColor = color;
-    //    EventManager.CandleColorChanged(color);
-    //    //yield return new WaitForSeconds(timeToLast);
-    //    candleChanges.TryDequeue(out var queueColor);
-    //    if (candleChanges.Count <= 0)
-    //    {
-    //        CurrentColor = _candleData.Color;
-    //        EventManager.CandleColorChanged(_candleData.Color);
-    //    }
-    //    yield break;
-    //}
-
     private void EventManager_onCandleColorChanged(CandleColor color)
     {
         CurrentColor = color;
