@@ -67,16 +67,17 @@ public class CandleAnimationTest : MonoBehaviour
     /// This method changes the current candle color and adds the color to the queue sets the <see cref="anim"/> bools to the respective color.
     /// </summary>
     /// <param name="color"></param>
-    public IEnumerator ChangeCandleColor(CandleColor color, float timeToLast) {
+    public IEnumerator ChangeCandleColor(CandleColor color) {
         candleChanges.Enqueue(color);
         CurrentColor = color;
-        EventManager.CandleColorChanged(color, timeToLast);
-        yield return new WaitForSeconds(timeToLast);
+        EventManager.CandleColorChanged(color);
+        //yield return new WaitForSeconds(timeToLast);
         candleChanges.TryDequeue(out var queueColor);
         if(candleChanges.Count <= 0) {
-            CurrentColor = CandleColor.Yellow;
-            EventManager.CandleColorChanged(CandleColor.Yellow, 0);
+            CurrentColor = _candleData.Color;
+            EventManager.CandleColorChanged(_candleData.Color);
         }
+        yield break;
     }
 
     public void Reset() {
@@ -89,7 +90,7 @@ public class CandleAnimationTest : MonoBehaviour
         timeSeconds = 0;
     }
 
-    private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast) {
+    private void EventManager_onCandleColorChanged(CandleColor color) {
         switch(color) {
             case CandleColor.Yellow:
                 anim.SetBool("Yellow", true);
@@ -133,7 +134,7 @@ public class CandleAnimationTest : MonoBehaviour
 
     public void RequestColorChange(string colorName) {
         if(System.Enum.TryParse(colorName, out CandleColor parsedColor)) {
-            EventManager_onCandleColorChanged(parsedColor, 0);
+            EventManager_onCandleColorChanged(parsedColor);
         }
     }
 }

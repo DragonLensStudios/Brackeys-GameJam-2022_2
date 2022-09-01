@@ -40,7 +40,7 @@ public class VisibleGameObject : MonoBehaviour, IVisibility
         Show(CandleColor.Yellow);
     }
 
-    protected virtual void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
+    protected virtual void EventManager_onCandleColorChanged(CandleColor color)
     {
         Hide(color);
         Show(color);

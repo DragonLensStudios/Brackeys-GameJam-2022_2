@@ -92,7 +92,7 @@ public class Player_Controller_test : MonoBehaviour
         isActivatePressed = input.ReadValueAsButton();
     }
 
-    private void EventManager_onCandleColorChanged(CandleColor color, float timeToLast)
+    private void EventManager_onCandleColorChanged(CandleColor color)
     {
         switch (color)
         {
