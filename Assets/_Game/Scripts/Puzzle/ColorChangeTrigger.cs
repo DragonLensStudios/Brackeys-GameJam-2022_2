@@ -36,7 +36,6 @@ public class ColorChangeTrigger : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = offSprite;
         light2D = GetComponent<Light2D>();
-        activatePopup = transform.GetChild(0).gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -10,6 +10,10 @@ public class ActivationPopupUI : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
 
+    private const string xboxDeviceNameContains = "xinput";
+    private const string playstationDeviceNameContains = "dualshock";
+    private const string switchDeviceNameContains = "switch";
+
     private void OnEnable()
     {
         if(playerInput != null)
@@ -41,46 +45,20 @@ public class ActivationPopupUI : MonoBehaviour
 
     public void HandleInput(PlayerInput input)
     {
-        if (input.currentControlScheme == "Keyboard&Mouse") { ChangeUIPrompt("KEYBOARD"); }
+        if (input.currentControlScheme == "Keyboard&Mouse") { ChangeUIPrompt(DeviceType.Keyboard); }
         if (input.currentControlScheme == "Gamepad")
         {
-            if (Gamepad.current.device.name.Contains("XInput")) { ChangeUIPrompt("XINPUT"); }
-            else if (Gamepad.current.device.name.Contains("DualShock")) { ChangeUIPrompt("DUALSHOCK"); }
-            else if (Gamepad.current.device.name.Contains("Switch")) { ChangeUIPrompt("SWITCH"); }
+            if (Gamepad.current.device.name.ToLower().Contains(xboxDeviceNameContains)) { ChangeUIPrompt(DeviceType.GamepadXbox); }
+            else if (Gamepad.current.device.name.ToLower().Contains(playstationDeviceNameContains)) { ChangeUIPrompt(DeviceType.GamepadPlaystation); }
+            else if (Gamepad.current.device.name.ToLower().Contains(switchDeviceNameContains)) { ChangeUIPrompt(DeviceType.GamepadSwitch); }
         }
     }
 
-    public void ChangeUIPrompt(string deviceName)
+    public void ChangeUIPrompt(DeviceType deviceType)
     {
-
-        switch (deviceName.ToUpper())
-        {
-
-            case "XINPUT":
-                anim.SetBool("isKeyboard", false);
-                anim.SetBool("isGamepadXbox", true);
-                anim.SetBool("isGamepadPlaystation", false);
-                anim.SetBool("isGamepadSwitch", false);
-                break;
-            case "SWITCH":
-                anim.SetBool("isKeyboard", false);
-                anim.SetBool("isGamepadXbox", false);
-                anim.SetBool("isGamepadPlaystation", false);
-                anim.SetBool("isGamepadSwitch", true);
-                break;
-            case "DUALSHOCK":
-                anim.SetBool("isKeyboard", false);
-                anim.SetBool("isGamepadXbox", false);
-                anim.SetBool("isGamepadPlaystation", true);
-                anim.SetBool("isGamepadSwitch", false);
-                break;
-            case "KEYBOARD":
-            default:
-                anim.SetBool("isKeyboard", true);
-                anim.SetBool("isGamepadXbox", false);
-                anim.SetBool("isGamepadPlaystation", false);
-                anim.SetBool("isGamepadSwitch", false);
-                break;
-        }
+        anim.SetBool("isKeyboard", deviceType == DeviceType.Keyboard);
+        anim.SetBool("isGamepadXbox", deviceType == DeviceType.GamepadXbox);
+        anim.SetBool("isGamepadPlaystation", deviceType == DeviceType.GamepadPlaystation);
+        anim.SetBool("isGamepadSwitch", deviceType == DeviceType.GamepadSwitch);
     }
 }

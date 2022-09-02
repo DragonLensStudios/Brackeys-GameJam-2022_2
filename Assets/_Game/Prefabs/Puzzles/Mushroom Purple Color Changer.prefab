@@ -104,8 +104,8 @@ MonoBehaviour:
   offSprite: {fileID: 996601544, guid: 03ecd3ce22769483583e7a242f86fbbc, type: 3}
   onSprite: {fileID: -1693897617, guid: 03ecd3ce22769483583e7a242f86fbbc, type: 3}
   activateSfx: Candle Ignite 3
-  light: {fileID: 0}
-  activatePopup: {fileID: 0}
+  light2D: {fileID: 0}
+  activatePopup: {fileID: 5653423100067973252}
 --- !u!61 &2281151018930799645
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -248,6 +248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbcc9cf7738058478d12a1eb533401f, type: 3}
+--- !u!1 &5653423100067973252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8601506413241461507, guid: 2dbcc9cf7738058478d12a1eb533401f, type: 3}
+  m_PrefabInstance: {fileID: 4119191505951417223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8647437289142590963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4696006175047941748, guid: 2dbcc9cf7738058478d12a1eb533401f, type: 3}

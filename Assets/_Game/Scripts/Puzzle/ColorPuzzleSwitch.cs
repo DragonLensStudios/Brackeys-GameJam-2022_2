@@ -43,7 +43,6 @@ public class ColorPuzzleSwitch : MonoBehaviour
         puzzleController = GetComponentInParent<ColorPuzzleController>();
         sr.sprite = offSprite;
         light2D = GetComponent<Light2D>();
-        activatePopup = transform.GetChild(0).gameObject;
     }
 
     public void Activate(CandleColor color)

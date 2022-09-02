@@ -171,8 +171,8 @@ MonoBehaviour:
   isEnabled: 0
   isActivated: 0
   timeActivate: 0
-  light: {fileID: 0}
-  activatePopup: {fileID: 0}
+  light2D: {fileID: 0}
+  activatePopup: {fileID: 6955969487548369872}
 --- !u!114 &4098153440475155667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,5 +292,10 @@ PrefabInstance:
 --- !u!4 &6268361264083459751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4696006175047941748, guid: 2dbcc9cf7738058478d12a1eb533401f, type: 3}
+  m_PrefabInstance: {fileID: 1717597586380464339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6955969487548369872 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8601506413241461507, guid: 2dbcc9cf7738058478d12a1eb533401f, type: 3}
   m_PrefabInstance: {fileID: 1717597586380464339}
   m_PrefabAsset: {fileID: 0}

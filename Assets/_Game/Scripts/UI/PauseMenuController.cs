@@ -11,7 +11,7 @@ public class PauseMenuController : MonoBehaviour, IPauseable
     private AchievenmentListIngame achivementList;
     private void Awake()
     {
-        pc = GetComponent<PlayerController>();
+        pc = FindObjectOfType<PlayerController>();
         page = GetComponent<Page>();
         achivementList = FindObjectOfType<AchievenmentListIngame>();
     }
@@ -29,12 +29,18 @@ public class PauseMenuController : MonoBehaviour, IPauseable
 
     public void Pause()
     {
-        pc.IsPaused = true;
+        if(pc != null)
+        {
+            pc.IsPaused = true;
+        }
     }
 
     public void Unpause()
     {
-        pc.IsPaused = false;
+        if(pc != null)
+        {
+            pc.IsPaused = false;
+        }
     }
 
     public void ShowAchivements()

@@ -22,7 +22,6 @@ public class CheckpointTrigger : MonoBehaviour
     private void Awake()
     {
         candleController = GameObject.FindGameObjectWithTag("Candle").GetComponent<CandleController>();
-        activatePopup = transform.GetChild(0).gameObject;
         anim = GetComponent<Animator>();
         light2D = GetComponent<Light2D>();
     }

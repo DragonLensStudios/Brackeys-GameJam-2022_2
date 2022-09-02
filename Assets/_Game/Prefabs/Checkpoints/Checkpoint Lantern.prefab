@@ -177,7 +177,7 @@ MonoBehaviour:
   id: TutorialCheckpoint
   _gameData: {fileID: 11400000, guid: 700df7609cb7d9949ac4253cb8645584, type: 2}
   light2D: {fileID: 0}
-  activatePopup: {fileID: 0}
+  activatePopup: {fileID: 1136160460048740139}
 --- !u!114 &3800050245562135804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,6 +318,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbcc9cf7738058478d12a1eb533401f, type: 3}
+--- !u!1 &1136160460048740139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8601506413241461507, guid: 2dbcc9cf7738058478d12a1eb533401f, type: 3}
+  m_PrefabInstance: {fileID: 8690473289447687208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4157196109448034908 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4696006175047941748, guid: 2dbcc9cf7738058478d12a1eb533401f, type: 3}
