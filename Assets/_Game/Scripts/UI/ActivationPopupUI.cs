@@ -48,9 +48,10 @@ public class ActivationPopupUI : MonoBehaviour
         if (input.currentControlScheme == "Keyboard&Mouse") { ChangeUIPrompt(DeviceType.Keyboard); }
         if (input.currentControlScheme == "Gamepad")
         {
-            if (Gamepad.current.device.name.ToLower().Contains(xboxDeviceNameContains)) { ChangeUIPrompt(DeviceType.GamepadXbox); }
-            else if (Gamepad.current.device.name.ToLower().Contains(playstationDeviceNameContains)) { ChangeUIPrompt(DeviceType.GamepadPlaystation); }
-            else if (Gamepad.current.device.name.ToLower().Contains(switchDeviceNameContains)) { ChangeUIPrompt(DeviceType.GamepadSwitch); }
+            var currentGamepadName = Gamepad.current.device.name.ToLower();
+            if (currentGamepadName.Contains(xboxDeviceNameContains)) { ChangeUIPrompt(DeviceType.GamepadXbox); }
+            else if (currentGamepadName.Contains(playstationDeviceNameContains)) { ChangeUIPrompt(DeviceType.GamepadPlaystation); }
+            else if (currentGamepadName.Contains(switchDeviceNameContains)) { ChangeUIPrompt(DeviceType.GamepadSwitch); }
         }
     }
 
