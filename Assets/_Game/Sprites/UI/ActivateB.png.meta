@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 043eff40d9bec438ca55c50533ad937f
+guid: 46d7be0ff4137e74a9e3afb4d31ef911
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -100,11 +100,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ActivateE_0
+      name: ActivateB_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b2c7ffb9b87344eba40fcc973724c66
-      internalID: 255127345
+      spriteID: 154054fdaf3d20d4081642d3b34bdb8a
+      internalID: 367281988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ActivateE_1
+      name: ActivateB_1
       rect:
         serializedVersion: 2
         x: 32
@@ -139,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8af2f0adf8e8b40f18f4be0e5e3e7c4c
-      internalID: 444217463
+      spriteID: b4a843d05a68dfa48b63a46f901fb629
+      internalID: -2118732133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ActivateE_2
+      name: ActivateB_2
       rect:
         serializedVersion: 2
         x: 64
@@ -160,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d7721bc784b44a92bad264f506ba305
-      internalID: 1532800468
+      spriteID: 7b73afb1acba1d74190571de4159cda2
+      internalID: 1504512120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ActivateE_3
+      name: ActivateB_3
       rect:
         serializedVersion: 2
         x: 96
@@ -181,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01115de686ca341f689dc6d11e7fa90c
-      internalID: -1620320089
+      spriteID: c6d391967824bb54f8fa390620bb0a96
+      internalID: 1826569202
       vertices: []
       indices: 
       edges: []
@@ -198,10 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ActivateE_1: 444217463
-      ActivateE_3: -1620320089
-      ActivateE_2: 1532800468
-      ActivateE_0: 255127345
+      ActivateB_1: -2118732133
+      ActivateB_3: 1826569202
+      ActivateB_2: 1504512120
+      ActivateB_0: 367281988
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

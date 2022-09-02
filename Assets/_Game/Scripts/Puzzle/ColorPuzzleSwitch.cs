@@ -16,7 +16,10 @@ public class ColorPuzzleSwitch : MonoBehaviour
     [SerializeField]
     private float timeActivate;
     [SerializeField]
-    private Light2D light;
+    private Light2D light2D;
+    [SerializeField] 
+    private GameObject activatePopup;
+
 
     private ColorPuzzleController puzzleController;
     private SpriteRenderer sr;
@@ -39,7 +42,8 @@ public class ColorPuzzleSwitch : MonoBehaviour
         anim = GetComponent<Animator>();
         puzzleController = GetComponentInParent<ColorPuzzleController>();
         sr.sprite = offSprite;
-        light = GetComponent<Light2D>();
+        light2D = GetComponent<Light2D>();
+        activatePopup = transform.GetChild(0).gameObject;
     }
 
     public void Activate(CandleColor color)
@@ -47,13 +51,17 @@ public class ColorPuzzleSwitch : MonoBehaviour
         if (candleColor == color)
         {
             isActivated = true;
-            if(light != null)
+            if(light2D != null)
             {
-                light.enabled = true;
+                light2D.enabled = true;
             }
             if (sr != null)
             {
                 sr.sprite = onSprite;
+            }
+            if (activatePopup != null)
+            {
+                activatePopup.SetActive(false);
             }
             StartCoroutine(TimeActivate(timeActivate));
             if (!string.IsNullOrWhiteSpace(sfxActivateSound))
@@ -68,9 +76,9 @@ public class ColorPuzzleSwitch : MonoBehaviour
         if(candleColor == color)
         {
             IsActivated = false;
-            if(light != null)
+            if(light2D != null)
             {
-                light.enabled = false;
+                light2D.enabled = false;
             }
             if (sr != null)
             {
@@ -110,6 +118,14 @@ public class ColorPuzzleSwitch : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             pc = collision.GetComponent<PlayerController>();
+            if(pc != null)
+            {
+                if (activatePopup != null && !isActivated && pc.CandleController.CurrentColor == candleColor)
+                {
+                    activatePopup.SetActive(true);
+                }
+            }
+            
         }
     }
 
@@ -117,6 +133,10 @@ public class ColorPuzzleSwitch : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (activatePopup != null)
+            {
+                activatePopup.SetActive(false);
+            }
             pc = null;
         }
     }

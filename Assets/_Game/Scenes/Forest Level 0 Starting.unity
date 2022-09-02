@@ -391,7 +391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6802277750177215963, guid: fe1bbc0ab18cc6f40bd6ee8f2330c409, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.43503
+      value: 3.014
       objectReference: {fileID: 0}
     - target: {fileID: 6802277750177215963, guid: fe1bbc0ab18cc6f40bd6ee8f2330c409, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5627,6 +5627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Achievement Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5869893064832991959, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991961, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -6055,6 +6059,10 @@ PrefabInstance:
     - target: {fileID: 3060558852636843791, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
       propertyPath: m_Name
       value: OrbSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060558852636843791, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5f2a9f8fdc1ea4f99e1d7910da01ff, type: 3}
@@ -13519,6 +13527,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 97.759995
       objectReference: {fileID: 0}
+    - target: {fileID: 2097005094935030544, guid: a73e003b8c24acf4eae57eae54f520e2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.999878
+      objectReference: {fileID: 0}
     - target: {fileID: 3909785422828668425, guid: a73e003b8c24acf4eae57eae54f520e2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -13618,6 +13630,10 @@ PrefabInstance:
     - target: {fileID: 3909785424730793579, guid: a73e003b8c24acf4eae57eae54f520e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026834235204371268, guid: a73e003b8c24acf4eae57eae54f520e2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.79541
       objectReference: {fileID: 0}
     - target: {fileID: 4347231678470896211, guid: a73e003b8c24acf4eae57eae54f520e2, type: 3}
       propertyPath: PostPopAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -13819,6 +13835,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 894924140}
     m_Modifications:
+    - target: {fileID: 4606032077766141790, guid: ca2bb687d7f5b8a4e9f81840f467cb43, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5973159292443193978, guid: ca2bb687d7f5b8a4e9f81840f467cb43, type: 3}
       propertyPath: m_Name
       value: Checkpoint Lantern

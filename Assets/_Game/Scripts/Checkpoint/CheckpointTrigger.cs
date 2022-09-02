@@ -7,7 +7,8 @@ public class CheckpointTrigger : MonoBehaviour
 {
     [SerializeField] private string id;
     [SerializeField] private GameDataSO _gameData;
-    [SerializeField] private Light2D light;
+    [SerializeField] private Light2D light2D;
+    [SerializeField] private GameObject activatePopup;
 
     private CandleController candleController;
     private PlayerController pc;
@@ -21,14 +22,19 @@ public class CheckpointTrigger : MonoBehaviour
     private void Awake()
     {
         candleController = GameObject.FindGameObjectWithTag("Candle").GetComponent<CandleController>();
+        activatePopup = transform.GetChild(0).gameObject;
         anim = GetComponent<Animator>();
-        light = GetComponent<Light2D>();
+        light2D = GetComponent<Light2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            if(activatePopup != null)
+            {
+                activatePopup.SetActive(true);
+            }
             pc = collision.GetComponent<PlayerController>();
             if (isActivated && candleController != null)
             {
@@ -41,7 +47,11 @@ public class CheckpointTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if(candleController != null)
+            if (activatePopup != null)
+            {
+                activatePopup.SetActive(false);
+            }
+            if (candleController != null)
             {
                 candleController.CandleStateFreeze = false;
             }
@@ -70,9 +80,9 @@ public class CheckpointTrigger : MonoBehaviour
         if (anim != null && candleController != null)
         {
             isActivated = true;
-            if(light != null)
+            if(light2D != null)
             {
-                light.enabled = true;
+                light2D.enabled = true;
             }
             anim.SetTrigger("Activate");
             anim.SetBool("IsOn", true);
@@ -86,9 +96,9 @@ public class CheckpointTrigger : MonoBehaviour
         if (anim != null && candleController != null)
         {
             anim.SetBool("IsOn", false);
-            if(light != null)
+            if(light2D != null)
             {
-                light.enabled = false;
+                light2D.enabled = false;
             }
             candleController.CandleStateFreeze = false;
         }

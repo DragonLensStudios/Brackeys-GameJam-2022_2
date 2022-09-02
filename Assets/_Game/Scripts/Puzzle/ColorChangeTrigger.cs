@@ -12,7 +12,9 @@ public class ColorChangeTrigger : MonoBehaviour
     [SerializeField]
     private string activateSfx;
     [SerializeField]
-    private Light2D light;
+    private Light2D light2D;
+    [SerializeField]
+    private GameObject activatePopup;
 
     private PlayerController pc;
     private SpriteRenderer sr;
@@ -33,13 +35,18 @@ public class ColorChangeTrigger : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = offSprite;
-        light = GetComponent<Light2D>();
+        light2D = GetComponent<Light2D>();
+        activatePopup = transform.GetChild(0).gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            if (activatePopup != null)
+            {
+                activatePopup.SetActive(true);
+            }
             pc = collision.GetComponent<PlayerController>();
         }
     }
@@ -48,6 +55,10 @@ public class ColorChangeTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (activatePopup != null)
+            {
+                activatePopup.SetActive(false);
+            }
             pc = null;
         }
     }
@@ -80,17 +91,17 @@ public class ColorChangeTrigger : MonoBehaviour
         if (this.color == color)
         {
             sr.sprite = onSprite;
-            if (light != null)
+            if (light2D != null)
             {
-                light.enabled = true;
+                light2D.enabled = true;
             }
         }
         else
         {
             sr.sprite = offSprite;
-            if (light != null)
+            if (light2D != null)
             {
-                light.enabled = false;
+                light2D.enabled = false;
             }
         }
     }
