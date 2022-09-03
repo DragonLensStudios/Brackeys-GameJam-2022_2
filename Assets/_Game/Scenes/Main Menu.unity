@@ -1963,53 +1963,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 494330573}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 757883261}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseWindow
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Enter
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AchievenmentListIngame, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Page, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 2567812540479703732, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2921,7 +2877,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "LIGHTING\nBill Mac\n\nSTORY/LEVEL DESIGN\nStormi Dragon \n\nAUDIO\ninfante\n\n\n"
+  m_text: "LIGHTING\nBill Mac\n\nSTORY/LEVEL DESIGN\nStormi Dragon \n\nAUDIO\nEiji
+    John Mitsuta\r\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7620ebcfeefcd0146a4a3ba83a899863, type: 2}
   m_sharedMaterial: {fileID: 3636033368808041319, guid: 7620ebcfeefcd0146a4a3ba83a899863, type: 2}

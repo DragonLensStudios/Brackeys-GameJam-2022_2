@@ -23,7 +23,7 @@ public class AchievenmentListIngame : MonoBehaviour
     /// Adds all achievements to the UI based on a filter
     /// </summary>
     /// <param name="Filter">Filter to use (All, Achieved or Unachieved)</param>
-    private void AddAchievements(string Filter)
+    public void AddAchievements(string Filter)
     {  
         foreach (Transform child in scrollContent.transform)
         {

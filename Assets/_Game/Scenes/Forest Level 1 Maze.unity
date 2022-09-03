@@ -2079,6 +2079,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3909785422828668425, guid: a73e003b8c24acf4eae57eae54f520e2, type: 3}
   m_PrefabInstance: {fileID: 226106172}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &226106175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4347231678470896211, guid: a73e003b8c24acf4eae57eae54f520e2, type: 3}
+  m_PrefabInstance: {fileID: 226106172}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226106174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bebb3bfb4ff907141b63d60858739792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &236809594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14592,16 +14603,16 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
-  m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: 0}
-  m_SubmitAction: {fileID: 0}
-  m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
-  m_MiddleClickAction: {fileID: 0}
-  m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: 0}
-  m_TrackedDevicePositionAction: {fileID: 0}
-  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_PointAction: {fileID: -1654692200621890270, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: b5d1f52f84a50c84c987fbf1bad23fb8, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
@@ -14704,6 +14715,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 226106175}
+    - target: {fileID: 1831597073079699634, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Enter
+      objectReference: {fileID: 0}
     - target: {fileID: 5869893064832991959, guid: 9c0b2b8ff958b0846a09ec5cfcd89c71, type: 3}
       propertyPath: m_Name
       value: Achievement Manager
